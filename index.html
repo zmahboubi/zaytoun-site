@@ -8,13 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* ══ OVERRIDE ODOO CHROME ══ */
-#wrapwrap > header:not(.zaytoun-nav),
+/* ═══ HIDE ALL ODOO CHROME ═══ */
+#wrapwrap > header,
 #wrapwrap > footer,
 .o_main_navbar,
-nav.navbar:not(.lang-bar) { display: none !important; }
+.o_header_standard,
+.o_header_affix,
+nav.navbar,
+.js_website_submenu,
+footer.o_footer,
+.o_footer_copyright { display: none !important; visibility: hidden !important; }
 #wrapwrap { padding-top: 0 !important; margin-top: 0 !important; }
-body > nav:not(#langBar) { display: none !important; }
+#wrap { padding-top: 0 !important; }
+body { padding-top: 0 !important; }
 
 /* ══════════════════════════════════════════
    ZAYTOUN MARRAKECH — WHITE/CREAM LUXURY THEME
@@ -176,11 +182,12 @@ body.lang-ar .serif-title { font-family: var(--font-arabic); }
   animation: heroFadeIn 2s ease 0.3s both;
 }
 .hero-logo-wrap {
-  margin-bottom: 32px;
+  margin-bottom: 20px;
+  margin-top: 0;
   animation: heroFadeIn 2s ease 0.1s both;
 }
 .hero-logo-wrap img {
-  height: 150px; opacity: 0.96;
+  height: 120px; opacity: 0.96;
   filter: drop-shadow(0 6px 24px rgba(196,160,82,0.25));
 }
 .hero-arabic-name {
@@ -651,13 +658,6 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {
-  .hero-logo-wrap img { height: 80px; }
-  .hero-title { font-size: 36px; letter-spacing: 6px; }
-  .hero-arabic-name { font-size: 36px; }
-  .hero-tagline { font-size: 14px; padding: 0 10px; }
-  .hero-stats { gap: 24px; }
-  .hero-stat-num { font-size: 22px; }
-
   .lang-bar { padding: 14px 20px; }
   .brand-name { display: none; }
   section { padding: 70px 0; }
@@ -685,49 +685,89 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   .about-facts { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── MOBILE RESPONSIVE FIXES ── */
+/* ═══ MOBILE FIRST RESPONSIVE ═══ */
 @media (max-width: 768px) {
-  /* Investment grid */
-  .invest-grid { grid-template-columns: 1fr 1fr !important; }
-  /* Location cards */
+  /* Hero */
+  .hero-logo-wrap img { height: 80px !important; }
+  .hero-title { font-size: clamp(28px, 8vw, 42px) !important; letter-spacing: 5px !important; }
+  .hero-arabic-name { font-size: clamp(28px, 8vw, 48px) !important; }
+  .hero-tagline { font-size: 14px !important; padding: 0 16px !important; margin-bottom: 32px !important; }
+  .hero-stats { gap: 20px !important; margin-bottom: 32px !important; }
+  .hero-stat-num { font-size: 24px !important; }
+  .hero-divider { display: none !important; }
+
+  /* Navbar */
+  .lang-bar { padding: 12px 16px !important; }
+
+  /* Sections */
+  section { padding: 56px 0 !important; }
+  .container, .container-narrow { padding: 0 20px !important; }
+  .section-title { font-size: clamp(24px, 6vw, 38px) !important; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Destination stats */
+  .dest-stats { grid-template-columns: 1fr 1fr !important; }
+
+  /* Investment grid: 4col → 2col */
+  .invest-grid { grid-template-columns: 1fr 1fr !important; gap: 2px !important; }
+
+  /* Wellness cards: 3col → 1col */
+  .wellness-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
+
+  /* Location cards: 3col → 1col */
   .loc-cards-grid { grid-template-columns: 1fr !important; }
-  .loc-cards-grid > div { border-right: none !important; border-bottom: 1px solid var(--sand); }
-  /* Wellness grid */
-  .wellness-grid { grid-template-columns: 1fr !important; max-width: 400px; }
-  /* Services grid */
-  .services-grid { grid-template-columns: 1fr !important; }
-  /* Header strip location */
-  .container [style*="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap"] { flex-direction: column; align-items: flex-start !important; }
-  /* Dossier tabs scroll */
-  .dossier-tabs { overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
-  /* Pricing grid */
-  .payment-plan { grid-template-columns: 1fr !important; }
-  /* Form padding */
-  .gate-form { padding: 28px 20px !important; }
-  /* Gate inner */
-  .gate-inner { padding: 48px 20px !important; }
-  /* CTA buttons */
-  .cta-btns { flex-direction: column; align-items: center; }
-  .btn-white, .btn-ghost-white { width: 100%; text-align: center; }
-  /* Handover block */
-  .handover-block { flex-direction: column !important; gap: 32px !important; }
+  .loc-cards-grid > div[style*="border-right"] { border-right: none !important; border-bottom: 1px solid var(--sand) !important; }
+
+  /* Location header strip */
+  .loc-header-strip { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
+  .loc-header-strip > div:last-child { justify-content: flex-start !important; gap: 20px !important; }
+
+  /* Dossier tabs */
+  .dossier-tabs { overflow-x: auto !important; white-space: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 8px !important; }
+  .tab-btn { white-space: nowrap !important; }
+
   /* Villa grid */
   .villa-grid { grid-template-columns: 1fr !important; }
+
+  /* Pricing */
+  .payment-plan { grid-template-columns: 1fr !important; }
+  .payment-step { grid-column: span 1 !important; }
+  .handover-block { flex-direction: column !important; gap: 24px !important; text-align: center !important; }
+
+  /* Finishes */
+  .finishes-list { grid-template-columns: 1fr !important; }
+
+  /* Services */
+  .services-grid { grid-template-columns: 1fr !important; }
+
+  /* Gate form */
+  .gate-inner { padding: 40px 20px !important; }
+  .gate-form { padding: 28px 20px !important; }
+  .gate-form-inner { grid-template-columns: 1fr !important; }
+
+  /* CTA */
+  .cta-btns { flex-direction: column !important; align-items: stretch !important; gap: 12px !important; }
+  .btn-white, .btn-ghost-white { text-align: center !important; width: 100% !important; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+  /* Map location header */
+  div[style*="padding:32px 48px"] { padding: 24px 20px !important; flex-direction: column !important; align-items: flex-start !important; }
+  div[style*="display:flex;gap:32px"] { gap: 20px !important; }
 }
 
 @media (max-width: 480px) {
-  /* Investment grid → 1 col on very small */
   .invest-grid { grid-template-columns: 1fr !important; }
-  /* Hero content padding */
-  .hero-content { padding: 0 16px !important; }
-  /* Stats */
-  .hero-stats { gap: 16px; }
-  /* Navbar */
-  .lang-bar { padding: 10px 16px !important; }
-  /* Sections */
-  section { padding: 56px 0 !important; }
-  .container, .container-narrow { padding: 0 16px !important; }
+  .hero-logo-wrap img { height: 64px !important; }
+  .hero-stats { flex-direction: column !important; align-items: center !important; gap: 12px !important; }
+  .hero-stat-num { font-size: 28px !important; }
+  .gate-form { padding: 20px 16px !important; }
+  .price-amount { font-size: clamp(28px, 8vw, 48px) !important; }
 }
+
 </style>
 </head>
 
@@ -917,7 +957,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   <div class="container" style="padding-top:0;padding-bottom:80px;">
     <div style="background:var(--white);margin-top:0;padding:0;">
       <!-- Header strip -->
-      <div style="background:var(--charcoal);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+      <div style="background:var(--charcoal);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;" class="loc-header-strip">
         <div>
           <span style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:6px;" data-i18n="loc_label">Our Location</span>
           <span style="font-family:var(--font-serif);font-size:22px;color:var(--white);">Route de Tahannouat, Marrakech</span>
@@ -1741,8 +1781,9 @@ const LEAD_TAG   = 'Zaytoun Website';    // tag applied to every lead
 const SALES_TEAM = 'Zaytoun';           // Sales team name in Odoo CRM
 
 async function createOdooLead(payload) {
-  // Odoo Website public session: cookies sent automatically (same-origin)
-  // Uses /web/dataset/call_kw with public session — works for anonymous visitors
+  // 1. Authenticate as public / using stored session (Odoo Website shares session)
+  //    On Odoo Website the browser already has a valid session cookie — no login needed.
+  //    We call /web/dataset/call_kw directly (same origin = session cookie sent automatically).
   const endpoint = `${ODOO_URL}/web/dataset/call_kw`;
 
   const intentMap = {
@@ -1841,7 +1882,6 @@ async function handleGateSubmit(e) {
     // Silent fail — dossier still unlocks for the visitor
     // Log the error and optionally send a fallback email via mailto
     console.warn('[Zaytoun] CRM lead creation failed:', err.message);
-    console.warn('[Zaytoun] Payload was:', JSON.stringify(payload));
     // Fallback: open mailto so the lead is never lost
     const subject = encodeURIComponent(`[Zaytoun Lead] ${payload.fname} ${payload.lname}`);
     const body = encodeURIComponent(
