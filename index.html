@@ -302,7 +302,10 @@ section { padding: 100px 0; }
 }
 .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
 .about-img-accent {
-  display: none !important;
+  position: absolute; bottom: -30px; right: -30px;
+  width: 52%; aspect-ratio: 1;
+  background: var(--sand); overflow: hidden;
+  box-shadow: 0 8px 40px rgba(30,28,24,0.12);
 }
 .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
 .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
@@ -645,7 +648,10 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   .container, .container-narrow { padding: 0 20px; }
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .about-img-accent {
-  display: none !important;
+  position: absolute; bottom: -30px; right: -30px;
+  width: 52%; aspect-ratio: 1;
+  background: var(--sand); overflow: hidden;
+  box-shadow: 0 8px 40px rgba(30,28,24,0.12);
 }
   .destination-grid { grid-template-columns: 1fr; gap: 40px; }
   .wellness-features { grid-template-columns: 1fr; background: none; gap: 2px; }
