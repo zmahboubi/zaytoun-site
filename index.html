@@ -3,24 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Zaytoun Marrakech — Arabesque Residences"/>
+<meta property="og:description" content="20 private villas on 4.4 hectares — Route de Tahannouat, Marrakech. Delivery 2027."/>
+<meta property="og:image" content="https://res.cloudinary.com/dlidh4fdt/image/upload/img_04_ohdh9t"/>
+<meta property="og:url" content="https://www.arabesque.life/zaytoun-standalone"/>
+<meta name="description" content="Zaytoun by Arabesque Residences — 20 luxury villas in Marrakech. Private sanctuary on Route de Tahannouat. Delivery Q3 2027."/>
 <title>Zaytoun Marrakech — Arabesque Residences</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* ═══ HIDE ALL ODOO CHROME ═══ */
+
+/* ═══ HIDE ODOO CHROME ═══ */
 #wrapwrap > header,
 #wrapwrap > footer,
 .o_main_navbar,
 .o_header_standard,
 .o_header_affix,
-nav.navbar,
-.js_website_submenu,
 footer.o_footer,
-.o_footer_copyright { display: none !important; visibility: hidden !important; }
-#wrapwrap { padding-top: 0 !important; margin-top: 0 !important; }
-#wrap { padding-top: 0 !important; }
-body { padding-top: 0 !important; }
+.o_footer_copyright,
+.js_website_submenu { display: none !important; }
+#wrapwrap, #wrap, body { padding-top: 0 !important; margin-top: 0 !important; }
+
+/* ── WHATSAPP BUTTON ── */
+#waBtn:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 28px rgba(37,211,102,0.6) !important;
+}
+#waBtn:active {
+  transform: scale(0.95) !important;
+}
+
 
 /* ══════════════════════════════════════════
    ZAYTOUN MARRAKECH — WHITE/CREAM LUXURY THEME
@@ -182,12 +195,11 @@ body.lang-ar .serif-title { font-family: var(--font-arabic); }
   animation: heroFadeIn 2s ease 0.3s both;
 }
 .hero-logo-wrap {
-  margin-bottom: 20px;
-  margin-top: 0;
+  margin-bottom: 32px;
   animation: heroFadeIn 2s ease 0.1s both;
 }
 .hero-logo-wrap img {
-  height: 120px; opacity: 0.96;
+  height: 150px; opacity: 0.96;
   filter: drop-shadow(0 6px 24px rgba(196,160,82,0.25));
 }
 .hero-arabic-name {
@@ -685,87 +697,53 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   .about-facts { grid-template-columns: 1fr 1fr; }
 }
 
-/* ═══ MOBILE FIRST RESPONSIVE ═══ */
+/* ═══ MOBILE RESPONSIVE ═══ */
 @media (max-width: 768px) {
-  /* Hero */
   .hero-logo-wrap img { height: 80px !important; }
-  .hero-title { font-size: clamp(28px, 8vw, 42px) !important; letter-spacing: 5px !important; }
-  .hero-arabic-name { font-size: clamp(28px, 8vw, 48px) !important; }
-  .hero-tagline { font-size: 14px !important; padding: 0 16px !important; margin-bottom: 32px !important; }
-  .hero-stats { gap: 20px !important; margin-bottom: 32px !important; }
+  .hero-title { font-size: clamp(28px, 9vw, 44px) !important; letter-spacing: 5px !important; }
+  .hero-arabic-name { font-size: clamp(30px, 9vw, 50px) !important; }
+  .hero-tagline { font-size: 14px !important; padding: 0 12px !important; margin-bottom: 28px !important; }
+  .hero-stats { gap: 20px !important; }
   .hero-stat-num { font-size: 24px !important; }
   .hero-divider { display: none !important; }
-
-  /* Navbar */
   .lang-bar { padding: 12px 16px !important; }
-
-  /* Sections */
   section { padding: 56px 0 !important; }
   .container, .container-narrow { padding: 0 20px !important; }
-  .section-title { font-size: clamp(24px, 6vw, 38px) !important; }
-
-  /* About */
-  .about-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-
-  /* Destination stats */
-  .dest-stats { grid-template-columns: 1fr 1fr !important; }
-
-  /* Investment grid: 4col → 2col */
-  .invest-grid { grid-template-columns: 1fr 1fr !important; gap: 2px !important; }
-
-  /* Wellness cards: 3col → 1col */
+  .section-title { font-size: clamp(22px, 6vw, 36px) !important; }
+  .about-img-accent { display: none !important; }
+  .invest-grid { grid-template-columns: 1fr 1fr !important; }
   .wellness-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
-
-  /* Location cards: 3col → 1col */
   .loc-cards-grid { grid-template-columns: 1fr !important; }
-  .loc-cards-grid > div[style*="border-right"] { border-right: none !important; border-bottom: 1px solid var(--sand) !important; }
-
-  /* Location header strip */
-  .loc-header-strip { flex-direction: column !important; align-items: flex-start !important; gap: 16px !important; }
-  .loc-header-strip > div:last-child { justify-content: flex-start !important; gap: 20px !important; }
-
-  /* Dossier tabs */
-  .dossier-tabs { overflow-x: auto !important; white-space: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 8px !important; }
-  .tab-btn { white-space: nowrap !important; }
-
-  /* Villa grid */
+  .loc-cards-grid > div { border-right: none !important; border-bottom: 1px solid var(--sand) !important; }
+  .loc-header-strip { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .dossier-tabs { overflow-x: auto !important; white-space: nowrap !important; -webkit-overflow-scrolling: touch !important; }
+  .tab-btn { white-space: nowrap !important; padding: 12px 16px !important; }
   .villa-grid { grid-template-columns: 1fr !important; }
-
-  /* Pricing */
   .payment-plan { grid-template-columns: 1fr !important; }
-  .payment-step { grid-column: span 1 !important; }
-  .handover-block { flex-direction: column !important; gap: 24px !important; text-align: center !important; }
-
-  /* Finishes */
+  .payment-step[style*="grid-column:span 2"] { grid-column: span 1 !important; }
+  .handover-block { flex-direction: column !important; gap: 24px !important; }
   .finishes-list { grid-template-columns: 1fr !important; }
-
-  /* Services */
   .services-grid { grid-template-columns: 1fr !important; }
-
-  /* Gate form */
   .gate-inner { padding: 40px 20px !important; }
-  .gate-form { padding: 28px 20px !important; }
+  .gate-form { padding: 24px 16px !important; }
   .gate-form-inner { grid-template-columns: 1fr !important; }
-
-  /* CTA */
+  .locked-items { grid-template-columns: 1fr 1fr !important; }
   .cta-btns { flex-direction: column !important; align-items: stretch !important; gap: 12px !important; }
-  .btn-white, .btn-ghost-white { text-align: center !important; width: 100% !important; }
-
-  /* Footer */
-  .footer-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-
-  /* Map location header */
-  div[style*="padding:32px 48px"] { padding: 24px 20px !important; flex-direction: column !important; align-items: flex-start !important; }
-  div[style*="display:flex;gap:32px"] { gap: 20px !important; }
+  .btn-white, .btn-ghost-white { text-align: center !important; width: 100% !important; box-sizing: border-box !important; }
+  .footer-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+  div[style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+  div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
 }
 
 @media (max-width: 480px) {
-  .invest-grid { grid-template-columns: 1fr !important; }
-  .hero-logo-wrap img { height: 64px !important; }
-  .hero-stats { flex-direction: column !important; align-items: center !important; gap: 12px !important; }
-  .hero-stat-num { font-size: 28px !important; }
-  .gate-form { padding: 20px 16px !important; }
-  .price-amount { font-size: clamp(28px, 8vw, 48px) !important; }
+  .hero-logo-wrap img { height: 60px !important; }
+  .hero-stats { flex-direction: column !important; align-items: center !important; gap: 8px !important; }
+  .invest-grid, div[style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr !important; }
+  .locked-items { grid-template-columns: 1fr !important; }
+  .gate-form { padding: 16px !important; }
+  .price-amount { font-size: 32px !important; }
+  .about-facts { grid-template-columns: 1fr 1fr !important; }
 }
 
 </style>
@@ -1945,13 +1923,28 @@ window.addEventListener('scroll', () => {
     heroContent.style.opacity = 1 - (window.scrollY / window.innerHeight) * 1.2;
   }
 }, { passive: true });
+
+
+// WhatsApp button touch effect
+const waBtn = document.getElementById('waBtn');
+if (waBtn) {
+  waBtn.addEventListener('touchstart', function() {
+    this.style.transform = 'scale(1.1)';
+    this.style.boxShadow = '0 6px 28px rgba(37,211,102,0.6)';
+  }, { passive: true });
+  waBtn.addEventListener('touchend', function() {
+    setTimeout(() => {
+      this.style.transform = 'scale(1)';
+      this.style.boxShadow = '0 4px 20px rgba(37,211,102,0.45)';
+    }, 150);
+  }, { passive: true });
+}
+
 </script>
 
 <!-- WhatsApp floating button -->
-<a href="https://wa.me/212777474747" target="_blank" rel="noopener" aria-label="WhatsApp"
-   style="position:fixed;bottom:28px;right:28px;z-index:9999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);transition:transform 0.3s,box-shadow 0.3s;text-decoration:none;"
-   onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(37,211,102,0.6)'"
-   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.45)'">
+<a href="https://wa.me/212777474747" target="_blank" rel="noopener" aria-label="WhatsApp" id="waBtn"
+   style="position:fixed;bottom:28px;right:28px;z-index:9999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);transition:transform 0.3s,box-shadow 0.3s;text-decoration:none;">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
