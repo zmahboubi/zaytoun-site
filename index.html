@@ -46,6 +46,26 @@ body {
 }
 body.lang-ar { font-family: var(--font-arabic); direction: rtl; }
 body.lang-ar .serif-title { font-family: var(--font-arabic); }
+/* Force LTR on numbers, stats and mixed numeric content in AR mode */
+body.lang-ar .hero-stat-num,
+body.lang-ar .fact-num,
+body.lang-ar .handover-date-num,
+body.lang-ar .handover-date-year,
+body.lang-ar [style*="font-size:42px"],
+body.lang-ar [style*="font-size:36px"] {
+  direction: ltr;
+  unicode-bidi: embed;
+  display: inline-block;
+}
+/* Phone numbers and tel links always LTR */
+a[href^="tel"],
+input[type="tel"] {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+body.lang-ar input[type="tel"] {
+  text-align: right;
+}
 
 /* ─── NAVBAR ─── */
 .lang-bar {
@@ -156,6 +176,7 @@ body.lang-ar .serif-title { font-family: var(--font-arabic); }
   position: relative; z-index: 2; padding: 0 20px;
   animation: heroFadeIn 2s ease forwards;
 }
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 @keyframes heroFadeIn {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -308,7 +329,7 @@ section { padding: 100px 0; }
   box-shadow: 0 8px 40px rgba(30,28,24,0.12);
 }
 .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
-.about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+.about-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; margin-top: 48px; }
 .fact-card {
   padding: 24px 20px; background: var(--ivory-deep);
   border-left: 2px solid var(--gold-pale);
@@ -630,7 +651,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 .footer-contact-item a { color: var(--gold-light); text-decoration: none; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 .footer-copy { font-size: 10px; color: rgba(255,255,255,0.18); letter-spacing: 0.5px; }
-.footer-disclaimer { font-size: 10px; color: rgba(255,255,255,0.14); max-width: 620px; line-height: 1.6; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
+.footer-disclaimer { font-size: 10px; color: rgba(255,255,255,0.28); max-width: 720px; line-height: 1.7; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
 
 /* Reveal animations */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -640,46 +661,128 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 .reveal-delay-3 { transition-delay: 0.36s; }
 .reveal-delay-4 { transition-delay: 0.48s; }
 
-/* ─── MOBILE ─── */
-@media (max-width: 768px) {
-  .lang-bar { padding: 14px 20px; }
-  .brand-name { display: none; }
-  section { padding: 70px 0; }
-  .container, .container-narrow { padding: 0 20px; }
-  .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .about-img-accent {
-  position: absolute; bottom: -30px; right: -30px;
-  width: 52%; aspect-ratio: 1;
+/* ══════════════════════════════════════════════════
+   MOBILE-FIRST — Base styles are mobile, desktop enhances
+   ══════════════════════════════════════════════════ */
+
+/* ─── BASE (mobile) ─── */
+.lang-bar { padding: 12px 16px; }
+.brand-name { display: none; }
+.container, .container-narrow { padding: 0 16px; }
+section { padding: 56px 0; }
+
+/* Hero mobile */
+.hero-stats { gap: 16px; flex-wrap: wrap; justify-content: center; }
+.hero-stat-num { font-size: 28px; }
+.hero-divider { display: none; }
+.hero-title { font-size: clamp(32px, 8vw, 52px); }
+.hero-tagline { font-size: 14px; padding: 0 8px; }
+
+/* About mobile */
+.about-grid { grid-template-columns: 1fr; gap: 40px; }
+.about-img-accent {
+  position: absolute; bottom: -20px; right: -16px;
+  width: 48%; aspect-ratio: 1;
   background: var(--sand); overflow: hidden;
-  box-shadow: 0 8px 40px rgba(30,28,24,0.12);
+  box-shadow: 0 6px 24px rgba(30,28,24,0.12);
 }
-  .destination-grid { grid-template-columns: 1fr; gap: 40px; }
-  .wellness-features { grid-template-columns: 1fr; background: none; gap: 2px; }
-  .gate-form-inner { grid-template-columns: 1fr; }
-  .gate-form { padding: 28px 20px; }
-  .villa-grid { grid-template-columns: 1fr; }
+.about-facts { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 32px; }
+.fact-num { font-size: 20px; }
+.fact-card { padding: 14px 8px; }
+
+/* Destination mobile */
+.destination-grid { grid-template-columns: 1fr; gap: 32px; }
+.dest-features { grid-template-columns: 1fr; gap: 16px; }
+
+/* Invest stats mobile */
+.invest-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Location mobile */
+.location-features { grid-template-columns: 1fr; gap: 16px; }
+.dist-pills { flex-wrap: wrap; gap: 8px; }
+
+/* Wellness mobile */
+.wellness-features { grid-template-columns: 1fr; background: none; gap: 2px; }
+
+/* Gate mobile */
+.gate-inner { padding: 40px 16px; }
+.gate-title { font-size: clamp(22px, 6vw, 36px); }
+.gate-form { padding: 24px 16px; }
+.gate-form-inner { grid-template-columns: 1fr; gap: 14px; }
+.locked-items { flex-direction: column; align-items: stretch; gap: 8px; }
+.locked-item { padding: 10px 14px; font-size: 12px; }
+#gatePriceTeaser { margin: 16px 0; }
+
+/* Dossier tabs mobile */
+.dossier-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; padding-bottom: 4px; gap: 4px; }
+.tab-btn { padding: 10px 16px; font-size: 9px; white-space: nowrap; flex-shrink: 0; }
+.villa-grid { grid-template-columns: 1fr; gap: 24px; }
+.villa-img { height: 220px; }
+.interiors-grid { grid-template-columns: 1fr !important; }
+.interior-card[style*="grid-column:span 2"] { grid-column: span 1 !important; }
+.interior-card img { height: 220px !important; object-fit: cover; }
+.payment-plan { grid-template-columns: 1fr; gap: 2px; }
+.payment-step { padding: 28px 16px; }
+.payment-pct { font-size: 40px !important; }
+.handover-block { flex-direction: column; gap: 24px; text-align: center; }
+.pricing-block { padding: 32px 20px; }
+.price-amount { font-size: clamp(32px, 8vw, 56px); }
+.finishes-list { columns: 1; }
+.finish-category { break-inside: avoid; margin-bottom: 24px; }
+#tab-services > div { grid-template-columns: 1fr !important; gap: 16px; }
+
+/* CTA mobile */
+.cta-btns { flex-direction: column; align-items: center; gap: 12px; }
+.btn-white, .btn-ghost-white { width: 100%; max-width: 320px; text-align: center; padding: 16px 24px; }
+
+/* Footer mobile */
+.footer-grid { grid-template-columns: 1fr; gap: 32px; }
+.footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+.footer-disclaimer { font-size: 9px; }
+
+/* ─── TABLET 640px+ ─── */
+@media (min-width: 640px) {
+  .container, .container-narrow { padding: 0 32px; }
+  section { padding: 80px 0; }
+  .about-facts { grid-template-columns: repeat(5, 1fr); }
+  .gate-form-inner { grid-template-columns: 1fr 1fr; }
+  .locked-items { flex-direction: row; flex-wrap: wrap; justify-content: center; }
   .payment-plan { grid-template-columns: 1fr 1fr; }
-  .handover-block { flex-direction: column; text-align: center; }
-  .finishes-list { columns: 1; }
-  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-  .locked-items { flex-direction: column; align-items: center; }
-  .hero-stats { gap: 24px; }
-  .hero-divider { display: none; }
-  .cta-btns { flex-direction: column; align-items: center; }
-  .pricing-block { padding: 40px 24px; }
-}
-@media (max-width: 480px) {
-  .payment-plan { grid-template-columns: 1fr 1fr; }
-  .about-facts { grid-template-columns: 1fr 1fr; }
+  #tab-services > div { grid-template-columns: 1fr 1fr !important; }
 }
 
-/* Interiors grid */
-@media (max-width: 768px) {
-  .interiors-grid { grid-template-columns: 1fr !important; }
-  .interior-card[style*="grid-column:span 2"] { grid-column: span 1 !important; }
-  .interior-card img[style*="height:460px"] { height: 260px !important; }
-  .interior-card img[style*="height:320px"] { height: 220px !important; }
+/* ─── DESKTOP 768px+ ─── */
+@media (min-width: 768px) {
+  .lang-bar { padding: 18px 48px; }
+  .brand-name { display: inline; }
+  section { padding: 100px 0; }
+  .container, .container-narrow { padding: 0 48px; }
+  .about-grid { grid-template-columns: 1fr 1fr; gap: 88px; }
+  .hero-stats { gap: 40px; flex-wrap: nowrap; }
+  .hero-divider { display: block; }
+  .destination-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+  .wellness-features { grid-template-columns: repeat(3, 1fr); }
+  .villa-grid { grid-template-columns: 1fr 1fr; }
+  .villa-img { height: 280px; }
+  .interiors-grid { grid-template-columns: 1fr 1fr !important; }
+  .interior-card[style*="grid-column:span 2"] { grid-column: span 2 !important; }
+  .interior-card img { height: auto !important; }
+  .interior-card img[style*="height:460px"] { height: 460px !important; }
+  .interior-card img[style*="height:320px"] { height: 320px !important; }
+  .handover-block { flex-direction: row; text-align: left; }
+  .finishes-list { columns: 2; column-gap: 48px; }
+  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+  .footer-bottom { flex-direction: row; text-align: left; }
+  .cta-btns { flex-direction: row; }
+  .btn-white, .btn-ghost-white { width: auto; }
+  .invest-stats { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ─── LARGE DESKTOP 1200px+ ─── */
+@media (min-width: 1200px) {
+  .container { max-width: 1240px; margin: 0 auto; }
+  .container-narrow { max-width: 680px; margin: 0 auto; }
+  .about-grid { gap: 120px; }
 }
 
 </style>
@@ -695,7 +798,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   </a>
   <div class="lang-switcher">
     <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
     <button class="lang-btn lang-ar-btn" onclick="setLang('ar')">عربي</button>
   </div>
 </nav>
@@ -761,12 +864,16 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
             <span class="fact-label" data-i18n="fact_villas">Private Villas</span>
           </div>
           <div class="fact-card">
-            <span class="fact-num">800<small style="font-size:18px">m²</small></span>
-            <span class="fact-label" data-i18n="fact_wellness">Wellness Center</span>
+            <span class="fact-num">1 200<small style="font-size:16px">m²</small></span>
+            <span class="fact-label" data-i18n="fact_terrain">From — Plot</span>
           </div>
           <div class="fact-card">
-            <span class="fact-num">2</span>
-            <span class="fact-label" data-i18n="fact_typologies">Villa Typologies</span>
+            <span class="fact-num">400<small style="font-size:16px">m²</small></span>
+            <span class="fact-label" data-i18n="fact_surface">From — Living Area</span>
+          </div>
+          <div class="fact-card">
+            <span class="fact-num">4 000<small style="font-size:16px">m²</small></span>
+            <span class="fact-label" data-i18n="fact_wellness">Wellness Domain · 800m² Built</span>
           </div>
           <div class="fact-card">
             <span class="fact-num">4–5</span>
@@ -896,12 +1003,12 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
         <!-- Golf -->
         <div style="padding:40px 36px;border-right:1px solid var(--sand);position:relative;overflow:hidden;">
           <div style="position:absolute;top:24px;right:24px;font-size:32px;opacity:0.08;">⛳</div>
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px;" data-i18n="loc_golf_label">Golf — 5 min</div>
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px;" data-i18n="loc_golf_label">Golf — 15 min</div>
           <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--dark);margin-bottom:14px;font-weight:400;" data-i18n="loc_golf_title">World-Class Golf on Your Doorstep</h3>
-          <p style="font-size:13px;line-height:1.8;color:var(--text-light);" data-i18n="loc_golf_text">Three championship courses lie within minutes of Zaytoun — Amelkis Golf Club, Noria Golf Club, and Argan Golf Resort. Whether you play daily or host visiting clients, access to premier greens is effortless from Route de Tahannouat.</p>
+          <p style="font-size:13px;line-height:1.8;color:var(--text-light);" data-i18n="loc_golf_text">Three championship courses lie within minutes of Zaytoun — Golf Assoufid, Noria Golf Club, and Argan Golf Resort. Whether you play daily or host visiting clients, access to premier greens is effortless from Route de Tahannouat.</p>
           <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--sand);">
             <div style="display:flex;flex-direction:column;gap:6px;">
-              <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">Amelkis Golf Club</strong> — 5 min</span>
+              <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">Golf Assoufid</strong> — 15 min</span>
               <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">Noria Golf Club</strong> — 5 min</span>
               <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">Argan Golf Resort</strong> — 7 min</span>
             </div>
@@ -926,12 +1033,12 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
           <div style="position:absolute;top:24px;right:24px;font-size:32px;opacity:0.08;">✈</div>
           <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px;" data-i18n="loc_air_label">Menara Airport — 20 min</div>
           <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--dark);margin-bottom:14px;font-weight:400;" data-i18n="loc_air_title">Connected to Europe, the Gulf & Beyond</h3>
-          <p style="font-size:13px;line-height:1.8;color:var(--text-light);" data-i18n="loc_air_text">Marrakech Menara Airport is 20 minutes away, offering direct connections to Paris, London, Madrid, Dubai, Casablanca and 50+ international destinations. For international buyers, Zaytoun is as accessible as it is exclusive.</p>
+          <p style="font-size:13px;line-height:1.8;color:var(--text-light);" data-i18n="loc_air_text">Direct flights to Paris (3h30), London (3h40), Dubai (8h) and 50+ international destinations. For international buyers, Zaytoun is as accessible as it is exclusive.</p>
           <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--sand);">
             <div style="display:flex;flex-direction:column;gap:6px;">
               <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">Paris CDG</strong> — 3h30 direct</span>
-              <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">London LHR</strong> — 3h45 direct</span>
-              <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">Dubai DXB</strong> — 6h direct</span>
+              <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">London LGW</strong> — 3h40 direct</span>
+              <span style="font-size:12px;color:var(--text-light);">⬦ <strong style="color:var(--dark);">Dubai DXB</strong> — 8h direct</span>
             </div>
           </div>
         </div>
@@ -983,7 +1090,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 </section>
 
 
-<!-- ═══ GATE SECTION ═══ -->
+<!-- ═══ GATE SECTION — DOUBLE LEVEL ═══ -->
 <section class="gate-section" id="gate">
   <div class="container-narrow">
     <div class="gate-inner">
@@ -994,81 +1101,114 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
       </div>
       <p class="gate-label" data-i18n="gate_label">Exclusive Access</p>
       <h2 class="gate-title" data-i18n="gate_title">Unlock the Complete Dossier</h2>
-      <p class="gate-subtitle" data-i18n="gate_subtitle">Floor plans, starting price, payment schedule, and delivery timeline — reserved for qualified acquirers. Your information remains strictly confidential.</p>
-      
-      <div class="locked-items">
-        <div class="locked-item">
+
+      <!-- LOCKED ITEMS — liste unifiée, tous verrouillés au départ -->
+      <div id="lockedItems" style="width:100%;max-width:560px;margin:24px auto 32px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+        <div class="locked-item" id="lock-villas">
+          <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span data-i18n="lock_villas">Villas & Interiors</span>
+        </div>
+        <div class="locked-item" id="lock-price">
+          <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span data-i18n="lock_price">Starting Price</span>
+        </div>
+        <div class="locked-item" id="lock-plans1">
           <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <span data-i18n="lock1">Villa Arbea Floor Plans</span>
         </div>
-        <div class="locked-item">
+        <div class="locked-item" id="lock-plans2">
           <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <span data-i18n="lock2">Villa Ziria Floor Plans</span>
         </div>
-        <div class="locked-item">
-          <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          <span data-i18n="lock3">Starting Price</span>
-        </div>
-        <div class="locked-item">
+        <div class="locked-item" id="lock-payment">
           <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <span data-i18n="lock4">Payment Plan</span>
         </div>
-        <div class="locked-item">
+        <div class="locked-item" id="lock-handover">
           <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <span data-i18n="lock5">Handover Date</span>
         </div>
       </div>
 
       <div class="gate-form-wrap" id="gateFormWrap">
-        <form class="gate-form" id="gateForm" onsubmit="handleGateSubmit(event)">
-          <div class="gate-form-inner">
+
+        <!-- ── LEVEL 1 FORM ── -->
+        <form class="gate-form" id="gateFormL1" onsubmit="handleGateL1(event)">
+          <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(30,28,24,0.4);margin-bottom:20px;text-align:center;" data-i18n="l1_title">Step 1 of 2 — Instant Access</div>
+          <div class="gate-form-inner" style="grid-template-columns:1fr 1fr;">
             <div class="form-field">
               <label class="form-label" data-i18n="form_firstname">First Name</label>
-              <input class="form-input" type="text" id="fname" required autocomplete="given-name" data-i18n-placeholder="form_firstname_ph">
+              <input class="form-input" type="text" id="fname1" required autocomplete="given-name" data-i18n-placeholder="form_firstname_ph">
             </div>
             <div class="form-field">
-              <label class="form-label" data-i18n="form_lastname">Last Name</label>
-              <input class="form-input" type="text" id="lname" required autocomplete="family-name" data-i18n-placeholder="form_lastname_ph">
-            </div>
-            <div class="form-field">
-              <label class="form-label" data-i18n="form_email">Email Address</label>
-              <input class="form-input" type="email" id="email" required autocomplete="email" data-i18n-placeholder="form_email_ph">
-            </div>
-            <div class="form-field">
-              <label class="form-label" data-i18n="form_phone">Phone / WhatsApp</label>
-              <input class="form-input" type="tel" id="phone" required autocomplete="tel" data-i18n-placeholder="form_phone_ph">
-            </div>
-            <div class="form-field">
-              <label class="form-label" data-i18n="form_country">Country of Residence</label>
-              <select class="form-input form-select" id="country" required>
-                <option value="" disabled selected data-i18n="form_country_ph">Select country</option>
-                <option value="MA">Morocco</option>
-                <option value="FR">France</option>
-                <option value="BE">Belgium</option>
-                <option value="CH">Switzerland</option>
-                <option value="AE">UAE</option>
-                <option value="SA">Saudi Arabia</option>
-                <option value="QA">Qatar</option>
-                <option value="GB">United Kingdom</option>
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="OTHER">Other</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label class="form-label" data-i18n="form_intent">Purchase Intent</label>
-              <select class="form-input form-select" id="intent" required>
-                <option value="" disabled selected data-i18n="form_intent_ph">Select...</option>
-                <option value="primary" data-i18n="intent1">Primary Residence</option>
-                <option value="investment" data-i18n="intent2">Investment / Rental</option>
-                <option value="secondary" data-i18n="intent3">Secondary Residence</option>
-                <option value="exploring" data-i18n="intent4">Exploring Options</option>
-              </select>
+              <label class="form-label" data-i18n="form_email">Email</label>
+              <input class="form-input" type="email" id="email1" required autocomplete="email" data-i18n-placeholder="form_email_ph">
             </div>
           </div>
-          <button type="submit" class="gate-submit" data-i18n="gate_submit">Access the Exclusive Dossier →</button>
+          <button type="submit" class="gate-submit" data-i18n="l1_submit">Discover Villas & Price →</button>
           <p class="gate-privacy" data-i18n="gate_privacy">Your information is confidential and will never be shared with third parties.</p>
         </form>
+
+        <!-- ── LEVEL 1 SUCCESS (hidden) — price reveal + L2 form ── -->
+        <div id="gateL1Success" style="display:none;">
+          <!-- Prix révélé -->
+          <div id="priceReveal" style="text-align:center;padding:32px 0 28px;border-bottom:1px solid var(--sand);margin-bottom:28px;animation:fadeUp 0.6s ease forwards;">
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);margin-bottom:10px;" data-i18n="price_from">Starting From</div>
+            <div style="font-family:var(--font-serif);font-size:clamp(40px,8vw,64px);font-weight:300;color:var(--gold);line-height:1;" dir="ltr">MAD 9,700,000</div>
+            <div style="font-size:11px;color:var(--text-light);margin-top:8px;" data-i18n="price_note_short">Indicative price · excl. VAT</div>
+          </div>
+
+          <!-- Bandeau transition vers L2 -->
+          <div style="background:var(--charcoal);padding:28px 32px;margin-bottom:0;text-align:center;">
+            <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:10px;" data-i18n="lvl2_badge">Step 2 — Plans & Payment</div>
+            <p style="font-family:var(--font-serif);font-size:17px;font-weight:300;color:rgba(250,247,242,0.85);line-height:1.6;margin-bottom:20px;" data-i18n="l2_teaser">You've discovered the villas. Unlock the floor plans, payment schedule and delivery dates.</p>
+
+            <!-- L2 form inline dans le bandeau -->
+            <form id="gateFormL2" onsubmit="handleGateSubmit(event)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+                <div class="form-field">
+                  <label class="form-label" style="color:rgba(250,247,242,0.5);" data-i18n="form_lastname">Last Name</label>
+                  <input class="form-input" type="text" id="lname" required autocomplete="family-name" data-i18n-placeholder="form_lastname_ph" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);color:var(--ivory);">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" style="color:rgba(250,247,242,0.5);" data-i18n="form_phone">Phone / WhatsApp</label>
+                  <input class="form-input" type="tel" id="phone" autocomplete="tel" data-i18n-placeholder="form_phone_ph" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);color:var(--ivory);">
+                </div>
+                <div class="form-field">
+                  <label class="form-label" style="color:rgba(250,247,242,0.5);" data-i18n="form_country">Country</label>
+                  <select class="form-input form-select" id="country" required style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);color:var(--ivory);">
+                    <option value="" disabled selected data-i18n="form_country_ph">Select country</option>
+                    <option value="MA">Morocco</option>
+                    <option value="FR">France</option>
+                    <option value="BE">Belgium</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="AE">UAE</option>
+                    <option value="SA">Saudi Arabia</option>
+                    <option value="QA">Qatar</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="OTHER">Other</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label class="form-label" style="color:rgba(250,247,242,0.5);" data-i18n="form_intent">Intent</label>
+                  <select class="form-input form-select" id="intent" required style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15);color:var(--ivory);">
+                    <option value="" disabled selected data-i18n="form_intent_ph">Select...</option>
+                    <option value="primary" data-i18n="intent1">Primary Residence</option>
+                    <option value="investment" data-i18n="intent2">Investment / Rental</option>
+                    <option value="secondary" data-i18n="intent3">Secondary Residence</option>
+                    <option value="exploring" data-i18n="intent4">Exploring Options</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="gate-submit" style="background:var(--gold);color:var(--charcoal);width:100%;" data-i18n="gate_submit">Access the Full Dossier →</button>
+              <p class="gate-privacy" style="color:rgba(250,247,242,0.3);" data-i18n="gate_privacy">Your information is confidential and will never be shared with third parties.</p>
+            </form>
+          </div>
+        </div>
+
+        <!-- ── LEVEL 2 SUCCESS (hidden) ── -->
         <div class="gate-success" id="gateSuccess">
           <div class="success-icon">
             <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1127,8 +1267,8 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
                 <span class="spec-key" data-i18n="spec_levels">Levels</span>
               </div>
               <div class="spec-item">
-                <span class="spec-val">∞</span>
-                <span class="spec-key" data-i18n="spec_pool">Infinity Pool</span>
+                <span class="spec-val" style="font-size:16px;line-height:1.2;">◈</span>
+                <span class="spec-key" data-i18n="spec_pool">Private Pool</span>
               </div>
               <div class="spec-item">
                 <span class="spec-val">2+2</span>
@@ -1154,8 +1294,8 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
                 <span class="spec-key" data-i18n="spec_levels">Levels</span>
               </div>
               <div class="spec-item">
-                <span class="spec-val">∞</span>
-                <span class="spec-key" data-i18n="spec_pool">Infinity Pool</span>
+                <span class="spec-val" style="font-size:16px;line-height:1.2;">◈</span>
+                <span class="spec-key" data-i18n="spec_pool">Private Pool</span>
               </div>
               <div class="spec-item">
                 <span class="spec-val">2+2</span>
@@ -1192,7 +1332,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
             <span style="font-family:var(--font-serif);font-size:18px;color:var(--charcoal);" data-i18n="int_salon">Living Room — Fireplace &amp; Garden View</span>
             <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);" data-i18n="int_villa_a">Villa Arbea</span>
           </div>
-          <p style="font-size:12px;color:var(--text-light);line-height:1.7;" data-i18n="int_salon_desc">Moroccan brass, bejmat zellige, and artisan plaster — the salon opens through full-height glazing onto the private terrace and pool.</p>
+          <p style="font-size:12px;color:var(--text-light);line-height:1.7;" data-i18n="int_salon_desc">Moroccan brass, handcrafted stone tiles, and artisan plaster — the salon opens through full-height glazing onto the private terrace and pool.</p>
         </div>
 
         <!-- Shower -->
@@ -1286,7 +1426,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
           <div style="display:flex;gap:28px;text-align:center;">
             <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">5</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_suites">Suites</div></div>
             <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">R+1</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_levels">Levels</div></div>
-            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">∞</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_pool">Pool</div></div>
+            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">◈</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_pool">Pool</div></div>
           </div>
         </div>
         <div style="background:var(--cream);padding:16px;border:1px solid var(--sand);overflow:hidden;">
@@ -1307,7 +1447,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
           <div style="display:flex;gap:28px;text-align:center;">
             <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">4</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_suites">Suites</div></div>
             <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">R+1</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_levels">Levels</div></div>
-            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">∞</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_pool">Pool</div></div>
+            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">◈</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_pool">Pool</div></div>
           </div>
         </div>
         <div style="background:var(--cream);padding:16px;border:1px solid var(--sand);overflow:hidden;">
@@ -1327,7 +1467,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
         <div class="price-amount">
           <span class="price-currency">MAD </span>9,700,000
         </div>
-        <p class="price-note" data-i18n="price_note">Subject to villa configuration and lot selection • VAT applicable per Moroccan law</p>
+        <p class="price-note" data-i18n="price_note">Indicative price, subject to villa configuration and lot selection • VAT applicable per Moroccan law</p>
       </div>
 
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:#1C1812;margin-bottom:32px;text-align:center;" data-i18n="payment_title">Payment Plan</h3>
@@ -1345,7 +1485,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
       <div class="handover-block">
         <div class="handover-text">
           <h3 class="section-title" data-i18n="handover_title">Delivery Timeline</h3>
-          <p class="section-text" data-i18n="handover_text">Construction commenced April 2026. Phase 1 (pilot villa) delivers Q3 2027. Phases 2 &amp; 3 deliver Q2 2028, with the full 20-residence programme completed on schedule.</p>
+          <p class="section-text" data-i18n="handover_text">Construction commenced April 2026. Phase 1 (pilot villa) delivers Q3 2027. Phases 2 &amp; 3 deliver Q3 2028, with the full 20-residence programme completed on schedule.</p>
         </div>
         <div class="handover-date" style="display:flex;gap:32px;align-items:flex-start;">
           <div style="text-align:center;">
@@ -1355,7 +1495,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
           </div>
           <div style="color:var(--sand);font-family:var(--font-serif);font-size:32px;line-height:1.8;">·</div>
           <div style="text-align:center;">
-            <span class="handover-date-num" style="font-size:36px;">Q2</span>
+            <span class="handover-date-num" style="font-size:36px;">Q3</span>
             <span class="handover-date-year" style="font-size:22px;">2028</span>
             <span class="handover-date-label" data-i18n="handover_ph23" style="font-size:9px;letter-spacing:1.5px;display:block;margin-top:4px;">Phases 2 &amp; 3</span>
           </div>
@@ -1372,7 +1512,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
             <li data-i18n="fin_f1">Matte cream microcement with mineral finish &amp; water-repellent protection</li>
             <li data-i18n="fin_f2">Traditional Zellige tiles in key living areas</li>
             <li data-i18n="fin_f3">Solid oak parquet in suites</li>
-            <li data-i18n="fin_f4">Terraces in Taza stone bejmat</li>
+            <li data-i18n="fin_f4">Terraces in handcrafted Taza stone pavers</li>
             <li data-i18n="fin_f5">Pool deck in Taza stone</li>
           </ul>
         </div>
@@ -1392,7 +1532,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
           <ul class="finish-items">
             <li data-i18n="fin_s1">Reinforced concrete foundation — earthquake-resistant standards</li>
             <li data-i18n="fin_s2">Double-layer bitumen waterproofing on roof &amp; terraces</li>
-            <li data-i18n="fin_s3">Thermal insulation for walls and roof</li>
+            <li data-i18n="fin_s3">Full thermal insulation</li>
             <li data-i18n="fin_s4">False ceilings with indirect LED lighting</li>
             <li data-i18n="fin_s5">Artisanal plaster details in selected areas</li>
             <li data-i18n="fin_s6">Elevator shaft provision (buyer installation)</li>
@@ -1411,7 +1551,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
         <div class="finish-category">
           <div class="finish-cat-title" data-i18n="fin_out">Outdoors</div>
           <ul class="finish-items">
-            <li data-i18n="fin_o1">Private infinity pool</li>
+            <li data-i18n="fin_o1">Private pool — open to the garden and landscape</li>
             <li data-i18n="fin_o2">Landscaping: olive, palm &amp; orange trees</li>
             <li data-i18n="fin_o3">Landscape lighting &amp; full irrigation system</li>
             <li data-i18n="fin_o4">Motorized gate with remote control</li>
@@ -1455,7 +1595,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
     <h2 class="section-title" data-i18n="cta_title">Ready to Secure Your Villa?</h2>
     <p class="section-text" data-i18n="cta_text">Our sales team is available for private consultations — in Marrakech, by video call, or at your convenience.</p>
     <div class="cta-btns">
-      <a href="tel:+212777474747" class="btn-white" data-i18n="cta_call">+212 777 47 47 47</a>
+      <a href="tel:+212777474747" class="btn-white" dir="ltr" data-i18n="cta_call">+212 777 47 47 47</a>
       <a href="mailto:sales@arabesque.life" class="btn-ghost-white" data-i18n="cta_email">sales@arabesque.life</a>
     </div>
   </div>
@@ -1480,7 +1620,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
       </div>
       <div>
         <div class="footer-col-title" data-i18n="footer_contact">Contact</div>
-        <span class="footer-contact-item"><a href="tel:+212777474747">+212 777 47 47 47</a></span>
+        <span class="footer-contact-item"><a href="tel:+212777474747" dir="ltr">+212 777 47 47 47</a></span>
         <span class="footer-contact-item"><a href="mailto:sales@arabesque.life">sales@arabesque.life</a></span>
         <span class="footer-contact-item" style="margin-top:8px">Route de Tahannouat<br>Marrakech, Maroc</span>
       </div>
@@ -1520,12 +1660,12 @@ const T = {
     about_label: "The Project",
     about_title: "A Rare Estate Born of Light and Land",
     about_text: "Zaytoun is a private residential domain of twenty villas set within 4.4 hectares of olive groves on the prestigious Route de Tahannouat — where Marrakech opens to the Atlas Mountains. A development that redefines what it means to live well in Morocco.",
-    fact_villas: "Private Villas", fact_wellness: "Wellness Center", fact_typologies: "Villa Typologies", fact_suites: "Suites per Villa",
+    fact_villas: "Private Villas", fact_terrain: "From — Plot", fact_surface: "From — Living Area", fact_wellness: "Wellness Domain · 800m² Built", fact_suites: "Suites per Villa",
     dest_label: "The Destination",
     dest_title: "Marrakech — Africa's Most Coveted Address",
     dest_text: "An imperial city where cultural heritage, natural beauty, and investment opportunity converge. Marrakech continues to attract the world's most discerning buyers — with rising property values, strong rental yields, and an international lifestyle unlike anywhere else on the continent.",
-    dest_golf: "Golf & Leisure", dest_golf_text: "Three world-class golf courses within 5 minutes, including the legendary Amelkis Golf Resort.",
-    dest_air: "International Connectivity", dest_air_text: "Menara Airport — 20 minutes. Direct flights to Paris, London, Dubai, and 50+ destinations.",
+    dest_golf: "Golf & Leisure", dest_golf_text: "Three world-class golf courses within 15 minutes, including Golf Assoufid.",
+    dest_air: "International Connectivity", dest_air_text: "Menara Airport — 20 minutes. Direct flights to Paris (3h30), London (3h40), Dubai (8h) and 50+ destinations.",
     dest_nature: "Atlas Mountains", dest_nature_text: "Panoramic views of the snow-capped Atlas from every villa. A horizon that belongs only to you.",
     dist_golf: "Golf", dist_medina: "Medina", dist_airport: "Airport",
     dist_hivernage: "Hivernage",
@@ -1538,12 +1678,12 @@ const T = {
     inv_stat4_num: "100%", inv_stat4_label: "Foreign Ownership", inv_stat4_text: "Morocco fully permits foreign freehold ownership with free repatriation of capital and rental income.",
     map_label: "Location", map_open: "↗ Open in Maps",
     loc_label: "Our Location",
-    loc_golf_label: "Golf — 5 min", loc_golf_title: "World-Class Golf on Your Doorstep", loc_golf_text: "Three championship courses lie within minutes — Amelkis Golf Club, Noria Golf Club, and Argan Golf Resort. Access to premier greens is effortless from Route de Tahannouat.",
-    loc_hiv_label: "Hivernage & Medina — 20 min", loc_hiv_title: "The Best of Marrakech Within Reach", loc_hiv_text: "Hivernage, Marrakech's luxury district, is home to the finest hotels, restaurants, and boutiques. Jamaa el-Fna and the historic Medina are equally accessible.",
-    loc_air_label: "Menara Airport — 20 min", loc_air_title: "Connected to Europe, the Gulf & Beyond", loc_air_text: "Marrakech Menara Airport is 20 minutes away, offering direct connections to Paris, London, Madrid, Dubai and 50+ international destinations.",
+    loc_golf_label: "Golf — 15 min", loc_golf_title: "World-Class Golf on Your Doorstep", loc_golf_text: "Three championship courses within minutes — Assoufid, Noria, and Argan Golf Resort. Premier greens, effortlessly accessible.",
+    loc_hiv_label: "Hivernage & Medina — 20 min", loc_hiv_title: "The Best of Marrakech Within Reach", loc_hiv_text: "Hivernage's finest hotels, restaurants and boutiques — 20 minutes away. Jamaa el-Fna and the historic Medina equally close.",
+    loc_air_label: "Menara Airport — 20 min", loc_air_title: "Connected to Europe, the Gulf & Beyond", loc_air_text: "Direct flights to Paris (3h30), London (3h40), Dubai (8h) and 50+ international destinations. For international buyers, Zaytoun is as accessible as it is exclusive.",
     well_label: "Healthy Living",
     well_title: "A Sanctuary Designed for Well-Being",
-    well_text: "At Zaytoun, luxury is measured not in square metres, but in the quality of each morning, each breath, each moment of stillness. An 800m² wellness center open to all, with privileged priority access for residents.",
+    well_text: "At Zaytoun, luxury is measured not in square metres, but in the quality of each morning, each breath, each moment of stillness. A 4,000m² wellness domain — 800m² of built space — open to all, with privileged priority access for residents.",
     wf1_title: "Spa & Hammam", wf1_text: "Traditional Moroccan hammam, treatment rooms, and curated spa therapies drawing on Argan and Rose traditions.",
     wf2_title: "Fitness & Movement", wf2_text: "State-of-the-art fitness studio, yoga pavilion, padel courts, and walking trails through the olive groves.",
     wf3_title: "Gardens & Nature", wf3_text: "Meditation gardens, water features, and 4.4 hectares of landscaped grounds with centuries-old olive trees.",
@@ -1558,7 +1698,18 @@ const T = {
     form_country: "Country of Residence", form_country_ph: "Select country",
     form_intent: "Purchase Intent", form_intent_ph: "Select...",
     intent1: "Primary Residence", intent2: "Investment / Rental", intent3: "Secondary Residence", intent4: "Exploring Options",
-    gate_submit: "Access the Exclusive Dossier →",
+    l1_title: "Step 1 of 2 — Instant Access",
+    l1_submit: "Discover Villas & Price →",
+    l2_title: "Step 2 of 2 — Full Dossier",
+    l2_teaser: "You've discovered the villas. Unlock the floor plans, payment schedule and delivery dates.",
+    lvl1_badge: "Step 1 — Visuals & Price",
+    lvl2_badge: "Step 2 — Plans & Payment",
+    lock_villas: "Villas & Interiors ✓",
+    lock_price: "Starting Price — MAD 9,700,000 ✓",
+    price_note_short: "Indicative price · excl. VAT",
+    fact_terrain: "From — Plot",
+    fact_surface: "From — Living Area",
+    gate_submit: "Access the Complete Dossier →",
     gate_privacy: "Your information is confidential and will never be shared with third parties.",
     success_title: "Welcome to Zaytoun",
     success_text: "Your exclusive dossier is now unlocked. Scroll down to discover the complete details — floor plans, pricing, and investment terms.",
@@ -1567,9 +1718,9 @@ const T = {
     dossier_label: "Complete Investment Dossier",
     dossier_title: "Everything You Need to Decide",
     dossier_text: "Floor plans, pricing, payment schedule, delivery timeline, and technical specifications.",
-    tab_villas: "The Villas", tab_plans: "Floor Plans", tab_pricing: "Pricing & Payment", tab_finishes: "Finishes & Materials", tab_services: "Services",
+    tab_villas: "The Villas", tab_plans: "Master Plan & Floor Plans", tab_pricing: "Pricing & Payment", tab_finishes: "Finishes & Materials", tab_services: "Services", tab_interiors: "Interiors",
     villa_arbea: "Villa Arbea", villa_ziria: "Villa Ziria",
-    spec_suites: "Suites", spec_levels: "Levels", spec_pool: "Infinity Pool", spec_parking: "Parking",
+    spec_suites: "Suites", spec_levels: "Levels", spec_pool: "Private Pool", spec_parking: "Parking",
     arbea_desc: "A configuration that prioritises horizontal space and garden views — 5 suites including Junior and Master configurations. Ground-floor living extends seamlessly to pool terrace and landscaped gardens.",
     ziria_desc: "A vertical composition across two floors with dramatic double-height volumes — rooftop terrace and upper-level master suite offer panoramic Atlas views.",
     plan_arbea_title: "Villa Arbea — Ground Floor & First Floor",
@@ -1581,18 +1732,18 @@ const T = {
     plan_note: "Architectural drawings will be displayed here.\nPlease contact our sales team for the detailed PDF plan package.",
     plan_contact_note: 'To receive the complete architectural PDF package, contact us at <a href="mailto:sales@arabesque.life" style="color:#C4765A;">sales@arabesque.life</a>',
     price_from: "Starting From",
-    price_note: "Subject to villa configuration and lot selection • VAT applicable per Moroccan law",
+    price_note: "Indicative price, subject to villa configuration and lot selection • VAT applicable per Moroccan law • Non-contractual",
     payment_title: "Payment Plan",
     pay1: "At Reservation", pay4: "At Handover",
     handover_title: "Delivery Timeline",
-    handover_text: "Construction commenced April 2026. Phased delivery programme — Phase 1 (pilot villa) leads, followed by progressive delivery of all 20 residences.",
+    handover_text: "Construction commenced April 2026. Phase 1 (pilot villa) delivers Q3 2027. Phases 2 & 3 deliver Q3 2028, with the full 20-residence programme completed on schedule.",
     handover_label: "Estimated Delivery",
     fin_floor: "Flooring", fin_carp: "Carpentry", fin_struct: "Structure", fin_tech: "Technology & Comfort", fin_out: "Outdoors",
     fin_f1: "Matte cream microcement with mineral finish & water-repellent protection",
     fin_f2: "Traditional Zellige tiles in key living areas",
     fin_f3: "Solid oak parquet in suites",
-    fin_f4: "Terraces in Taza stone bejmat",
-    fin_f5: "Pool deck in Taza stone",
+    fin_f4: "Terraces in handcrafted Taza stone pavers",
+    fin_f5: "Pool deck in natural Taza stone",
     fin_c1: "Matte black aluminium exterior frames", fin_c2: "Double thermal glazing throughout",
     fin_c3: "Full-height pivot entrance door in oak or walnut",
     fin_c4: "Custom wardrobes with integrated lighting & push-to-open",
@@ -1600,7 +1751,7 @@ const T = {
     fin_c6: "Matte lacquered fronts with quartzite countertops",
     fin_s1: "Reinforced concrete — earthquake-resistant standards",
     fin_s2: "Double-layer bitumen waterproofing on roof & terraces",
-    fin_s3: "Thermal insulation for walls and roof",
+    fin_s3: "Full thermal insulation",
     fin_s4: "False ceilings with indirect LED lighting",
     fin_s5: "Artisanal plaster details in selected areas",
     fin_s6: "Elevator shaft provision (buyer installation)",
@@ -1609,7 +1760,7 @@ const T = {
     fin_t3: "Solar water heater with buffer tank",
     fin_t4: "Alarm system & video surveillance",
     fin_t5: "Fiber optic internet in every room",
-    fin_o1: "Private infinity pool", fin_o2: "Landscaping: olive, palm & orange trees",
+    fin_o1: "Private pool — open to the garden and landscape", fin_o2: "Landscaping: olive, palm & orange trees",
     fin_o3: "Landscape lighting & full irrigation system",
     fin_o4: "Motorized gate with remote control",
     svc1_title: "Post-Handover Maintenance", svc1_text: "Full property maintenance managed by R+E Services — ensuring your villa remains in pristine condition year-round, whether in residence or not.",
@@ -1622,10 +1773,11 @@ const T = {
     footer_tagline: '"Life here slows to the rhythm of olive groves and mountain light."',
     footer_nav: "Navigation", footer_contact: "Contact",
     nav_home: "Home", nav_project: "The Project", nav_dest: "Marrakech", nav_dossier: "Exclusive Dossier",
-    disclaimer: "The information contained herein is for general guidance only and does not constitute an offer, solicitation, representation, or warranty of any kind. All descriptions, dimensions, specifications, and other details are provided in good faith and are subject to change without notice. Prospective buyers should consult their legal, financial, and real estate advisors. All rights reserved."
+    disclaimer: "IMPORTANT NOTICE — This document is a pre-commercial presentation tool only and does not constitute an offer to sell, a reservation agreement, a preliminary contract (compromis de vente), or any binding commitment of any kind. All visual representations, including 3D renders, images, and illustrations, are artistic impressions only and do not represent the final product; actual finishes, dimensions, and landscaping may differ. All prices indicated are estimates and subject to change without notice; the binding price is that stated in the notarised deed of sale. Delivery timelines are targets based on current planning and are subject to modification due to construction progress, force majeure, or other circumstances beyond the developer's control. All required administrative authorisations and permits have been obtained in accordance with applicable Moroccan regulations. Past rental yield figures and investment return estimates are based on market data and do not constitute a guarantee of future performance. The personal data you provide is collected and processed in accordance with Moroccan Law 09-08 on the protection of personal data, solely for the purpose of responding to your enquiry; it will not be sold or shared with third parties without your consent. Any dispute arising from this document shall be governed by Moroccan law and submitted to arbitration before the competent arbitration centre of Marrakech. Project Owner: M PROPERTIES DEV SARL — Property & Rental Management: R+E Services — Arabesque Residences, Route de Tahannouat, Marrakech, Morocco. All rights reserved."
   },
 
   ar: {
+    // ── V2.1 — Benchmark Emaar/DAMAC — Corrections appliquées ──
     hero_eyebrow: "مجموعة حصرية · 20 فيلا فاخرة · مراكش",
     hero_subtitle: "من أرابيسك ريزيدنسز",
     hero_tagline: "بعض الأماكن لا تُشترى — بل تُختار. زيتون هو ذلك القرار الذي يظل معك طوال العمر.",
@@ -1633,17 +1785,17 @@ const T = {
     hero_cta: "الوصول إلى الملف الحصري", hero_scroll: "اكتشف",
     about_label: "المشروع",
     about_title: "لأن بعض اللحظات تستحق مكانًا يليق بها",
-    about_text: "تخيّل أن تستيقظ كل يوم على إطلالة الأطلس، وأن تمشي على حجارة بجماط تحت شمس مراكش، وأن يكون بيتك ملاذًا لا مجرد عنوان. زيتون هو عشرون فيلا على 4.4 هكتار من بساتين الزيتون — صُمِّم لمن يؤمن أن الحياة الحقيقية تبدأ خارج المدينة.",
-    fact_villas: "فيلا خاصة", fact_wellness: "مركز الصحة والعافية", fact_typologies: "نماذج الفلل", fact_suites: "جناح لكل فيلا",
+    about_text: "تخيّل أن تستيقظ كل يوم على إطلالة الأطلس، وأن تمشي على أرضيات حجرية بارعة الصنع تحت شمس مراكش، وأن يكون بيتك ملاذًا لا مجرد عنوان. زيتون هو عشرون فيلا على 4.4 هكتار من بساتين الزيتون — صُمِّم لمن يؤمن أن الحياة الحقيقية تبدأ خارج المدينة.",
+    fact_villas: "فيلا خاصة", fact_terrain: "ابتداءً من — القطعة", fact_surface: "ابتداءً من — المساحة المعيشية", fact_wellness: "مجال العافية · 800م² مبنية", fact_suites: "جناح لكل فيلا",
     dest_label: "الوجهة",
     dest_title: "مراكش — المدينة التي تسكن فيك قبل أن تسكن فيها",
     dest_text: "مراكش مدينة من اخترها مرة واحدة، اختارته إلى الأبد. ليس لأنها جميلة فحسب — بل لأنها تمنحك شيئًا لا تجده في دبي ولا باريس: روحًا حقيقية. ومع عوائد إيجارية تصل إلى 10% وقيم عقارية في ارتفاع مستمر، قرارك هنا ليس عاطفيًا فقط — بل هو الأذكى ماليًا.",
-    dest_golf: "الغولف والترفيه", dest_golf_text: "ثلاثة ملاعب غولف عالمية المستوى على بُعد 5 دقائق، منها ملعب أميلكيس الأسطوري.",
-    dest_air: "الاتصال الدولي", dest_air_text: "مطار المنارة — 20 دقيقة. رحلات مباشرة إلى باريس ولندن ودبي وأكثر من 50 وجهة.",
+    dest_golf: "الغولف والترفيه", dest_golf_text: "ثلاثة ملاعب غولف عالمية المستوى على بُعد 15 دقيقة، منها ملعب أسوفيد الدولي.",
+    dest_air: "الاتصال الدولي", dest_air_text: "مطار المنارة — 20 دقيقة. رحلات مباشرة إلى باريس (3س30د) ولندن (3س40د) ودبي (8 ساعات) وأكثر من 50 وجهة.",
     dest_nature: "جبال الأطلس", dest_nature_text: "مناظر بانورامية على الأطلس المكسو بالثلوج من كل فيلا. أفق يخصك وحدك.",
     dist_golf: "الغولف", dist_medina: "المدينة العتيقة", dist_airport: "المطار",
     dist_hivernage: "هيفيرناج",
-    atlas_caption: "هذا ما يراه ساكنو زيتون كل صباح",
+    atlas_caption: "بعيد بما يكفي عن الضجيج. قريب بما يكفي من كل ما تحب.",
     invest_label: "لماذا مراكش؟ لأن الأرقام لا تكذب",
     invest_title: "المال الذكي يختار مراكش — وهذا ما تقوله الأرقام",
     inv_stat1_num: "+8%", inv_stat1_label: "النمو السنوي للأسعار", inv_stat1_text: "قيم الفلل الفاخرة في مراكش تتصاعد باستمرار — والمبكر دائمًا الرابح الأكبر.",
@@ -1652,17 +1804,27 @@ const T = {
     inv_stat4_num: "100%", inv_stat4_label: "تملك أجنبي حر", inv_stat4_text: "المغرب يُتيح التملك الأجنبي الكامل مع حرية تحويل رأس المال والعائدات — بدون قيود.",
     map_label: "الموقع", map_open: "↗ فتح في الخرائط",
     loc_label: "موقعنا",
-    loc_golf_label: "غولف — 5 دقائق", loc_golf_title: "ثلاثة ملاعب. خمس دقائق. حياة مختلفة.", loc_golf_text: "ثلاثة ملاعب بطولية على بُعد دقائق — نادي أميلكيس، نادي نوريا، ومنتجع أرغان. الوصول إلى أفضل الملاعب سهل من طريق تحناوت.",
-    loc_hiv_label: "أرقى أحياء مراكش — 20 دقيقة", loc_hiv_title: "من الهدوء إلى قلب المدينة — في عشرين دقيقة فقط", loc_hiv_text: "هيفيرناج، حي الرفاهية في مراكش، يضم أرقى الفنادق والمطاعم والمتاجر. جامع الفنا والمدينة التاريخية في متناول يدك.",
-    loc_air_label: "مطار المنارة — 20 دقيقة", loc_air_title: "العالم على بُعد ساعات — ومراكش هي عودتك إلى البيت", loc_air_text: "مطار مراكش المنارة على بُعد 20 دقيقة، مع رحلات مباشرة إلى باريس ولندن ومدريد ودبي وأكثر من 50 وجهة دولية.",
+    loc_golf_label: "غولف — 15 دقيقة", loc_golf_title: "ثلاثة ملاعب. خمس عشرة دقيقة. حياة مختلفة.", loc_golf_text: "أسوفيد ونوريا وأرغان — ملاعب تلعب فيها والأطلس يحضر في الأفق. مسافات قصيرة، وإطلالات لا تُنسى.",
+    loc_hiv_label: "أرقى أحياء مراكش — 20 دقيقة", loc_hiv_title: "من الهدوء إلى قلب المدينة — في عشرين دقيقة فقط", loc_hiv_text: "أفضل فنادق هيفيرناج ومطاعمها ومتاجرها على بُعد 20 دقيقة. جامع الفنا والمدينة التاريخية في المتناول.",
+    loc_air_label: "مطار المنارة — 20 دقيقة", loc_air_title: "العالم على بُعد ساعات — ومراكش هي عودتك إلى البيت", loc_air_text: "رحلات مباشرة إلى باريس (3س30د)، لندن (3س40د)، دبي (8 ساعات)، وأكثر من 50 وجهة دولية.",
     well_label: "أسلوب حياة صحي",
     well_title: "أخيرًا، مكان يُعيدك إلى نفسك",
-    well_text: "في زيتون لا يقولون لك كم متر مربع فيلتك — يسألونك كيف تريد أن تستيقظ غدًا. مركز عافية بمساحة 800م² صُمِّم ليجعلك تشعر بالفرق منذ اليوم الأول. مفتوح للجميع — وأنت كساكن في زيتون، دائمًا الأول.",
+    // C02 — Wellness V2.1 : expérience sensorielle, non liste de features
+    well_text: "ليس مركزاً للعافية — إنه وقت تمنحه لنفسك. دفء البخار. صمت الماء. تلك اللحظة حين يتوقف كل شيء. مجال عافية على 4000 متر مربع — 800 متر مربع مبنية — صُممت لشيء واحد فقط: أن تعود إلى نفسك. وأنت كساكن في زيتون، دائمًا الأول.",
     wf1_title: "الحمام المغربي — تراث تُعيشه لا تُشاهده", wf1_text: "حمام مغربي تقليدي وغرف علاجية وجلسات سبا تستلهم من تقاليد الأرغان والورد.",
     wf2_title: "جسدك يستحق أفضل بداية لكل يوم", wf2_text: "استوديو لياقة متطور وجناح يوغا وملاعب بادل ومسارات للمشي عبر بساتين الزيتون.",
     wf3_title: "الطبيعة هنا ليست خلفية — هي البيت", wf3_text: "حدائق تأمل ومجاري مياه و4.4 هكتار من المساحات الخضراء مع أشجار زيتون معمّرة.",
+    int_label: "تصاوير التصميم الداخلي",
+    int_title: "فن العيش الراقي",
+    int_subtitle: "كل فيلا مصممة حول تجربة المعيشة — فضاءات حميمة تنفتح على الحدائق والضوء بلمسات حرفية مستوحاة من التراث المغربي.",
+    int_salon: "الصالون — المدفأة والمطل على الحديقة",
+    int_shower: "حمام الجناح الرئيسي",
+    int_vanity: "مغسلة مزدوجة — تادلاكت وحجر",
+    int_bedroom: "الجناح الرئيسي — الإطلالة والضوء",
+    int_villa_a: "فيلا أربع",
+    int_villa_ab: "جميع الفلل",
     gate_label: "وصول حصري",
-    gate_title: "20 فيلا فقط. بعضها اختير بالفعل.",
+    gate_title: "عشرون فيلا فقط. بعضها اختير بالفعل.",
     gate_subtitle: "المخططات، السعر، جدول الدفع وموعد التسليم — لا تُشارَك علنًا. سجّل الآن وسيتواصل معك فريقنا خلال 24 ساعة.",
     lock1: "مخططات فيلا أربع", lock2: "مخططات فيلا زيريا", lock3: "السعر الابتدائي", lock4: "خطة الدفع", lock5: "موعد التسليم",
     form_firstname: "الاسم الأول", form_firstname_ph: "محمد",
@@ -1672,7 +1834,18 @@ const T = {
     form_country: "بلد الإقامة", form_country_ph: "اختر البلد",
     form_intent: "نية الشراء", form_intent_ph: "اختر...",
     intent1: "إقامة رئيسية", intent2: "استثمار / إيجار", intent3: "إقامة ثانوية", intent4: "استكشاف الخيارات",
-    gate_submit: "الوصول إلى الملف الحصري →",
+    l1_title: "الخطوة 1 من 2 — وصول فوري",
+    l1_submit: "اكتشف الفلل والسعر ←",
+    l2_title: "الخطوة 2 من 2 — الملف الكامل",
+    l2_teaser: "اكتشفت الفلل. أفتح الآن المخططات وخطة الدفع ومواعيد التسليم.",
+    lvl1_badge: "الخطوة 1 — الصور والسعر",
+    lvl2_badge: "الخطوة 2 — المخططات والدفع",
+    lock_villas: "الفلل والتصميم الداخلي ✓",
+    lock_price: "السعر الابتدائي — 9٬700٬000 درهم ✓",
+    price_note_short: "سعر استرشادي · لا يشمل TVA",
+    fact_terrain: "ابتداءً من — القطعة",
+    fact_surface: "ابتداءً من — المساحة المعيشية",
+    gate_submit: "الوصول إلى الملف الكامل →",
     gate_privacy: "معلوماتك سرية ولن تُشارَك مع أي طرف ثالث.",
     success_title: "أهلًا بك في دائرة من يفكرون بشكل مختلف",
     success_text: "ملفك الحصري جاهز. اكتشف الآن ما يجعل زيتون مختلفًا — من المخططات إلى خطة الدفع المرنة وموعد استلامك.",
@@ -1681,11 +1854,12 @@ const T = {
     dossier_label: "ملف الاستثمار الكامل",
     dossier_title: "كل التفاصيل — لا أسرار، لا مفاجآت",
     dossier_text: "المخططات المعمارية والتسعير وجدول الدفع وموعد التسليم والمواصفات التقنية.",
-    tab_villas: "الفلل", tab_plans: "المخططات", tab_pricing: "الأسعار والدفع", tab_finishes: "التشطيبات والمواد", tab_services: "الخدمات",
+    tab_villas: "الفلل", tab_plans: "المخطط العام والمخططات المعمارية", tab_pricing: "الأسعار والدفع", tab_finishes: "التشطيبات والمواد", tab_services: "الخدمات", tab_interiors: "التصميم الداخلي",
+    // C05 — Noms villas avec micro-narrative V2.1
     villa_arbea: "فيلا أربع", villa_ziria: "فيلا زيريا",
-    spec_suites: "أجنحة", spec_levels: "طوابق", spec_pool: "مسبح لانهائي", spec_parking: "مواقف",
-    arbea_desc: "فيلا أربع لمن اختار أن تكون حياته كلها على مستوى واحد — خمسة أجنحة تنساب نحو الحديقة الخاصة والمسبح اللانهائي. لا درج، لا حواجز، فقط أنت والفضاء والضوء.",
-    ziria_desc: "فيلا زيريا لمن يريد أن يرى مراكش من فوق — أربعة أجنحة على طابقين، وتراس سطحي تحتسي عليه قهوتك الصباحية والأطلس أمامك مباشرة. بعض الإطلالات لا تُنسى.",
+    spec_suites: "أجنحة", spec_levels: "طوابق", spec_pool: "مسبح خاص", spec_parking: "مواقف",
+    arbea_desc: "أربعة — الرقم الذي يعني الاكتمال. فيلا أربع هي التعبير الكامل عن الفضاء والضوء والسكينة — خمسة أجنحة تنساب نحو الحديقة الخاصة والمسبح الخاص. فقط أنت والفضاء والضوء.",
+    ziria_desc: "زيريا — القمر الكامل بالأمازيغية. الضوء الذي يسكب نفسه على جبال الأطلس في منتصف الليل. وهو الضوء ذاته الذي يملأ أجواء فيلا زيريا كل ليلة — عبر نوافذها الزجاجية من الأرض إلى السقف وتراسها السطحي البانورامي.",
     plan_mp_label: "المخطط العام", plan_mp_title: "زيتون مراكش — مخطط الموقع",
     plan_arbea_label: "النوع A — فيلا أربع", plan_ziria_label: "النوع B — فيلا زيريا",
     plan_zoom_hint: "انقر للتكبير",
@@ -1695,36 +1869,36 @@ const T = {
     plan_note: "سيتم عرض المخططات المعمارية هنا.\nتواصل مع فريق المبيعات للحصول على حزمة PDF الكاملة.",
     plan_contact_note: 'للحصول على حزمة المخططات المعمارية كاملةً، تواصل معنا على <a href="mailto:sales@arabesque.life" style="color:#C4765A;">sales@arabesque.life</a>',
     price_from: "تبدأ الاستثمارات من",
-    price_note: "حسب تكوين الفيلا واختيار القطعة • TVA وفق القانون المغربي",
+    price_note: "سعر استرشادي، حسب تكوين الفيلا واختيار القطعة • TVA وفق القانون المغربي • غير ملزم",
     payment_title: "خطة دفع صُمِّمت لراحتك",
     pay1: "عند الحجز", pay4: "عند التسليم",
     handover_title: "موعد التسليم محفور في الحجر",
-    handover_text: "انطلق البناء في أبريل 2026 وفق جدول واضح ومُلتزم به. لأن الوعد بدون موعد ليس وعدًا — وزيتون يحترم وقتك ومالك.",
+    handover_text: "انطلق البناء في أبريل 2026. الترانش 1 (الفيلا النموذجية) — التسليم Q3 2027. الترانشات 2 و3 — التسليم Q3 2028. برنامج 20 فيلا كامل ملتزم به.",
     handover_label: "التسليم المتوقع",
-    fin_floor: "الأرضيات", fin_carp: "النجارة", fin_struct: "الهيكل الإنشائي", fin_tech: "التكنولوجيا والراحة", fin_out: "الخارج",
-    fin_f1: "ميكروسيمنت كريمي مط بمعالجة مقاومة للماء والزيوت",
-    fin_f2: "بلاط زليج تقليدي في المساحات المعيشية الرئيسية",
-    fin_f3: "باركيه صلب من خشب البلوط في الأجنحة",
-    fin_f4: "التراسات بحجر بجماط التازي",
-    fin_f5: "أرضية حمام السباحة بحجر تازة",
-    fin_c1: "إطارات خارجية من الألومنيوم الأسود المطفي",
-    fin_c2: "زجاج مزدوج حراري في جميع الأنحاء",
-    fin_c3: "باب مدخل محوري بارتفاع كامل من خشب البلوط أو الجوز",
-    fin_c4: "خزائن حائطية مخصصة مع إضاءة مدمجة وفتح دفعي",
-    fin_c5: "مطبخ راقٍ مخصص — أجهزة Bosch أو ما يعادلها",
+    fin_floor: "الأرضيات", fin_carp: "الأعمال الخشبية", fin_struct: "الهيكل الإنشائي", fin_tech: "الأنظمة الذكية والراحة", fin_out: "الفضاءات الخارجية",
+    fin_f1: "أرضيات بيتون سيري كريمي مط — معالجة معدنية مقاومة للرطوبة",
+    fin_f2: "زليج مغربي تقليدي في المساحات المعيشية الرئيسية",
+    fin_f3: "أرضيات خشب البلوط الصلب في الأجنحة",
+    fin_f4: "التراسات بأحجار تازة الطبيعية المصقولة",
+    fin_f5: "أرضية المسبح بحجر تازة الطبيعي",
+    fin_c1: "هياكل خارجية من الألومنيوم الأسود المطفي",
+    fin_c2: "زجاج مزدوج عازل حرارياً وصوتياً",
+    fin_c3: "باب مدخل محوري بارتفاع كامل — خشب بلوط أو جوز",
+    fin_c4: "خزائن مدمجة مخصصة مع إضاءة داخلية وفتح لمسي",
+    fin_c5: "مطبخ مخصص عالي الجودة — أجهزة Bosch أو ما يعادلها",
     fin_c6: "واجهات مطفية مع سطح عمل من الكوارتزيت",
     fin_s1: "خرسانة مسلحة — معايير مقاومة الزلازل",
-    fin_s2: "عزل مائي ثنائي الطبقة على السطح والتراسات",
-    fin_s3: "عزل حراري للجدران والسقف",
-    fin_s4: "أسقف مستعارة مع إضاءة LED غير مباشرة",
-    fin_s5: "تفاصيل جصية حرفية في مناطق مختارة",
-    fin_s6: "بئر المصعد معدة مسبقًا (تركيب المشتري)",
-    fin_t1: "نظام تكييف مركزي مجاري",
-    fin_t2: "تجهيز مسبق للمنزل الذكي — إضاءة وتكييف وستائر",
+    fin_s2: "عزل مائي ثنائي الطبقة على السقف والتراسات",
+    fin_s3: "عزل حراري متكامل",
+    fin_s4: "أسقف معلّقة مع إضاءة LED غير مباشرة",
+    fin_s5: "لمسات جصية يدوية في مناطق مختارة",
+    fin_s6: "بئر المصعد معدة مسبقاً — تركيب اختياري للمشتري",
+    fin_t1: "تكييف مركزي مخفي — تبريد وتدفئة",
+    fin_t2: "نظام المنزل الذكي — تمديدات مسبقة للإضاءة والتكييف والستائر",
     fin_t3: "سخان مياه شمسي مع خزان احتياطي",
-    fin_t4: "نظام إنذار ومراقبة بالكاميرات",
-    fin_t5: "إنترنت بالألياف الضوئية في كل غرفة",
-    fin_o1: "مسبح خاص لانهائي",
+    fin_t4: "منظومة إنذار ومراقبة بالكاميرات",
+    fin_t5: "شبكة ألياف ضوئية في جميع الغرف",
+    fin_o1: "مسبح خاص — تصميم معماري مفتوح على الحديقة",
     fin_o2: "تنسيق حدائق: أشجار زيتون ونخيل وبرتقال",
     fin_o3: "إضاءة حديقة ونظام ري كامل",
     fin_o4: "بوابة آلية مع تحكم عن بعد",
@@ -1732,13 +1906,149 @@ const T = {
     svc2_title: "عائد استثماري حتى وأنت على الشاطئ", svc2_text: "إدارة إيجارية احترافية تُعظّم دخل فيلتك عبر Airbnb وBooking.com وشركاء القنوات الفاخرة.",
     svc3_title: "فيلتك جاهزة للسكن — منذ اليوم الأول", svc3_text: "تأثيث منزل كامل من فريق المصممين الداخليين — حزمة متكاملة تعكس جمالية زيتون منذ اليوم الأول.",
     svc4_title: "استثمر بثقة — نحن نتولى كل شيء قانونيًا", svc4_text: "توجيه قانوني متخصص طوال عملية الاقتناء وفق القانون المغربي (قانون 44-00 VEFA). الملكية الأجنبية مدعومة بالكامل.",
-    cta_title: "الفرصة التي تنتظرها لن تنتظرك",
-    cta_text: "تحدّث مع فريقنا اليوم — استشارة خاصة وسرية، في مراكش أو من أي مكان في العالم. نحن نعرف أن قرارًا بهذا الحجم يستحق محادثة حقيقية.",
+    // C03 — CTA clôture V2.1 : urgence douce, rareté numérique
+    cta_title: "عشرون فيلا فقط. لعشرين عائلة تُقدّر الاستثنائي.",
+    cta_text: "تواصل معنا — قبل أن يختار غيرك. استشارة خاصة وسرية، في مراكش أو من أي مكان في العالم.",
     cta_call: "+212 777 47 47 47", cta_email: "sales@arabesque.life",
-    footer_tagline: "زيتون — ليس مجرد عنوان. هو الحياة التي اخترتها.",
+    // C01 — Signature line V2.1
+    footer_tagline: "زيتون — لمن يختار أن يعيش بشكل مختلف.",
     footer_nav: "التنقل", footer_contact: "التواصل",
     nav_home: "الرئيسية", nav_project: "المشروع", nav_dest: "مراكش", nav_dossier: "الملف الحصري",
-    disclaimer: "المعلومات الواردة هنا للإرشاد العام فقط ولا تمثل عرضًا أو تمثيلًا أو ضمانًا من أي نوع. جميع الأوصاف والأبعاد والمواصفات مقدمة بحسن نية وقابلة للتغيير دون إشعار مسبق. يُنصح المشترون المحتملون باستشارة مستشاريهم القانونيين والماليين. جميع الحقوق محفوظة."
+    disclaimer: "تنبيه قانوني هام — هذه الوثيقة أداة عرض تجاري أولي فحسب، ولا تُشكّل عرضاً للبيع أو عقد حجز أو عقداً ابتدائياً أو أي التزام تعاقدي من أي نوع. جميع التمثيلات البصرية بما فيها المجسمات ثلاثية الأبعاد والصور والرسوم التوضيحية هي انطباعات فنية فقط ولا تمثل المنتج النهائي؛ قد تختلف التشطيبات والأبعاد والتهيئة الخارجية الفعلية. الأسعار المذكورة تقديرية وقابلة للتغيير دون إشعار مسبق؛ السعر النهائي الملزم هو ذلك المنصوص عليه في عقد البيع الرسمي. مواعيد التسليم المحددة أهداف مبنية على الجدول الزمني الحالي وقد تتأثر بتقدم الأشغال أو القوة القاهرة أو أي ظرف خارج عن إرادة المطوّر. جميع التراخيص والتصاريح الإدارية اللازمة قد استُوفيت وفق التشريع المغربي المعمول به. العوائد الإيجارية وتقديرات المردودية مستندة إلى بيانات السوق التاريخية ولا تُشكّل ضماناً للأداء المستقبلي. تُعالَج البيانات الشخصية التي تقدّمها وفقاً للقانون المغربي 09-08 المتعلق بحماية المعطيات ذات الطابع الشخصي، لأغراض الرد على طلبك فحسب، ولن تُباع أو تُشارَك مع أطراف ثالثة دون موافقتك. يخضع أي نزاع يتعلق بهذه الوثيقة للقانون المغربي ويُحال إلى التحكيم أمام مركز التحكيم المختص في مراكش. صاحب المشروع: M PROPERTIES DEV SARL — إدارة العقارات والإيجار: R+E Services — Arabesque Residences، طريق تحناوت، مراكش، المغرب. جميع الحقوق محفوظة."
+  },
+
+  fr: {
+    // ── Version française — Benchmark Emaar/DAMAC — Registre MRE francophone ──
+    hero_eyebrow: "Collection Privée · 20 Villas · Marrakech",
+    hero_subtitle: "Par Arabesque Residences",
+    hero_tagline: "Certains endroits ne s'achètent pas — ils se choisissent. Zaytoun est cette décision qui reste avec vous toute une vie.",
+    stat_villas: "Villas Privées", stat_land: "Ha · Domaine", stat_delivery: "Livraison",
+    hero_cta: "Accéder au Dossier Exclusif", hero_scroll: "Découvrir",
+    about_label: "Le Projet",
+    about_title: "Un Domaine Rare, Né de la Lumière et de la Terre",
+    about_text: "Zaytoun est un domaine résidentiel privé de vingt villas posé sur 4,4 hectares d'oliveraies sur la prestigieuse Route de Tahannouat — là où Marrakech s'ouvre sur l'Atlas. Un projet qui redéfinit ce que signifie bien vivre au Maroc.",
+    fact_villas: "Villas Privées", fact_terrain: "À partir de — Terrain", fact_surface: "À partir de — Surface Habitable", fact_wellness: "Domaine Bien-Être · 800m² Bâti", fact_suites: "Suites par Villa",
+    dest_label: "La Destination",
+    dest_title: "Marrakech — L'Adresse la Plus Convoitée d'Afrique",
+    dest_text: "Marrakech ne ressemble à aucune autre ville sur terre. La lumière y est différente. L'air y est différent. Le sentiment d'y vivre aussi. Une ville qui attire l'élite mondiale depuis des siècles — pour ce qu'elle offre de rare : une âme. Avec des rendements locatifs jusqu'à 10 % et des valeurs en hausse constante, votre décision ici n'est pas seulement émotionnelle — c'est la plus intelligente financièrement.",
+    dest_golf: "Golf & Loisirs", dest_golf_text: "Trois parcours de golf de classe mondiale à 15 minutes, dont le Golf Assoufid.",
+    dest_air: "Connectivité Internationale", dest_air_text: "Aéroport Menara — 20 minutes. Vols directs vers Paris (3h30), Londres (3h40), Dubai (8h) et 50+ destinations.",
+    dest_nature: "Montagnes de l'Atlas", dest_nature_text: "Vues panoramiques sur l'Atlas enneigé depuis chaque villa. Un horizon qui n'appartient qu'à vous.",
+    dist_golf: "Golf", dist_medina: "Médina", dist_airport: "Aéroport",
+    dist_hivernage: "Hivernage",
+    atlas_caption: "Assez loin du bruit. Assez près de tout ce que vous aimez.",
+    invest_label: "Pourquoi Investir à Marrakech",
+    invest_title: "Un Marché Qui Délivre — Les Chiffres Parlent d'Eux-Mêmes",
+    inv_stat1_num: "+8%", inv_stat1_label: "Croissance Annuelle des Prix", inv_stat1_text: "Les valeurs immobilières de luxe à Marrakech progressent régulièrement au-dessus des moyennes régionales.",
+    inv_stat2_num: "7–10%", inv_stat2_label: "Rendement Locatif Brut", inv_stat2_text: "Les villas haut de gamme commandent des tarifs locatifs premium, portés par une demande touristique permanente.",
+    inv_stat3_num: "5M+", inv_stat3_label: "Touristes Annuels", inv_stat3_text: "Première destination touristique du Maroc, avec plus de 5 millions de visiteurs annuels — autant d'opportunités locatives.",
+    inv_stat4_num: "100%", inv_stat4_label: "Propriété Étrangère", inv_stat4_text: "Le Maroc autorise pleinement la propriété étrangère en pleine propriété avec libre rapatriement des capitaux et des revenus.",
+    map_label: "Localisation", map_open: "↗ Ouvrir dans Maps",
+    loc_label: "Notre Emplacement",
+    loc_golf_label: "Golf — 15 min", loc_golf_title: "Trois Parcours. Cinq Minutes. Une Autre Façon de Vivre.", loc_golf_text: "Assoufid, Noria et Argan Golf Resort à quelques minutes. Les meilleurs greens du Maroc, directement accessibles.",
+    loc_hiv_label: "Hivernage & Médina — 20 min", loc_hiv_title: "Du Calme au Cœur de la Ville — En Vingt Minutes", loc_hiv_text: "Les meilleurs hôtels, restaurants et boutiques d'Hivernage à 20 minutes. Jamaa el-Fna et la Médina historique tout aussi proches.",
+    loc_air_label: "Aéroport Menara — 20 min", loc_air_title: "Connecté à l'Europe, au Golfe et au-Delà", loc_air_text: "Vols directs vers Paris (3h30), Londres (3h40), Dubai (8h) et plus de 50 destinations. Pour les acheteurs internationaux, Zaytoun est aussi accessible qu'exclusif.",
+    well_label: "Art de Vivre",
+    well_title: "Un Sanctuaire Pensé Pour Vous Ressourcer",
+    well_text: "Pas un centre de bien-être — un temps que vous vous accordez. La chaleur de la vapeur. Le silence de l'eau. Cet instant où tout s'arrête. Un domaine de 4 000 m² — dont 800 m² bâtis — conçu pour une seule chose : vous retrouver. Ouvert à tous — et en tant que résident Zaytoun, vous êtes toujours prioritaire.",
+    wf1_title: "Spa & Hammam", wf1_text: "Hammam marocain traditionnel, cabines de soins et rituels spa puisant dans les traditions de l'Argan et de la Rose.",
+    wf2_title: "Fitness & Mouvement", wf2_text: "Studio de fitness dernière génération, pavillon yoga, courts de padel et sentiers de promenade à travers l'oliveraie.",
+    wf3_title: "Jardins & Nature", wf3_text: "Jardins de méditation, miroirs d'eau et 4,4 hectares de domaine paysagé avec des oliviers centenaires.",
+    int_label: "Rendus Intérieurs",
+    int_title: "Un Art de Vivre Raffiné",
+    int_subtitle: "Chaque villa est conçue autour de l'expérience du vivre — espaces intimes s'ouvrant sur les jardins et la lumière, avec des finitions artisanales issues de la tradition marocaine.",
+    int_salon: "Salon — Cheminée & Vue Jardin",
+    int_shower: "Salle de Bain Suite Principale",
+    int_vanity: "Double Vasque — Tadelakt & Pierre",
+    int_bedroom: "Suite Principale — Vue & Lumière",
+    int_villa_a: "Villa Arbea",
+    int_villa_ab: "Toutes Villas",
+    gate_label: "Accès Exclusif",
+    gate_title: "Vingt Villas Seulement. Certaines Sont Déjà Choisies.",
+    gate_subtitle: "Plans, prix de départ, échéancier de paiement et calendrier de livraison — réservés aux acquéreurs qualifiés. Vos informations restent strictement confidentielles.",
+    lock1: "Plans Villa Arbea", lock2: "Plans Villa Ziria", lock3: "Prix de Départ", lock4: "Plan de Paiement", lock5: "Date de Livraison",
+    form_firstname: "Prénom", form_firstname_ph: "Jean",
+    form_lastname: "Nom", form_lastname_ph: "Dupont",
+    form_email: "Adresse Email", form_email_ph: "jean@example.com",
+    form_phone: "Téléphone / WhatsApp", form_phone_ph: "+33 6 00 00 00 00",
+    form_country: "Pays de Résidence", form_country_ph: "Sélectionner le pays",
+    form_intent: "Intention d'Achat", form_intent_ph: "Sélectionner...",
+    intent1: "Résidence Principale", intent2: "Investissement / Locatif", intent3: "Résidence Secondaire", intent4: "En cours de réflexion",
+    l1_title: "Étape 1 sur 2 — Accès Instantané",
+    l1_submit: "Découvrir les Villas & le Prix →",
+    l2_title: "Étape 2 sur 2 — Dossier Complet",
+    l2_teaser: "Vous avez découvert les villas. Débloquez maintenant les plans, le plan de paiement et les dates de livraison.",
+    lvl1_badge: "Étape 1 — Visuels & Prix",
+    lvl2_badge: "Étape 2 — Plans & Paiement",
+    lock_villas: "Villas & Intérieurs ✓",
+    lock_price: "Prix de Départ — MAD 9 700 000 ✓",
+    price_note_short: "Prix indicatif · hors TVA",
+    fact_terrain: "À partir de — Terrain",
+    fact_surface: "À partir de — Surface Habitable",
+    gate_submit: "Accéder au Dossier Complet →",
+    gate_privacy: "Vos informations sont confidentielles et ne seront jamais partagées avec des tiers.",
+    success_title: "Bienvenue dans le Cercle Zaytoun",
+    success_text: "Votre dossier exclusif est débloqué. Faites défiler pour découvrir ce qui rend Zaytoun unique — des plans aux conditions d'investissement.",
+    success_scroll: "Faire défiler pour explorer",
+    dossier_unlocked: "Dossier Débloqué",
+    dossier_label: "Dossier d'Investissement Complet",
+    dossier_title: "Tout Ce Dont Vous Avez Besoin Pour Décider",
+    dossier_text: "Plans architecturaux, tarification, échéancier de paiement, calendrier de livraison et spécifications techniques.",
+    tab_villas: "Les Villas", tab_plans: "Plan de Masse & Plans d'Étages", tab_pricing: "Prix & Paiement", tab_finishes: "Finitions & Matériaux", tab_services: "Services", tab_interiors: "Intérieurs",
+    villa_arbea: "Villa Arbea", villa_ziria: "Villa Ziria",
+    spec_suites: "Suites", spec_levels: "Niveaux", spec_pool: "Piscine Privée", spec_parking: "Parking",
+    arbea_desc: "Quatre — le chiffre de la complétude dans toutes les cultures. Villa Arbea est l'expression totale de l'espace, de la lumière et de la sérénité — cinq suites qui s'écoulent naturellement vers le jardin privé et la piscine privée.",
+    ziria_desc: "Ziria — la pleine lune en amazigh. La lumière qui se répand sur l'Atlas à la tombée de la nuit. Celle qui emplit l'atmosphère de Villa Ziria chaque soir — à travers ses baies vitrées du sol au plafond et sa terrasse panoramique en rooftop.",
+    plan_mp_label: "Plan de Masse", plan_mp_title: "Zaytoun Marrakech — Plan du Site",
+    plan_arbea_label: "Type A — Villa Arbea", plan_ziria_label: "Type B — Villa Ziria",
+    plan_zoom_hint: "Cliquer pour agrandir",
+    plan_arbea_title: "Villa Arbea — Rez-de-Chaussée & Premier Étage",
+    plan_ziria_title: "Villa Ziria — Rez-de-Chaussée & Premier Étage",
+    plan_note_label: "Plan Architectural",
+    plan_note: "Les plans architecturaux seront affichés ici.\nContactez notre équipe commerciale pour la documentation PDF complète.",
+    plan_contact_note: 'Pour recevoir le dossier architectural PDF complet, contactez-nous à <a href="mailto:sales@arabesque.life" style="color:#C4765A;">sales@arabesque.life</a>',
+    price_from: "À Partir de",
+    price_note: "Prix indicatif, selon configuration de la villa et sélection du lot • TVA applicable selon la loi marocaine • Non contractuel",
+    payment_title: "Plan de Paiement",
+    pay1: "À la Réservation", pay4: "À la Livraison",
+    handover_title: "Un Calendrier Gravé dans le Marbre",
+    handover_text: "Construction démarrée en avril 2026 selon un planning précis et tenu. Tranche 1 (villa témoin) livrée Q3 2027. Tranches 2 & 3 livrées Q3 2028 — programme complet des 20 résidences tenu dans les délais.",
+    handover_label: "Livraison Estimée",
+    fin_floor: "Sols", fin_carp: "Menuiserie", fin_struct: "Structure", fin_tech: "Technologie & Confort", fin_out: "Extérieurs",
+    fin_f1: "Microcement crème mat avec finition minérale et protection hydrofuge",
+    fin_f2: "Zellige traditionnel marocain dans les espaces de vie principaux",
+    fin_f3: "Parquet massif chêne dans les suites",
+    fin_f4: "Terrasses en dalles de pierre naturelle de Taza",
+    fin_f5: "Plage piscine en pierre naturelle de Taza",
+    fin_c1: "Châssis extérieurs en aluminium noir mat",
+    fin_c2: "Double vitrage thermique généralisé",
+    fin_c3: "Porte d'entrée pivotante pleine hauteur en chêne ou noyer",
+    fin_c4: "Dressings sur mesure avec éclairage intégré et ouverture push-to-open",
+    fin_c5: "Cuisine haut de gamme sur mesure — électroménager Bosch ou équivalent",
+    fin_c6: "Façades laquées mat avec plan de travail en quartzite",
+    fin_s1: "Béton armé — normes parasismiques",
+    fin_s2: "Étanchéité bicouche bitume sur toiture et terrasses",
+    fin_s3: "Isolation thermique renforcée",
+    fin_s4: "Faux plafonds avec éclairage LED indirect",
+    fin_s5: "Détails en staff artisanal dans les zones sélectionnées",
+    fin_s6: "Gaine ascenseur prévue (installation à la charge de l'acquéreur)",
+    fin_t1: "Climatisation gainable", fin_t2: "Pré-installation domotique — éclairage, clim, volets",
+    fin_t3: "Chauffe-eau solaire avec ballon tampon", fin_t4: "Système d'alarme et vidéosurveillance",
+    fin_t5: "Fibre optique dans chaque pièce",
+    fin_o1: "Piscine privée — ouverte sur le jardin et le paysage", fin_o2: "Paysagisme : oliviers, palmiers et orangers",
+    fin_o3: "Éclairage paysager et système d'arrosage intégral",
+    fin_o4: "Portail motorisé avec télécommande",
+    svc1_title: "Votre Villa en Parfait État — Même en Votre Absence", svc1_text: "Service de maintenance immobilière complet géré par R+E Services — votre villa reste en condition impeccable toute l'année, que vous soyez en résidence ou non.",
+    svc2_title: "Un Rendement Locatif Même Quand Vous Êtes en Vacances", svc2_text: "Gestion locative professionnelle maximisant le potentiel de revenus de votre villa sur Airbnb, Booking.com et nos partenaires de canaux de luxe.",
+    svc3_title: "Votre Villa Prête à Vivre — Dès le Premier Jour", svc3_text: "Ameublement complet par notre équipe de designers d'intérieur — un pack clé en main qui reflète l'esthétique Zaytoun dès le premier jour.",
+    svc4_title: "Investissez en Confiance — Nous Gérons Tout le Volet Juridique", svc4_text: "Accompagnement juridique dédié tout au long du processus d'acquisition sous le droit marocain (Loi 44-00 VEFA). Propriété étrangère pleinement supportée.",
+    cta_title: "Vingt Villas Seulement. Pour Vingt Familles Qui Apprécient l'Exceptionnel.",
+    cta_text: "Contactez-nous — avant que quelqu'un d'autre ne choisisse. Consultation privée et confidentielle, à Marrakech ou depuis n'importe où dans le monde.",
+    cta_call: "+212 777 47 47 47", cta_email: "sales@arabesque.life",
+    footer_tagline: "Zaytoun — pour ceux qui choisissent de vivre autrement.",
+    footer_nav: "Navigation", footer_contact: "Contact",
+    nav_home: "Accueil", nav_project: "Le Projet", nav_dest: "Marrakech", nav_dossier: "Dossier Exclusif",
+    disclaimer: "AVIS IMPORTANT — Ce document est un outil de présentation pré-commerciale uniquement et ne constitue pas une offre de vente, un bon de réservation, un compromis de vente ou tout engagement contractuel de quelque nature que ce soit. Toutes les représentations visuelles, y compris les rendus 3D, images et illustrations, sont des impressions artistiques et ne représentent pas le produit final ; les finitions, dimensions et aménagements paysagers réels peuvent différer. Les prix indiqués sont des estimations indicatives susceptibles d'être modifiées sans préavis ; le prix définitif et contractuel est celui figurant dans l'acte notarié de vente. Les délais de livraison annoncés sont des objectifs basés sur le planning actuel et peuvent être modifiés en raison de l'avancement des travaux, de la force majeure ou de tout autre aléa indépendant de la volonté du promoteur. Toutes les autorisations administratives nécessaires ont été obtenues conformément à la réglementation marocaine en vigueur. Les rendements locatifs et taux de rendement mentionnés sont basés sur des données de marché historiques et ne constituent pas une garantie de performance future. Les données personnelles collectées sont traitées conformément à la loi marocaine 09-08 relative à la protection des données à caractère personnel, aux seules fins de répondre à votre demande d'information ; elles ne seront pas cédées ni partagées avec des tiers sans votre consentement. Tout litige relatif au présent document sera régi par le droit marocain et soumis à l'arbitrage auprès du centre d'arbitrage compétent de Marrakech. Maître d'Ouvrage : M PROPERTIES DEV SARL — Gestion locative et property management : R+E Services — Arabesque Residences, Route de Tahannouat, Marrakech, Maroc. Tous droits réservés."
   }
 };
 
@@ -1748,6 +2058,7 @@ function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
   document.body.className = 'lang-' + lang;
   
   // Update active button
@@ -1765,6 +2076,25 @@ function setLang(lang) {
       }
     }
   });
+
+  // Fix number direction in AR: wrap digit sequences in LTR spans
+  if (lang === 'ar') {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      if (/[\d+]/.test(el.textContent)) {
+        el.innerHTML = el.textContent.replace(
+          /(\+?[\d][\d\s\.,:/hHmMsS+٪%°²³m²km]*)/g,
+          '<span style="direction:ltr;unicode-bidi:embed;display:inline-block;">$1</span>'
+        );
+      }
+    });
+    // Fix placeholders with numbers
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      if (/[\d+]/.test(el.placeholder)) {
+        el.style.direction = 'ltr';
+        el.style.textAlign = 'right';
+      }
+    });
+  }
   
   // Placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
@@ -1855,25 +2185,87 @@ async function createOdooLead(payload) {
   return data.result;
 }
 
+// ─── LEVEL 1: prénom + email → révèle prix + villas/interiors ───
+function handleGateL1(e) {
+  e.preventDefault();
+  const fname = document.getElementById('fname1').value.trim();
+  const email = document.getElementById('email1').value.trim();
+  if (!fname || !email) return;
+
+  // CRM ping L1
+  try {
+    fetch(ODOO_URL + '/web/dataset/call_kw', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ jsonrpc:'2.0', method:'call', params:{
+        model:'crm.lead', method:'create', args:[{
+          name: '[Zaytoun L1] ' + fname,
+          email_from: email, stage_id: 1,
+          description: 'Level 1 gate — lang: ' + currentLang
+        }], kwargs:{}
+      }})
+    });
+  } catch(_){}
+
+  // Hide L1 form, show L1 success (prix + bandeau L2)
+  document.getElementById('gateFormL1').style.display = 'none';
+  document.getElementById('gateL1Success').style.display = 'block';
+
+  // Unlock items villas + price
+  unlockItems(['lock-villas','lock-price']);
+
+  // Ouvrir dossier partiel — villas + interiors seulement
+  const dossier = document.getElementById('dossier');
+  dossier.classList.add('visible');
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    const fn = btn.getAttribute('onclick') || '';
+    const isL1 = fn.includes('villas') || fn.includes('interiors');
+    btn.style.opacity = isL1 ? '1' : '0.3';
+    btn.style.pointerEvents = isL1 ? 'auto' : 'none';
+    if (!isL1) btn.setAttribute('data-locked','true');
+  });
+
+  // Scroll vers le dossier partiel
+  setTimeout(() => dossier.scrollIntoView({ behavior: 'smooth' }), 300);
+}
+
+// ─── LEVEL 2: formulaire complet → tout déverrouiller ───
 function unlockDossier() {
-  document.getElementById('gateForm').style.display = 'none';
+  // Cacher le bandeau L2, montrer le succès final
+  document.getElementById('gateL1Success').style.display = 'none';
   document.getElementById('gateSuccess').classList.add('show');
 
-  setTimeout(() => {
-    const dossier = document.getElementById('dossier');
-    dossier.classList.add('visible');
+  // Unlock items restants
+  unlockItems(['lock-plans1','lock-plans2','lock-payment','lock-handover']);
 
-    document.querySelectorAll('.lock-icon').forEach(icon => {
+  // Débloquer tous les onglets
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+    btn.removeAttribute('data-locked');
+  });
+
+  const dossier = document.getElementById('dossier');
+  dossier.classList.add('visible');
+  setTimeout(() => dossier.scrollIntoView({ behavior: 'smooth' }), 600);
+}
+
+// ─── helper : unlock visuel des locked-items ───
+function unlockItems(ids) {
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.transition = 'all 0.4s ease';
+    el.style.background = 'rgba(61,90,43,0.15)';
+    el.style.borderColor = 'rgba(90,140,60,0.5)';
+    el.style.color = 'rgba(250,247,242,0.9)';
+    const icon = el.querySelector('.lock-icon');
+    if (icon) {
+      icon.style.transition = 'all 0.3s ease';
       icon.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
-      icon.style.stroke = '#5A7A40';
-    });
-    document.querySelectorAll('.locked-item').forEach(item => {
-      item.style.borderColor = 'rgba(61,90,43,0.3)';
-      item.style.color = 'var(--text-mid)';
-    });
-
-    setTimeout(() => dossier.scrollIntoView({ behavior: 'smooth' }), 400);
-  }, 900);
+      icon.style.stroke = '#7AAD5A';
+    }
+  });
 }
 
 async function handleGateSubmit(e) {
@@ -1886,9 +2278,9 @@ async function handleGateSubmit(e) {
   btn.disabled = true;
 
   const payload = {
-    fname:   document.getElementById('fname').value.trim(),
+    fname:   document.getElementById('fname1').value.trim() || document.getElementById('fname')?.value?.trim() || '',
     lname:   document.getElementById('lname').value.trim(),
-    email:   document.getElementById('email').value.trim(),
+    email:   document.getElementById('email1').value.trim() || document.getElementById('email')?.value?.trim() || '',
     phone:   document.getElementById('phone').value.trim(),
     country: document.getElementById('country').value,
     intent:  document.getElementById('intent').value,
