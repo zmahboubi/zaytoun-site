@@ -653,7 +653,44 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 .footer-copy { font-size: 10px; color: rgba(255,255,255,0.18); letter-spacing: 0.5px; }
 .footer-disclaimer { font-size: 10px; color: rgba(255,255,255,0.28); max-width: 720px; line-height: 1.7; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
 
-/* Reveal animations */
+/* ─── Location cards — mobile first ─── */
+.loc-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--sand);
+}
+.loc-card {
+  padding: 32px 20px;
+  border-bottom: 1px solid var(--sand);
+  position: relative;
+  overflow: hidden;
+}
+.loc-card:last-child { border-bottom: none; }
+
+/* ─── Wellness cards — mobile first ─── */
+.wellness-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+}
+
+/* ─── Tablet 640px+ ─── */
+@media (min-width: 640px) {
+  .loc-cards-grid { grid-template-columns: 1fr 1fr; }
+  .loc-card { padding: 36px 28px; }
+  .loc-card:nth-child(odd) { border-right: 1px solid var(--sand); }
+  .wellness-cards-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─── Desktop 1024px+ ─── */
+@media (min-width: 1024px) {
+  .loc-cards-grid { grid-template-columns: repeat(3, 1fr); }
+  .loc-card { padding: 40px 36px; border-bottom: none; border-right: 1px solid var(--sand); }
+  .loc-card:last-child { border-right: none; }
+  .loc-card:nth-child(odd) { border-right: 1px solid var(--sand); }
+  .wellness-cards-grid { grid-template-columns: repeat(3, minmax(0, 220px)); }
+}
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-delay-1 { transition-delay: 0.12s; }
@@ -999,9 +1036,9 @@ section { padding: 56px 0; }
         </div>
       </div>
       <!-- 3 destination cards -->
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:none;">
+      <div style="class="loc-cards-grid" style="display:grid;">
         <!-- Golf -->
-        <div style="padding:40px 36px;border-right:1px solid var(--sand);position:relative;overflow:hidden;">
+        <div class="loc-card" style="border-right:1px solid var(--sand);">
           <div style="position:absolute;top:24px;right:24px;font-size:32px;opacity:0.08;">⛳</div>
           <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px;" data-i18n="loc_golf_label">Golf — 15 min</div>
           <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--dark);margin-bottom:14px;font-weight:400;" data-i18n="loc_golf_title">World-Class Golf on Your Doorstep</h3>
@@ -1015,7 +1052,7 @@ section { padding: 56px 0; }
           </div>
         </div>
         <!-- Hivernage -->
-        <div style="padding:40px 36px;border-right:1px solid var(--sand);position:relative;overflow:hidden;">
+        <div class="loc-card" style="border-right:1px solid var(--sand);">
           <div style="position:absolute;top:24px;right:24px;font-size:32px;opacity:0.08;">🌆</div>
           <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px;" data-i18n="loc_hiv_label">Hivernage & Medina — 20 min</div>
           <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--dark);margin-bottom:14px;font-weight:400;" data-i18n="loc_hiv_title">The Best of Marrakech Within Reach</h3>
@@ -1029,7 +1066,7 @@ section { padding: 56px 0; }
           </div>
         </div>
         <!-- Airport -->
-        <div style="padding:40px 36px;position:relative;overflow:hidden;">
+        <div class="loc-card">
           <div style="position:absolute;top:24px;right:24px;font-size:32px;opacity:0.08;">✈</div>
           <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px;" data-i18n="loc_air_label">Menara Airport — 20 min</div>
           <h3 style="font-family:var(--font-serif);font-size:20px;color:var(--dark);margin-bottom:14px;font-weight:400;" data-i18n="loc_air_title">Connected to Europe, the Gulf & Beyond</h3>
@@ -1068,7 +1105,7 @@ section { padding: 56px 0; }
     <span class="section-label reveal" data-i18n="well_label" style="color:var(--terracotta);">Healthy Living</span>
     <h2 class="section-title reveal reveal-delay-1" data-i18n="well_title" style="color:var(--white);max-width:560px;">A Sanctuary Designed for Well-Being</h2>
     <p class="section-text reveal reveal-delay-2" data-i18n="well_text" style="color:rgba(255,255,255,0.6);max-width:480px;margin-bottom:56px;">At Zaytoun, luxury is measured not in square metres, but in the quality of each morning, each breath, each moment of stillness. An 800m² wellness center open to all, with privileged priority access for residents.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,220px));gap:2px;" class="reveal reveal-delay-3">
+    <div class="wellness-cards-grid reveal reveal-delay-3">
       <div style="background:rgba(20,16,10,0.6);border:1px solid rgba(255,255,255,0.09);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:28px 22px;">
         <div style="font-size:20px;color:var(--gold-light);margin-bottom:14px;">◈</div>
         <div style="font-family:var(--font-serif);font-size:17px;color:var(--white);margin-bottom:8px;" data-i18n="wf1_title">Spa &amp; Hammam</div>
