@@ -1093,17 +1093,18 @@ const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbz31f4e_lvrkCvyZ9
 async function sendToSheet(action, data) {
   const payload = { action, ...data };
   try {
-    const res = await fetch(SHEET_API_URL, {
+    await fetch(SHEET_API_URL, {
       method: 'POST',
-      mode: 'cors',
+      mode: 'no-cors',          // <-- important: bypass CORS
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    return await res.json();
+    // Because of no-cors, we cannot read the response.
+    // Assume success if no network error.
+    console.log('[Zaytoun] Request sent (no-cors)');
   } catch (err) {
-    console.error('[Zaytoun] Sheet API error:', err);
+    console.error('[Zaytoun] Network error:', err);
     alert('Unable to save your information. Please try again or contact us directly.');
-    return { error: err.message };
   }
 }
 
