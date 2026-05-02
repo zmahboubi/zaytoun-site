@@ -45,6 +45,7 @@ body {
 }
 body.lang-ar { font-family: var(--font-arabic); direction: rtl; }
 body.lang-ar .serif-title { font-family: var(--font-arabic); }
+/* Force LTR on numbers, stats and mixed numeric content in AR mode */
 body.lang-ar .hero-stat-num,
 body.lang-ar .fact-num,
 body.lang-ar .handover-date-num,
@@ -55,8 +56,15 @@ body.lang-ar [style*="font-size:36px"] {
   unicode-bidi: embed;
   display: inline-block;
 }
-a[href^="tel"], input[type="tel"] { direction: ltr; unicode-bidi: embed; }
-body.lang-ar input[type="tel"] { text-align: right; }
+/* Phone numbers and tel links always LTR */
+a[href^="tel"],
+input[type="tel"] {
+  direction: ltr;
+  unicode-bidi: embed;
+}
+body.lang-ar input[type="tel"] {
+  text-align: right;
+}
 
 /* ─── NAVBAR ─── */
 .lang-bar {
@@ -84,7 +92,11 @@ body.lang-ar input[type="tel"] { text-align: right; }
   gap: 14px;
   text-decoration: none;
 }
-.brand-logo img { height: 44px; opacity: 1; filter: drop-shadow(0 2px 6px rgba(168,135,58,0.15)); }
+.brand-logo img {
+  height: 44px;
+  opacity: 1;
+  filter: drop-shadow(0 2px 6px rgba(168,135,58,0.15));
+}
 .brand-name {
   font-family: var(--font-serif);
   font-size: 11px;
@@ -129,8 +141,9 @@ body.lang-ar input[type="tel"] { text-align: right; }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(250,247,242,0.04) 0%, transparent 40%, rgba(30,28,24,0.55) 100%),
-              linear-gradient(145deg, #1E1C18 0%, #2A2620 35%, #322A20 65%, #1E1C18 100%);
+  background: 
+    linear-gradient(to bottom, rgba(250,247,242,0.04) 0%, transparent 40%, rgba(30,28,24,0.55) 100%),
+    linear-gradient(145deg, #1E1C18 0%, #2A2620 35%, #322A20 65%, #1E1C18 100%);
   z-index: 0;
 }
 .hero-bg::after {
@@ -162,6 +175,7 @@ body.lang-ar input[type="tel"] { text-align: right; }
   position: relative; z-index: 2; padding: 0 20px;
   animation: heroFadeIn 2s ease forwards;
 }
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 @keyframes heroFadeIn {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -173,8 +187,14 @@ body.lang-ar input[type="tel"] { text-align: right; }
   margin-bottom: 24px;
   animation: heroFadeIn 2s ease 0.3s both;
 }
-.hero-logo-wrap { margin-bottom: 32px; animation: heroFadeIn 2s ease 0.1s both; }
-.hero-logo-wrap img { height: 150px; opacity: 0.96; filter: drop-shadow(0 6px 24px rgba(196,160,82,0.25)); }
+.hero-logo-wrap {
+  margin-bottom: 32px;
+  animation: heroFadeIn 2s ease 0.1s both;
+}
+.hero-logo-wrap img {
+  height: 150px; opacity: 0.96;
+  filter: drop-shadow(0 6px 24px rgba(196,160,82,0.25));
+}
 .hero-arabic-name {
   font-family: var(--font-arabic);
   font-size: clamp(36px, 6vw, 70px);
@@ -242,6 +262,16 @@ body.lang-ar input[type="tel"] { text-align: right; }
   background: var(--terracotta-light); transform: translateY(-1px);
   box-shadow: 0 8px 32px rgba(184,99,74,0.28);
 }
+.btn-outline {
+  display: inline-block; padding: 16px 50px;
+  background: transparent; color: var(--gold);
+  font-family: var(--font-sans); font-size: 10px; letter-spacing: 3.5px;
+  text-transform: uppercase; text-decoration: none;
+  cursor: pointer; border: 1px solid rgba(168,135,58,0.45);
+  transition: all 0.4s ease;
+}
+.btn-outline:hover { border-color: var(--gold); background: rgba(168,135,58,0.05); }
+
 .hero-scroll {
   position: absolute; bottom: 32px; left: 50%;
   transform: translateX(-50%); z-index: 2;
@@ -266,6 +296,7 @@ body.lang-ar input[type="tel"] { text-align: right; }
 section { padding: 100px 0; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
 .container-narrow { max-width: 880px; margin: 0 auto; padding: 0 48px; }
+
 .section-label {
   font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
   color: var(--terracotta); margin-bottom: 16px; display: block;
@@ -380,14 +411,16 @@ body.lang-ar .fact-card { border-left: none; border-right: 2px solid var(--gold-
   background: linear-gradient(150deg, var(--ivory-deep) 0%, var(--cream) 50%, var(--ivory) 100%);
   padding: 120px 0; position: relative; overflow: hidden;
 }
-.gate-section::before,
-.gate-section::after {
+.gate-section::before {
   content: '';
-  position: absolute; left: 0; right: 0;
+  position: absolute; top: 0; left: 0; right: 0;
   height: 1px; background: linear-gradient(to right, transparent, var(--gold-pale), transparent);
 }
-.gate-section::before { top: 0; }
-.gate-section::after { bottom: 0; }
+.gate-section::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px; background: linear-gradient(to right, transparent, var(--gold-pale), transparent);
+}
 .gate-inner { max-width: 680px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
 .gate-icon {
   width: 80px; height: 80px;
@@ -406,6 +439,10 @@ body.lang-ar .fact-card { border-left: none; border-right: 2px solid var(--gold-
   font-family: var(--font-serif);
   font-size: clamp(26px, 4vw, 44px); font-weight: 300;
   color: var(--text); margin-bottom: 20px; line-height: 1.2;
+}
+.gate-subtitle {
+  font-size: 14px; line-height: 1.85; color: var(--text-light);
+  margin-bottom: 52px; max-width: 500px; margin-left: auto; margin-right: auto;
 }
 .locked-items {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 52px;
@@ -426,6 +463,7 @@ body.lang-ar .fact-card { border-left: none; border-right: 2px solid var(--gold-
 }
 .gate-form-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .form-field { display: flex; flex-direction: column; gap: 8px; }
+.form-field.full { grid-column: 1 / -1; }
 .form-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); }
 .form-input, .form-select {
   background: var(--ivory);
@@ -433,8 +471,13 @@ body.lang-ar .fact-card { border-left: none; border-right: 2px solid var(--gold-
   color: var(--text);
   font-family: var(--font-sans); font-size: 14px;
   padding: 13px 16px; outline: none; transition: border-color 0.3s;
+  -webkit-appearance: none;
 }
+.form-input::placeholder { color: var(--stone); }
 .form-input:focus, .form-select:focus { border-color: var(--gold); background: var(--white); }
+.form-select { cursor: pointer; }
+.form-select option { background: var(--white); color: var(--text); }
+body.lang-ar .form-input, body.lang-ar .form-select { text-align: right; direction: rtl; }
 .gate-submit {
   width: 100%; margin-top: 24px; padding: 18px;
   background: var(--charcoal); color: var(--ivory);
@@ -473,15 +516,16 @@ body.lang-ar .fact-card { border-left: none; border-right: 2px solid var(--gold-
 }
 .unlock-line { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
 
+/* Tabs */
 .dossier-tabs {
   display: flex; border-bottom: 1px solid var(--sand);
-  margin-bottom: 60px; overflow-x: auto;
+  margin-bottom: 60px; overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .tab-btn {
   padding: 16px 32px; background: none; border: none;
   font-family: var(--font-sans); font-size: 10px; letter-spacing: 2px;
   text-transform: uppercase; color: var(--text-light); cursor: pointer;
-  border-bottom: 2px solid transparent; transition: all 0.3s;
+  border-bottom: 2px solid transparent; transition: all 0.3s; white-space: nowrap; flex-shrink: 0;
 }
 .tab-btn:hover { color: var(--terracotta); }
 .tab-btn.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
@@ -499,6 +543,12 @@ body.lang-ar .fact-card { border-left: none; border-right: 2px solid var(--gold-
 .spec-val { font-family: var(--font-serif); font-size: 22px; color: var(--terracotta); display: block; }
 .spec-key { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); margin-top: 4px; display: block; }
 
+/* Floor plans */
+.floorplan-wrap { background: var(--white); border: 1px solid var(--sand); padding: 40px; margin-bottom: 40px; }
+.floorplan-title { font-family: var(--font-serif); font-size: 24px; color: var(--text); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--sand); }
+.floorplan-img { width: 100%; background: var(--ivory); overflow: hidden; }
+.floorplan-img img { width: 100%; height: auto; }
+
 /* Pricing */
 .pricing-block {
   background: var(--charcoal); color: var(--white);
@@ -508,6 +558,8 @@ body.lang-ar .fact-card { border-left: none; border-right: 2px solid var(--gold-
 .price-from { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
 .price-amount { font-family: var(--font-serif); font-size: clamp(40px, 6vw, 70px); font-weight: 300; color: var(--gold-pale); line-height: 1; }
 .price-currency { font-family: var(--font-serif); font-size: 22px; color: rgba(232,213,160,0.5); }
+.price-note { margin-top: 14px; font-size: 11px; color: rgba(255,255,255,0.28); letter-spacing: 0.5px; }
+
 .payment-plan { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-bottom: 40px; background: var(--sand); }
 .payment-step {
   background: var(--white); padding: 32px 24px; text-align: center;
@@ -516,6 +568,7 @@ body.lang-ar .fact-card { border-left: none; border-right: 2px solid var(--gold-
 .payment-step:hover { background: var(--ivory-deep); }
 .payment-pct { font-family: var(--font-serif); font-size: 36px; font-weight: 300; color: var(--terracotta); line-height: 1; display: block; }
 .payment-when { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); margin-top: 10px; display: block; }
+
 .handover-block {
   background: linear-gradient(135deg, #2A3820 0%, #3A4A2A 100%);
   color: var(--white); padding: 60px;
@@ -546,6 +599,7 @@ body.lang-ar .finish-items li::before { left: auto; right: 0; }
 /* Success state */
 .gate-success { display: none; text-align: center; padding: 40px 0; }
 .gate-success.show { display: block; }
+.gate-form-wrap.hide { display: none; }
 .success-icon {
   width: 60px; height: 60px;
   background: rgba(90,120,64,0.1); border: 1px solid rgba(90,120,64,0.4);
@@ -562,7 +616,7 @@ body.lang-ar .finish-items li::before { left: auto; right: 0; }
   content: ''; width: 40px; height: 1px; background: rgba(168,135,58,0.35);
 }
 
-/* CTA */
+/* CTA section */
 .cta-section { background: var(--terracotta); padding: 80px 0; text-align: center; }
 .cta-section .section-title { color: var(--white); text-align: center; margin-bottom: 14px; }
 .cta-section .section-text { color: rgba(255,255,255,0.78); text-align: center; margin: 0 auto 48px; max-width: 500px; }
@@ -571,15 +625,15 @@ body.lang-ar .finish-items li::before { left: auto; right: 0; }
   display: inline-block; padding: 16px 48px;
   background: var(--white); color: var(--terracotta);
   font-family: var(--font-sans); font-size: 10px; letter-spacing: 3px;
-  text-transform: uppercase; text-decoration: none; border: none; cursor: pointer;
+  text-transform: uppercase; text-decoration: none; border: none; transition: all 0.3s; cursor: pointer;
 }
 .btn-white:hover { background: var(--ivory); transform: translateY(-1px); }
 .btn-ghost-white {
   display: inline-block; padding: 15px 46px;
   background: transparent; color: rgba(255,255,255,0.88);
-  font-size: 10px; letter-spacing: 3px;
+  font-family: var(--font-sans); font-size: 10px; letter-spacing: 3px;
   text-transform: uppercase; text-decoration: none; cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.5); transition: all 0.3s;
 }
 .btn-ghost-white:hover { border-color: var(--white); color: var(--white); }
 
@@ -590,7 +644,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 .footer-tagline { font-family: var(--font-serif); font-style: italic; font-size: 14px; color: rgba(250,247,242,0.38); line-height: 1.75; max-width: 240px; }
 .footer-col-title { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.footer-links a { font-size: 13px; color: rgba(250,247,242,0.4); text-decoration: none; }
+.footer-links a { font-size: 13px; color: rgba(250,247,242,0.4); text-decoration: none; transition: color 0.3s; }
 .footer-links a:hover { color: var(--ivory); }
 .footer-contact-item { font-size: 13px; color: rgba(250,247,242,0.4); margin-bottom: 12px; display: block; }
 .footer-contact-item a { color: var(--gold-light); text-decoration: none; }
@@ -598,7 +652,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 .footer-copy { font-size: 10px; color: rgba(255,255,255,0.18); letter-spacing: 0.5px; }
 .footer-disclaimer { font-size: 10px; color: rgba(255,255,255,0.28); max-width: 720px; line-height: 1.7; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; }
 
-/* Location & Wellness grids */
+/* ─── Location cards — mobile first ─── */
 .loc-cards-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -612,21 +666,28 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   overflow: hidden;
 }
 .loc-card:last-child { border-bottom: none; }
+
+/* ─── Wellness cards — mobile first ─── */
 .wellness-cards-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2px;
 }
+
+/* ─── Tablet 640px+ ─── */
 @media (min-width: 640px) {
   .loc-cards-grid { grid-template-columns: 1fr 1fr; }
   .loc-card { padding: 36px 28px; }
   .loc-card:nth-child(odd) { border-right: 1px solid var(--sand); }
   .wellness-cards-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ─── Desktop 1024px+ ─── */
 @media (min-width: 1024px) {
   .loc-cards-grid { grid-template-columns: repeat(3, 1fr); }
   .loc-card { padding: 40px 36px; border-bottom: none; border-right: 1px solid var(--sand); }
   .loc-card:last-child { border-right: none; }
+  .loc-card:nth-child(odd) { border-right: 1px solid var(--sand); }
   .wellness-cards-grid { grid-template-columns: repeat(3, minmax(0, 220px)); }
 }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -634,48 +695,141 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 .reveal-delay-1 { transition-delay: 0.12s; }
 .reveal-delay-2 { transition-delay: 0.24s; }
 .reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
 
-/* Mobile first overrides */
-@media (max-width: 640px) {
-  .lang-bar { padding: 12px 16px; }
-  .brand-name { display: none; }
-  .container, .container-narrow { padding: 0 16px; }
-  section { padding: 56px 0; }
-  .hero-stats { gap: 16px; flex-wrap: wrap; }
-  .hero-divider { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-facts { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .fact-num { font-size: 20px; }
-  .fact-card { padding: 14px 8px; }
-  .gate-form { padding: 24px 16px; }
-  .gate-form-inner { grid-template-columns: 1fr; gap: 14px; }
-  .locked-items { flex-direction: column; align-items: stretch; }
-  .villa-grid { grid-template-columns: 1fr; }
-  .payment-plan { grid-template-columns: 1fr; }
-  .handover-block { flex-direction: column; text-align: center; }
-  .finishes-list { columns: 1; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .cta-btns { flex-direction: column; align-items: center; }
+/* ══════════════════════════════════════════════════
+   MOBILE-FIRST — Base styles are mobile, desktop enhances
+   ══════════════════════════════════════════════════ */
+
+/* ─── BASE (mobile) ─── */
+.lang-bar { padding: 12px 16px; }
+.brand-name { display: none; }
+.container, .container-narrow { padding: 0 16px; }
+section { padding: 56px 0; }
+
+/* Hero mobile */
+.hero-stats { gap: 16px; flex-wrap: wrap; justify-content: center; }
+.hero-stat-num { font-size: 28px; }
+.hero-divider { display: none; }
+.hero-title { font-size: clamp(32px, 8vw, 52px); }
+.hero-tagline { font-size: 14px; padding: 0 8px; }
+
+/* About mobile */
+.about-grid { grid-template-columns: 1fr; gap: 40px; }
+.about-img-accent {
+  position: absolute; bottom: -20px; right: -16px;
+  width: 48%; aspect-ratio: 1;
+  background: var(--sand); overflow: hidden;
+  box-shadow: 0 6px 24px rgba(30,28,24,0.12);
 }
+.about-facts { grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 32px; }
+.fact-num { font-size: 20px; }
+.fact-card { padding: 14px 8px; }
+
+/* Destination mobile */
+.destination-grid { grid-template-columns: 1fr; gap: 32px; }
+.dest-features { grid-template-columns: 1fr; gap: 16px; }
+
+/* Invest stats mobile */
+.invest-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Location mobile */
+.location-features { grid-template-columns: 1fr; gap: 16px; }
+.dist-pills { flex-wrap: wrap; gap: 8px; }
+
+/* Wellness mobile */
+.wellness-features { grid-template-columns: 1fr; background: none; gap: 2px; }
+
+/* Gate mobile */
+.gate-inner { padding: 40px 16px; }
+.gate-title { font-size: clamp(22px, 6vw, 36px); }
+.gate-form { padding: 24px 16px; }
+.gate-form-inner { grid-template-columns: 1fr; gap: 14px; }
+.locked-items { flex-direction: column; align-items: stretch; gap: 8px; }
+.locked-item { padding: 10px 14px; font-size: 12px; }
+#gatePriceTeaser { margin: 16px 0; }
+
+/* Dossier tabs mobile */
+.dossier-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; padding-bottom: 4px; gap: 4px; }
+.tab-btn { padding: 10px 16px; font-size: 9px; white-space: nowrap; flex-shrink: 0; }
+.villa-grid { grid-template-columns: 1fr; gap: 24px; }
+.villa-img { height: 220px; }
+.interiors-grid { grid-template-columns: 1fr !important; }
+.interior-card[style*="grid-column:span 2"] { grid-column: span 1 !important; }
+.interior-card img { height: 220px !important; object-fit: cover; }
+.payment-plan { grid-template-columns: 1fr; gap: 2px; }
+.payment-step { padding: 28px 16px; }
+.payment-pct { font-size: 40px !important; }
+.handover-block { flex-direction: column; gap: 24px; text-align: center; }
+.pricing-block { padding: 32px 20px; }
+.price-amount { font-size: clamp(32px, 8vw, 56px); }
+.finishes-list { columns: 1; }
+.finish-category { break-inside: avoid; margin-bottom: 24px; }
+#tab-services > div { grid-template-columns: 1fr !important; gap: 16px; }
+
+/* CTA mobile */
+.cta-btns { flex-direction: column; align-items: center; gap: 12px; }
+.btn-white, .btn-ghost-white { width: 100%; max-width: 320px; text-align: center; padding: 16px 24px; }
+
+/* Footer mobile */
+.footer-grid { grid-template-columns: 1fr; gap: 32px; }
+.footer-bottom { flex-direction: column; text-align: center; gap: 8px; }
+.footer-disclaimer { font-size: 9px; }
+
+/* ─── TABLET 640px+ ─── */
+@media (min-width: 640px) {
+  .container, .container-narrow { padding: 0 32px; }
+  section { padding: 80px 0; }
+  .about-facts { grid-template-columns: repeat(5, 1fr); }
+  .gate-form-inner { grid-template-columns: 1fr 1fr; }
+  .locked-items { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .payment-plan { grid-template-columns: 1fr 1fr; }
+  #tab-services > div { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* ─── DESKTOP 768px+ ─── */
 @media (min-width: 768px) {
   .lang-bar { padding: 18px 48px; }
   .brand-name { display: inline; }
-  .hero-stats { gap: 40px; }
-  .hero-divider { display: block; }
+  section { padding: 100px 0; }
+  .container, .container-narrow { padding: 0 48px; }
   .about-grid { grid-template-columns: 1fr 1fr; gap: 88px; }
+  .hero-stats { gap: 40px; flex-wrap: nowrap; }
+  .hero-divider { display: block; }
+  .destination-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
   .wellness-features { grid-template-columns: repeat(3, 1fr); }
   .villa-grid { grid-template-columns: 1fr 1fr; }
+  .villa-img { height: 280px; }
+  .interiors-grid { grid-template-columns: 1fr 1fr !important; }
+  .interior-card[style*="grid-column:span 2"] { grid-column: span 2 !important; }
+  .interior-card img { height: auto !important; }
+  .interior-card img[style*="height:460px"] { height: 460px !important; }
+  .interior-card img[style*="height:320px"] { height: 320px !important; }
   .handover-block { flex-direction: row; text-align: left; }
-  .finishes-list { columns: 2; }
+  .finishes-list { columns: 2; column-gap: 48px; }
+  .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+  .footer-bottom { flex-direction: row; text-align: left; }
+  .cta-btns { flex-direction: row; }
+  .btn-white, .btn-ghost-white { width: auto; }
+  .invest-stats { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* ─── LARGE DESKTOP 1200px+ ─── */
+@media (min-width: 1200px) {
+  .container { max-width: 1240px; margin: 0 auto; }
+  .container-narrow { max-width: 680px; margin: 0 auto; }
+  .about-grid { gap: 120px; }
+}
+
 </style>
 </head>
 
 <body class="lang-en">
 
+<!-- ═══ LANGUAGE BAR ═══ -->
 <nav class="lang-bar" id="langBar">
   <a class="brand-logo" href="#">
-    <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_00_uxsu6j" alt="Arabesque Residences">
+    <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_00_uxsu6j" alt="Arabesque Residences" onerror="this.style.display='none'">
     <span class="brand-name">Arabesque Residences</span>
   </a>
   <div class="lang-switcher">
@@ -685,41 +839,62 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   </div>
 </nav>
 
+<!-- AMBASSADOR BANNER — shown only when ?ref= param present -->
 <div id="refBanner" style="display:none;background:var(--charcoal);padding:10px 20px;text-align:center;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,247,242,0.55);">
   <span style="color:var(--gold-light);">⬦</span>
   <span id="refBannerText"> Invitation exclusive de <strong class="ref-name" style="color:var(--gold-light);"></strong></span>
 </div>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-content">
-    <div class="hero-logo-wrap"><img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_01_znu0zk" alt="Zaytoun logo"></div>
+    <div class="hero-logo-wrap">
+      <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_01_znu0zk" alt="Zaytoun logo">
+    </div>
     <p class="hero-eyebrow" data-i18n="hero_eyebrow">Private Collection · 20 Villas · Marrakech</p>
     <div class="hero-arabic-name">زيتون</div>
     <h1 class="hero-title">Zaytoun</h1>
     <p class="hero-subtitle" data-i18n="hero_subtitle">By Arabesque Residences</p>
     <p class="hero-tagline" data-i18n="hero_tagline">Some places are not bought — they are chosen. Zaytoun is that decision.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><span class="hero-stat-num">20</span><span class="hero-stat-label" data-i18n="stat_villas">Private Villas</span></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">20</span>
+        <span class="hero-stat-label" data-i18n="stat_villas">Private Villas</span>
+      </div>
       <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="hero-stat-num">4.4</span><span class="hero-stat-label" data-i18n="stat_land">Hectares</span></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">4.4</span>
+        <span class="hero-stat-label" data-i18n="stat_land">Hectares</span>
+      </div>
       <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="hero-stat-num" style="font-size:22px;">2027–28</span><span class="hero-stat-label" data-i18n="stat_delivery">Delivery</span></div>
+      <div class="hero-stat">
+        <span class="hero-stat-num" style="font-size:22px;">2027–28</span>
+        <span class="hero-stat-label" data-i18n="stat_delivery">Delivery</span>
+      </div>
     </div>
-    <div class="hero-cta"><button class="btn-primary" onclick="document.getElementById('gate').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta">Unlock the Exclusive Dossier</button></div>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="document.getElementById('gate').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta">Unlock the Exclusive Dossier</button>
+    </div>
   </div>
-  <div class="hero-scroll"><span data-i18n="hero_scroll">Discover</span><div class="scroll-line"></div></div>
+  <div class="hero-scroll">
+    <span data-i18n="hero_scroll">Discover</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ═══ ABOUT ═══ -->
 <section class="about-section">
   <div class="container">
     <div class="about-grid">
       <div class="about-visual reveal">
-        <div class="about-img-main"><img src="https://res.cloudinary.com/dlidh4fdt/image/upload/f_auto,q_auto/villa_facade_1_dwtqan" alt="Villa Facade"></div>
-        <div class="about-img-accent"><img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_03_ra2fom" alt="Villa Pool & Garden" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;"></div>
+        <div class="about-img-main">
+          <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/f_auto,q_auto/villa_facade_1_dwtqan" alt="Villa Facade">
+        </div>
+        <div class="about-img-accent">
+          <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_03_ra2fom" alt="Villa Pool & Garden" style="width:100%;height:100%;object-fit:cover;object-position:center 55%;">
+        </div>
       </div>
       <div class="about-text">
         <span class="section-label reveal" data-i18n="about_label">The Project</span>
@@ -737,41 +912,55 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   </div>
 </section>
 
-<!-- DESTINATION + INVESTMENT (simplified but complete) -->
+<!-- ═══ DESTINATION — simplified for length ═══ -->
 <section class="destination-section" style="padding:0;overflow:hidden;">
   <div style="position:relative;min-height:520px;display:flex;align-items:center;">
     <div style="position:absolute;inset:0;overflow:hidden;">
       <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_04_ohdh9t" alt="Atlas Mountains" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;">
       <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(28,24,18,0.92) 0%,rgba(28,24,18,0.65) 55%,rgba(28,24,18,0.15) 100%);"></div>
     </div>
-    <div class="container" style="position:relative;z-index:2;padding-top:100px;padding-bottom:100px;"><div style="max-width:580px;"><span class="section-label reveal" data-i18n="dest_label" style="color:var(--terracotta);">The Destination</span><h2 class="section-title reveal reveal-delay-1" data-i18n="dest_title" style="color:var(--white);">Marrakech — Africa's Most Coveted Address</h2><p class="section-text reveal reveal-delay-2" data-i18n="dest_text" style="color:rgba(255,255,255,0.65);max-width:100%;"></p></div></div>
-    <div style="position:absolute;bottom:24px;right:32px;z-index:2;"><div style="font-family:var(--font-serif);font-style:italic;font-size:13px;color:rgba(255,255,255,0.45);" data-i18n="atlas_caption">Atlas Mountains — view from Zaytoun</div></div>
+    <div class="container" style="position:relative;z-index:2;padding-top:100px;padding-bottom:100px;">
+      <div style="max-width:580px;">
+        <span class="section-label reveal" data-i18n="dest_label" style="color:var(--terracotta);">The Destination</span>
+        <h2 class="section-title reveal reveal-delay-1" data-i18n="dest_title" style="color:var(--white);">Marrakech — Africa's Most Coveted Address</h2>
+        <p class="section-text reveal reveal-delay-2" data-i18n="dest_text" style="color:rgba(255,255,255,0.65);max-width:100%;"></p>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:24px;right:32px;z-index:2;text-align:right;">
+      <div style="font-family:var(--font-serif);font-style:italic;font-size:13px;color:rgba(255,255,255,0.45);" data-i18n="atlas_caption">Atlas Mountains — view from Zaytoun</div>
+    </div>
   </div>
-  <div style="background:var(--ivory-deep);padding:80px 0;border-top:1px solid var(--sand);border-bottom:1px solid var(--sand);">
-    <div class="container"><div style="text-align:center;margin-bottom:56px;"><span class="section-label reveal" data-i18n="invest_label" style="display:block;color:var(--terracotta);">Why Invest in Marrakech</span><h2 class="section-title reveal reveal-delay-1" data-i18n="invest_title" style="color:var(--charcoal);text-align:center;">A Market That Consistently Delivers</h2></div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;" class="reveal reveal-delay-2">
-      <div style="background:var(--white);border:1px solid var(--sand);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat1_num">+8%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat1_label">Annual Price Growth</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat1_text">Luxury property values in Marrakech have grown consistently above regional averages.</div></div>
-      <div style="background:var(--white);border:1px solid var(--sand);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat2_num">7–10%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat2_label">Gross Rental Yield</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat2_text">High-end villas command premium short-term rental rates.</div></div>
-      <div style="background:var(--white);border:1px solid var(--sand);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat3_num">5M+</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat3_label">Annual Tourists</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat3_text">Over 5 million annual visitors to Marrakech.</div></div>
-      <div style="background:var(--white);border:1px solid var(--sand);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat4_num">100%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat4_label">Foreign Ownership</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat4_text">Morocco fully permits foreign freehold ownership.</div></div>
-    </div></div>
+  <div style="background:var(--ivory-deep);padding:80px 0;">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:56px;">
+        <span class="section-label" data-i18n="invest_label" style="color:var(--terracotta);">Why Invest in Marrakech</span>
+        <h2 class="section-title" data-i18n="invest_title" style="color:var(--charcoal);text-align:center;">A Market That Consistently Delivers</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;">
+        <div style="background:var(--white);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat1_num">+8%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat1_label">Annual Price Growth</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat1_text">Luxury property values in Marrakech have grown consistently above regional averages.</div></div>
+        <div style="background:var(--white);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat2_num">7–10%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat2_label">Gross Rental Yield</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat2_text">High-end villas command premium short-term rental rates.</div></div>
+        <div style="background:var(--white);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat3_num">5M+</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat3_label">Annual Tourists</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat3_text">Over 5 million annual visitors to Marrakech.</div></div>
+        <div style="background:var(--white);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat4_num">100%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat4_label">Foreign Ownership</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat4_text">Morocco fully permits foreign freehold ownership.</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- LOCATION (simplified) -->
+<!-- ═══ LOCATION (simplified) ═══ -->
 <section style="background:var(--cream);padding:0;">
   <div style="position:relative;height:520px;overflow:hidden;">
     <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d6796.82!2d-8.009578!3d31.541926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDMyJzMwLjkiTiA4wrAwMCczNC41Ilc!5e1!3m2!1sen!2sma!4v1700000001" width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
     <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);"><div style="background:var(--terracotta);color:white;padding:10px 20px;">Zaytoun Marrakech</div></div>
   </div>
   <div class="container" style="padding-top:0;padding-bottom:80px;">
-    <div style="background:var(--white);"><div style="background:var(--charcoal);padding:32px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;"><div><span style="font-size:9px;color:var(--terracotta);" data-i18n="loc_label">Our Location</span><span style="font-family:var(--font-serif);font-size:22px;color:white;">Route de Tahannouat, Marrakech</span></div><div style="display:flex;gap:32px;"><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">5'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_golf">Golf</span></div><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">20'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_hivernage">Hivernage</span></div><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">20'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_airport">Airport</span></div></div></div>
+    <div style="background:var(--white);">
+      <div style="background:var(--charcoal);padding:32px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;"><div><span style="font-size:9px;color:var(--terracotta);" data-i18n="loc_label">Our Location</span><span style="font-family:var(--font-serif);font-size:22px;color:white;">Route de Tahannouat, Marrakech</span></div><div style="display:flex;gap:32px;"><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">5'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_golf">Golf</span></div><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">20'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_hivernage">Hivernage</span></div><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">20'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_airport">Airport</span></div></div></div>
       <div class="loc-cards-grid"><div class="loc-card"><div style="font-size:9px;color:var(--terracotta);" data-i18n="loc_golf_label">Golf — 15 min</div><h3 style="font-family:var(--font-serif);font-size:20px;" data-i18n="loc_golf_title">World-Class Golf</h3><p data-i18n="loc_golf_text">Three championship courses within minutes.</p></div><div class="loc-card"><div style="font-size:9px;color:var(--terracotta);" data-i18n="loc_hiv_label">Hivernage — 20 min</div><h3 style="font-family:var(--font-serif);font-size:20px;" data-i18n="loc_hiv_title">Best of Marrakech</h3><p data-i18n="loc_hiv_text">Luxury district with finest hotels and restaurants.</p></div><div class="loc-card"><div style="font-size:9px;color:var(--terracotta);" data-i18n="loc_air_label">Airport — 20 min</div><h3 style="font-family:var(--font-serif);font-size:20px;" data-i18n="loc_air_title">Connected to the World</h3><p data-i18n="loc_air_text">Direct flights to Paris, London, Dubai.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- WELLNESS -->
+<!-- ═══ WELLNESS (simplified) ═══ -->
 <section style="background:var(--charcoal);position:relative;min-height:700px;display:flex;align-items:flex-end;">
   <div style="position:absolute;inset:0;"><img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_05_bawka8" alt="Wellness" style="width:100%;height:100%;object-fit:cover;"><div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(28,24,18,0.92) 0%,rgba(28,24,18,0.72) 40%,rgba(28,24,18,0.10) 100%);"></div></div>
   <div class="container" style="position:relative;z-index:2;padding-top:120px;padding-bottom:80px;">
@@ -782,13 +971,14 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   </div>
 </section>
 
-<!-- GATE SECTION (two-step form) -->
+<!-- ═══ GATE SECTION — TWO-STEP LEAD CAPTURE ═══ -->
 <section class="gate-section" id="gate">
   <div class="container-narrow">
     <div class="gate-inner">
       <div class="gate-icon"><div class="gate-icon-inner"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div></div>
       <p class="gate-label" data-i18n="gate_label">Exclusive Access</p>
       <h2 class="gate-title" data-i18n="gate_title">Unlock the Complete Dossier</h2>
+
       <div id="lockedItems" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:32px;">
         <div class="locked-item" id="lock-villas"><svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span data-i18n="lock_villas">Villas & Interiors</span></div>
         <div class="locked-item" id="lock-price"><svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span data-i18n="lock_price">Starting Price</span></div>
@@ -797,7 +987,11 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
         <div class="locked-item" id="lock-payment"><svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span data-i18n="lock4">Payment Plan</span></div>
         <div class="locked-item" id="lock-handover"><svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span data-i18n="lock5">Handover Date</span></div>
       </div>
-      <div id="gateSocialProof" style="margin:0 auto 28px;max-width:520px;text-align:center;padding:20px;border:1px solid rgba(200,163,82,0.2);background:rgba(200,163,82,0.04);"><p style="font-size:12px;color:rgba(30,28,24,0.55);font-style:italic;" data-i18n="social_proof">Some families have already chosen their villa at Zaytoun. Early acquirers secure the lowest entry point.</p></div>
+
+      <div id="gateSocialProof" style="margin:0 auto 28px;max-width:520px;text-align:center;padding:20px;border:1px solid rgba(200,163,82,0.2);background:rgba(200,163,82,0.04);">
+        <p style="font-size:12px;color:rgba(30,28,24,0.55);font-style:italic;" data-i18n="social_proof">Some families have already chosen their villa at Zaytoun. Early acquirers secure the lowest entry point.</p>
+      </div>
+
       <div class="gate-form-wrap" id="gateFormWrap">
         <!-- LEVEL 1 FORM -->
         <form class="gate-form" id="gateFormL1" onsubmit="handleGateL1(event)">
@@ -809,10 +1003,17 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
           <button type="submit" class="gate-submit" data-i18n="l1_submit">Discover Villas & Price →</button>
           <p class="gate-privacy" data-i18n="gate_privacy">Your information is confidential and will never be shared.</p>
         </form>
+
         <!-- LEVEL 1 SUCCESS (reveal price + L2 form) -->
         <div id="gateL1Success" style="display:none;">
-          <div style="text-align:center;padding:32px 0 28px;border-bottom:1px solid var(--sand);"><div style="font-size:9px;letter-spacing:3px;color:var(--text-light);" data-i18n="price_from">Starting From</div><div style="font-family:var(--font-serif);font-size:clamp(40px,8vw,64px);font-weight:300;color:var(--gold);line-height:1;" dir="ltr">MAD 9,700,000</div><div style="font-size:11px;color:var(--text-light);" data-i18n="price_note_short">Indicative price · excl. VAT</div></div>
-          <div style="background:var(--charcoal);padding:28px;text-align:center;"><div style="font-size:9px;letter-spacing:2.5px;color:var(--gold-light);margin-bottom:10px;" data-i18n="lvl2_badge">Step 2 — Plans & Payment</div><p style="font-family:var(--font-serif);font-size:17px;color:rgba(250,247,242,0.85);margin-bottom:20px;" data-i18n="l2_teaser">Unlock floor plans, payment schedule and delivery dates.</p>
+          <div style="text-align:center;padding:32px 0 28px;border-bottom:1px solid var(--sand);">
+            <div style="font-size:9px;letter-spacing:3px;color:var(--text-light);" data-i18n="price_from">Starting From</div>
+            <div style="font-family:var(--font-serif);font-size:clamp(40px,8vw,64px);font-weight:300;color:var(--gold);line-height:1;" dir="ltr">MAD 9,700,000</div>
+            <div style="font-size:11px;color:var(--text-light);" data-i18n="price_note_short">Indicative price · excl. VAT</div>
+          </div>
+          <div style="background:var(--charcoal);padding:28px;text-align:center;">
+            <div style="font-size:9px;letter-spacing:2.5px;color:var(--gold-light);margin-bottom:10px;" data-i18n="lvl2_badge">Step 2 — Plans & Payment</div>
+            <p style="font-family:var(--font-serif);font-size:17px;color:rgba(250,247,242,0.85);margin-bottom:20px;" data-i18n="l2_teaser">Unlock floor plans, payment schedule and delivery dates.</p>
             <form id="gateFormL2" onsubmit="handleGateSubmit(event)">
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
                 <div class="form-field"><label class="form-label" style="color:rgba(250,247,242,0.5);" data-i18n="form_lastname">Last Name</label><input class="form-input" type="text" id="lname" required style="background:rgba(255,255,255,0.06);color:var(--ivory);"></div>
@@ -825,17 +1026,36 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
             </form>
           </div>
         </div>
+
         <!-- FINAL SUCCESS -->
-        <div class="gate-success" id="gateSuccess"><div class="success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="success-title" data-i18n="success_title">Welcome to Zaytoun</div><div class="success-text" data-i18n="success_text">Your exclusive dossier is now unlocked. Scroll down to discover full details.</div><div class="success-scroll-hint" data-i18n="success_scroll">Scroll to explore</div></div>
+        <div class="gate-success" id="gateSuccess">
+          <div class="success-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="success-title" data-i18n="success_title">Welcome to Zaytoun</div>
+          <div class="success-text" data-i18n="success_text">Your exclusive dossier is now unlocked. Scroll down to discover full details.</div>
+          <div class="success-scroll-hint" data-i18n="success_scroll">Scroll to explore</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DOSSIER (simplified placeholder) -->
+<!-- ═══ DOSSIER (simplified – placeholders) ═══ -->
 <div class="dossier-section" id="dossier">
-  <div class="dossier-header"><div class="unlock-animation"><div class="unlock-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div><div class="unlock-line" data-i18n="dossier_unlocked">Dossier Unlocked</div></div><span class="section-label" data-i18n="dossier_label">Complete Investment Dossier</span><h2 class="section-title" data-i18n="dossier_title">Everything You Need to Decide</h2><p class="section-text" data-i18n="dossier_text">Floor plans, pricing, payment schedule, delivery timeline, and technical specifications.</p></div>
-  <div class="container"><div class="dossier-tabs"><button class="tab-btn active" data-tab="villas" data-i18n="tab_villas">The Villas</button><button class="tab-btn" data-tab="interiors" data-i18n="tab_interiors">Interiors</button><button class="tab-btn" data-tab="floorplans" data-i18n="tab_plans">Floor Plans</button><button class="tab-btn" data-tab="pricing" data-i18n="tab_pricing">Pricing</button><button class="tab-btn" data-tab="finishes" data-i18n="tab_finishes">Finishes</button><button class="tab-btn" data-tab="services" data-i18n="tab_services">Services</button></div>
+  <div class="dossier-header">
+    <div class="unlock-animation"><div class="unlock-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div><div class="unlock-line" data-i18n="dossier_unlocked">Dossier Unlocked</div></div>
+    <span class="section-label" data-i18n="dossier_label">Complete Investment Dossier</span>
+    <h2 class="section-title" data-i18n="dossier_title">Everything You Need to Decide</h2>
+    <p class="section-text" data-i18n="dossier_text">Floor plans, pricing, payment schedule, delivery timeline, and technical specifications.</p>
+  </div>
+  <div class="container">
+    <div class="dossier-tabs">
+      <button class="tab-btn active" data-tab="villas" data-i18n="tab_villas">The Villas</button>
+      <button class="tab-btn" data-tab="interiors" data-i18n="tab_interiors">Interiors</button>
+      <button class="tab-btn" data-tab="floorplans" data-i18n="tab_plans">Floor Plans</button>
+      <button class="tab-btn" data-tab="pricing" data-i18n="tab_pricing">Pricing</button>
+      <button class="tab-btn" data-tab="finishes" data-i18n="tab_finishes">Finishes</button>
+      <button class="tab-btn" data-tab="services" data-i18n="tab_services">Services</button>
+    </div>
     <div class="tab-content active" id="tab-villas"><p>Villa content – full details appear after unlocking.</p></div>
     <div class="tab-content" id="tab-interiors"><p>Interior renders and finishes.</p></div>
     <div class="tab-content" id="tab-floorplans"><p>Architectural floor plans.</p></div>
@@ -845,40 +1065,49 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   </div>
 </div>
 
-<!-- CTA -->
+<!-- ═══ CTA ═══ -->
 <section class="cta-section" id="cta">
-  <div class="container"><h2 class="section-title" data-i18n="cta_title">Twenty Villas Only. For Twenty Families Who Value the Exceptional.</h2><p class="section-text" data-i18n="cta_text">Private and confidential consultation.</p><div class="cta-btns"><a href="tel:+212777474747" class="btn-white" dir="ltr">+212 777 47 47 47</a><a href="mailto:sales@arabesque.life" class="btn-ghost-white">sales@arabesque.life</a></div></div>
+  <div class="container">
+    <h2 class="section-title" data-i18n="cta_title">Twenty Villas Only. For Twenty Families Who Value the Exceptional.</h2>
+    <p class="section-text" data-i18n="cta_text">Private and confidential consultation.</p>
+    <div class="cta-btns">
+      <a href="tel:+212777474747" class="btn-white" dir="ltr">+212 777 47 47 47</a>
+      <a href="mailto:sales@arabesque.life" class="btn-ghost-white">sales@arabesque.life</a>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ═══ -->
 <footer><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_11_ep2mob" alt="Arabesque"><p class="footer-tagline">Zaytoun — for those who choose to live differently.</p></div><div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="#" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'}); return false;">Home</a></li><li><a href="#" onclick="document.querySelector('.about-section').scrollIntoView({behavior:'smooth'}); return false;">The Project</a></li><li><a href="#" onclick="document.getElementById('gate').scrollIntoView({behavior:'smooth'}); return false;">Exclusive Dossier</a></li></ul></div><div><div class="footer-col-title">Contact</div><span class="footer-contact-item"><a href="tel:+212777474747">+212 777 47 47 47</a></span><span class="footer-contact-item"><a href="mailto:sales@arabesque.life">sales@arabesque.life</a></span><span class="footer-contact-item">Route de Tahannouat, Marrakech</span></div></div><div class="footer-bottom"><div class="footer-copy">© 2026 Zaytoun Marrakech — Arabesque Residences</div></div><p class="footer-disclaimer">Disclaimer: This is a marketing presentation only. All information subject to change.</p></div></footer>
 
 <a href="https://wa.me/212777474747" target="_blank" style="position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
 <script>
 // ═══════════════════════════════════════════════════════════
-// GOOGLE SHEETS CONFIGURATION (NO EMAIL FALLBACK)
+// GOOGLE SHEETS CONFIGURATION
+// 👇 REPLACE THIS URL WITH YOUR OWN APPS SCRIPT DEPLOYMENT URL
 // ═══════════════════════════════════════════════════════════
-const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbw-46WTyFA9cu_4hzr0kXxDklLyf7eazr48f9ingBvQ0kTtMd1PUQDUr9yj6urUk93tcQ/exec';
+const SHEET_API_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYMENT_URL_HERE/exec';
 
+// Helper function to send data to Google Sheets
 async function sendToSheet(action, data) {
   const payload = { action, ...data };
   try {
-    await fetch(SHEET_API_URL, {
+    const res = await fetch(SHEET_API_URL, {
       method: 'POST',
       mode: 'cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    console.log(`[Zaytoun] ${action} sent to sheet`);
-    return { status: 'ok' };
+    return await res.json();
   } catch (err) {
     console.error('[Zaytoun] Sheet API error:', err);
-    alert('Unable to save your information. Please try again or refresh the page.');
+    alert('Unable to save your information. Please try again or contact us directly.');
     return { error: err.message };
   }
 }
 
+// Referral code tracking
 const urlParams = new URLSearchParams(window.location.search);
 const REF_CODE = urlParams.get('ref') || localStorage.getItem('zyt_ref') || 'ZYT-ZAKARIA-00';
 if (REF_CODE) localStorage.setItem('zyt_ref', REF_CODE);
@@ -891,6 +1120,7 @@ if (REF_CODE && REF_CODE !== 'ZYT-ZAKARIA-00') {
   }
 }
 
+// Helper to unlock items visually
 function unlockItems(ids) {
   ids.forEach(id => {
     const el = document.getElementById(id);
@@ -905,17 +1135,22 @@ function unlockItems(ids) {
   });
 }
 
+// LEVEL 1 HANDLER
 async function handleGateL1(e) {
   e.preventDefault();
   const fname = document.getElementById('fname1').value.trim();
   const email = document.getElementById('email1').value.trim();
   if (!fname || !email) return;
+
   const btn = e.target.querySelector('button[type="submit"]');
   if (btn) btn.disabled = true;
+
   await sendToSheet('lead_l1', { fname, email, lang: 'en', ref_code: REF_CODE });
+
   document.getElementById('gateFormL1').style.display = 'none';
   document.getElementById('gateL1Success').style.display = 'block';
   unlockItems(['lock-villas', 'lock-price']);
+
   const dossier = document.getElementById('dossier');
   dossier.classList.add('visible');
   document.querySelectorAll('.tab-btn').forEach(tab => {
@@ -932,10 +1167,12 @@ async function handleGateL1(e) {
   if (btn) btn.disabled = false;
 }
 
+// LEVEL 2 HANDLER
 async function handleGateSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('button[type="submit"]');
   if (btn) { btn.textContent = 'Unlocking…'; btn.disabled = true; }
+
   const payload = {
     fname: document.getElementById('fname1').value.trim(),
     lname: document.getElementById('lname').value.trim(),
@@ -947,6 +1184,7 @@ async function handleGateSubmit(e) {
     ref_code: REF_CODE
   };
   await sendToSheet('lead_l2', payload);
+
   unlockItems(['lock-plans1', 'lock-plans2', 'lock-payment', 'lock-handover']);
   document.querySelectorAll('.tab-btn').forEach(tab => {
     tab.style.opacity = '1';
@@ -960,6 +1198,7 @@ async function handleGateSubmit(e) {
   if (btn) btn.disabled = false;
 }
 
+// Language switcher (fixed)
 let currentLang = 'en';
 function setLang(lang, btn) {
   currentLang = lang;
@@ -973,6 +1212,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang'), btn));
 });
 
+// Tab system (fixed)
 function showTab(tabId, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -987,6 +1227,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+// Scroll effects
 const langBar = document.getElementById('langBar');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 80) langBar.classList.add('scrolled');
