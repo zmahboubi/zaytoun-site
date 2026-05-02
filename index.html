@@ -1084,22 +1084,23 @@ section { padding: 56px 0; }
 
 <script>
 // ═══════════════════════════════════════════════════════════
-// GOOGLE SHEETS CONFIGURATION
-// 👇 REPLACE THIS URL WITH YOUR OWN APPS SCRIPT DEPLOYMENT URL
+// GOOGLE SHEETS CONFIGURATION (NO CORS - using no-cors mode)
 // ═══════════════════════════════════════════════════════════
 const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbw-46WTyFA9cu_4hzr0kXxDklLyf7eazr48f9ingBvQ0kTtMd1PUQDUr9yj6urUk93tcQ/exec';
 
-// Helper function to send data to Google Sheets
+// Helper function to send data to Google Sheets (no-cors mode)
 async function sendToSheet(action, data) {
   const payload = { action, ...data };
   try {
-    const res = await fetch(SHEET_API_URL, {
+    // Use no-cors to bypass CORS preflight
+    await fetch(SHEET_API_URL, {
       method: 'POST',
-      mode: 'cors',
+      mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    return await res.json();
+    console.log(`[Zaytoun] ${action} sent to sheet (no-cors)`);
+    return { status: 'ok' };
   } catch (err) {
     console.error('[Zaytoun] Sheet API error:', err);
     alert('Unable to save your information. Please try again or contact us directly.');
