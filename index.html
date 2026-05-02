@@ -840,6 +840,12 @@ section { padding: 56px 0; }
   </div>
 </nav>
 
+<!-- AMBASSADOR BANNER — shown only when ?ref= param present -->
+<div id="refBanner" style="display:none;background:var(--charcoal);padding:10px 20px;text-align:center;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(250,247,242,0.55);">
+  <span style="color:var(--gold-light);">⬦</span>
+  <span id="refBannerText"> Invitation exclusive de <strong class="ref-name" style="color:var(--gold-light);"></strong></span>
+</div>
+
 <!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -852,7 +858,7 @@ section { padding: 56px 0; }
     <div class="hero-arabic-name">زيتون</div>
     <h1 class="hero-title">Zaytoun</h1>
     <p class="hero-subtitle" data-i18n="hero_subtitle">By Arabesque Residences</p>
-    <p class="hero-tagline" data-i18n="hero_tagline">"Where the Atlas meets the art of living — a private sanctuary shaped by silence, light, and the ancient wisdom of the olive."</p>
+    <p class="hero-tagline" data-i18n="hero_tagline">Some places are not bought — they are chosen. Zaytoun is that decision.</p>
     <div class="hero-stats">
       <div class="hero-stat">
         <span class="hero-stat-num">20</span>
@@ -1103,7 +1109,7 @@ section { padding: 56px 0; }
   <!-- Content: label + title + text + 3 cards, all bottom-aligned -->
   <div class="container" style="position:relative;z-index:2;padding-top:120px;padding-bottom:80px;width:100%;">
     <span class="section-label reveal" data-i18n="well_label" style="color:var(--terracotta);">Healthy Living</span>
-    <h2 class="section-title reveal reveal-delay-1" data-i18n="well_title" style="color:var(--white);max-width:560px;">A Sanctuary Designed for Well-Being</h2>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n="well_title" style="color:var(--white);max-width:560px;">Finally — A Place That Brings You Back to Yourself.</h2>
     <p class="section-text reveal reveal-delay-2" data-i18n="well_text" style="color:rgba(255,255,255,0.6);max-width:480px;margin-bottom:56px;">At Zaytoun, luxury is measured not in square metres, but in the quality of each morning, each breath, each moment of stillness. An 800m² wellness center open to all, with privileged priority access for residents.</p>
     <div class="wellness-cards-grid reveal reveal-delay-3">
       <div style="background:rgba(20,16,10,0.6);border:1px solid rgba(255,255,255,0.09);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:28px 22px;">
@@ -1165,6 +1171,12 @@ section { padding: 56px 0; }
           <svg class="lock-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           <span data-i18n="lock5">Handover Date</span>
         </div>
+      </div>
+
+      <!-- SOCIAL PROOF — Option D + families chosen -->
+      <div id="gateSocialProof" style="margin:0 auto 28px;max-width:520px;text-align:center;padding:20px 24px;border:1px solid rgba(200,163,82,0.2);background:rgba(200,163,82,0.04);">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gold)" stroke-width="1.5" style="margin-bottom:8px;opacity:0.7;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <p style="font-size:12px;line-height:1.8;color:rgba(30,28,24,0.55);font-style:italic;" data-i18n="social_proof">Some families have already chosen their villa at Zaytoun. Zaytoun launches at its founding price — early acquirers secure the lowest entry point of the project.</p>
       </div>
 
       <div class="gate-form-wrap" id="gateFormWrap">
@@ -1629,8 +1641,8 @@ section { padding: 56px 0; }
 <!-- ═══ CTA ═══ -->
 <section class="cta-section" id="cta">
   <div class="container">
-    <h2 class="section-title" data-i18n="cta_title">Ready to Secure Your Villa?</h2>
-    <p class="section-text" data-i18n="cta_text">Our sales team is available for private consultations — in Marrakech, by video call, or at your convenience.</p>
+    <h2 class="section-title" data-i18n="cta_title">Twenty Villas Only. For Twenty Families Who Value the Exceptional.</h2>
+    <p class="section-text" data-i18n="cta_text">Reach out — before someone else chooses. Private and confidential consultation, in Marrakech or anywhere in the world.</p>
     <div class="cta-btns">
       <a href="tel:+212777474747" class="btn-white" dir="ltr" data-i18n="cta_call">+212 777 47 47 47</a>
       <a href="mailto:sales@arabesque.life" class="btn-ghost-white" data-i18n="cta_email">sales@arabesque.life</a>
@@ -1644,7 +1656,7 @@ section { padding: 56px 0; }
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_11_ep2mob" alt="Arabesque" onerror="this.style.display='none'">
-        <p class="footer-tagline" data-i18n="footer_tagline">"Life here slows to the rhythm of olive groves and mountain light."</p>
+        <p class="footer-tagline" data-i18n="footer_tagline">Zaytoun — for those who choose to live differently.</p>
       </div>
       <div>
         <div class="footer-col-title" data-i18n="footer_nav">Navigation</div>
@@ -1691,7 +1703,7 @@ const T = {
   en: {
     hero_eyebrow: "Private Collection · 20 Villas · Marrakech",
     hero_subtitle: "By Arabesque Residences",
-    hero_tagline: '"Where the Atlas meets the art of living — a private sanctuary shaped by silence, light, and the ancient wisdom of the olive."',
+    hero_tagline: "Some places are not bought — they are chosen. Zaytoun is that decision.",
     stat_villas: "Private Villas", stat_land: "Ha · Domain", stat_delivery: "Delivery",
     hero_cta: "Unlock the Exclusive Dossier", hero_scroll: "Discover",
     about_label: "The Project",
@@ -1700,7 +1712,7 @@ const T = {
     fact_villas: "Private Villas", fact_terrain: "From — Plot", fact_surface: "From — Living Area", fact_wellness: "Wellness Domain · 800m² Built", fact_suites: "Suites per Villa",
     dest_label: "The Destination",
     dest_title: "Marrakech — Africa's Most Coveted Address",
-    dest_text: "An imperial city where cultural heritage, natural beauty, and investment opportunity converge. Marrakech continues to attract the world's most discerning buyers — with rising property values, strong rental yields, and an international lifestyle unlike anywhere else on the continent.",
+    dest_text: "Marrakech resembles no other city on earth. The light is different. The air is different. The feeling of living here too. A city drawing the world's most discerning for centuries — for what it offers that nowhere else can: a soul. With rental yields up to 10% and consistently rising values, your decision here isn't just emotional — it's the smartest one financially.",
     dest_golf: "Golf & Leisure", dest_golf_text: "Three world-class golf courses within 15 minutes, including Golf Assoufid.",
     dest_air: "International Connectivity", dest_air_text: "Menara Airport — 20 minutes. Direct flights to Paris (3h30), London (3h40), Dubai (8h) and 50+ destinations.",
     dest_nature: "Atlas Mountains", dest_nature_text: "Panoramic views of the snow-capped Atlas from every villa. A horizon that belongs only to you.",
@@ -1719,7 +1731,7 @@ const T = {
     loc_hiv_label: "Hivernage & Medina — 20 min", loc_hiv_title: "The Best of Marrakech Within Reach", loc_hiv_text: "Hivernage's finest hotels, restaurants and boutiques — 20 minutes away. Jamaa el-Fna and the historic Medina equally close.",
     loc_air_label: "Menara Airport — 20 min", loc_air_title: "Connected to Europe, the Gulf & Beyond", loc_air_text: "Direct flights to Paris (3h30), London (3h40), Dubai (8h) and 50+ international destinations. For international buyers, Zaytoun is as accessible as it is exclusive.",
     well_label: "Healthy Living",
-    well_title: "A Sanctuary Designed for Well-Being",
+    well_title: "Finally — A Place That Brings You Back to Yourself.",
     well_text: "At Zaytoun, luxury is measured not in square metres, but in the quality of each morning, each breath, each moment of stillness. A 4,000m² wellness domain — 800m² of built space — open to all, with privileged priority access for residents.",
     wf1_title: "Spa & Hammam", wf1_text: "Traditional Moroccan hammam, treatment rooms, and curated spa therapies drawing on Argan and Rose traditions.",
     wf2_title: "Fitness & Movement", wf2_text: "State-of-the-art fitness studio, yoga pavilion, padel courts, and walking trails through the olive groves.",
@@ -1746,6 +1758,7 @@ const T = {
     price_note_short: "Indicative price · excl. VAT",
     fact_terrain: "From — Plot",
     fact_surface: "From — Living Area",
+    social_proof: "Some families have already chosen their villa at Zaytoun. Zaytoun launches at its founding price — early acquirers secure the lowest entry point of the project.",
     gate_submit: "Access the Complete Dossier →",
     gate_privacy: "Your information is confidential and will never be shared with third parties.",
     success_title: "Welcome to Zaytoun",
@@ -1759,7 +1772,7 @@ const T = {
     villa_arbea: "Villa Arbea", villa_ziria: "Villa Ziria",
     spec_suites: "Suites", spec_levels: "Levels", spec_pool: "Private Pool", spec_parking: "Parking",
     arbea_desc: "Villa Arbea unfolds across two levels — generous ground-floor living opening onto the pool terrace and private garden, with the Master Suite elevated on the upper level for privacy and Atlas views. Five suites in total: 2 Junior Suites, 2 Master Suites, and a fifth suite nestled at garden level — a rare configuration that makes Arbea the larger of the two villa types.",
-    ziria_desc: "A vertical composition across two floors with dramatic double-height volumes — rooftop terrace and upper-level master suite offer panoramic Atlas views.",
+    ziria_desc: "Ziria — full moon in Amazigh. The light that spills across the Atlas at nightfall fills Villa Ziria each evening — through floor-to-ceiling glazing and a panoramic rooftop terrace. Four suites across two levels, the Master Suite elevated to frame nothing but sky.",
     plan_arbea_title: "Villa Arbea — Ground Floor & First Floor",
     plan_ziria_title: "Villa Ziria — Ground Floor & First Floor",
     plan_mp_label: "Master Plan", plan_mp_title: "Zaytoun Marrakech — Site Plan",
@@ -1804,10 +1817,10 @@ const T = {
     svc2_title: "Short-Term Rental Management", svc2_text: "Professional rental management maximising your villa's income potential on platforms like Airbnb, Booking.com, and through luxury channel partners.",
     svc3_title: "Optional Furniture Package", svc3_text: "Full house furnishing by our expert interior designer team — a curated, turnkey package that reflects the Zaytoun aesthetic from day one.",
     svc4_title: "Legal & Foreign Ownership Support", svc4_text: "Dedicated legal guidance throughout the acquisition process under Moroccan law (Loi 44-00 VEFA). Foreign ownership fully supported.",
-    cta_title: "Ready to Secure Your Villa?",
-    cta_text: "Our sales team is available for private consultations — in Marrakech, by video call, or at your convenience.",
+    cta_title: "Twenty Villas Only. For Twenty Families Who Value the Exceptional.",
+    cta_text: "Reach out — before someone else chooses. Private and confidential consultation, in Marrakech or anywhere in the world.",
     cta_call: "+212 777 47 47 47", cta_email: "sales@arabesque.life",
-    footer_tagline: '"Life here slows to the rhythm of olive groves and mountain light."',
+    footer_tagline: "Zaytoun — for those who choose to live differently.",
     footer_nav: "Navigation", footer_contact: "Contact",
     nav_home: "Home", nav_project: "The Project", nav_dest: "Marrakech", nav_dossier: "Exclusive Dossier",
     disclaimer: "IMPORTANT NOTICE — This document is a pre-commercial marketing presentation only and does not constitute an offer to sell, a reservation agreement, a preliminary contract (compromis de vente / avant-contrat), or any binding commitment of any kind. It does not replace the official VEFA deed or any contractual document issued under Moroccan Law 44-00. All visual representations, including 3D renders, images, and illustrations, are artistic impressions only and do not represent the final product; actual finishes, dimensions, and landscaping may differ. All prices indicated are non-contractual estimates subject to change without notice; the sole binding price is that stated in the notarised deed of sale. Delivery timelines are indicative targets based on current planning and are subject to modification due to construction progress, force majeure, or other circumstances beyond the developer's control. All required administrative authorisations and permits have been obtained in accordance with applicable Moroccan regulations. Past rental yield figures and investment return estimates are based on historical market data and do not constitute a guarantee, representation, or warranty of future performance. The personal data you provide is collected solely for the purpose of responding to your enquiry and will be treated with strict confidentiality; it will not be sold or communicated to third parties without your prior consent. Prospective purchasers are strongly advised to seek independent legal and financial advice before making any commitment. Any dispute arising from this document shall be governed by Moroccan law and submitted to arbitration before the competent arbitration centre of Marrakech. Project Owner: M PROPERTIES DEV SARL — Property & Rental Management: R+E Services — Arabesque Residences, Route de Tahannouat, Marrakech, Morocco. All rights reserved."
@@ -1882,6 +1895,7 @@ const T = {
     price_note_short: "سعر استرشادي · لا يشمل TVA",
     fact_terrain: "ابتداءً من — القطعة",
     fact_surface: "ابتداءً من — المساحة المعيشية",
+    social_proof: "بعض العائلات اختارت بالفعل فيلتها في زيتون. زيتون يُطلق بسعر التأسيس — المبادرون الأوائل يضمنون أدنى سعر دخول في المشروع.",
     gate_submit: "الوصول إلى الملف الكامل →",
     gate_privacy: "معلوماتك سرية ولن تُشارَك مع أي طرف ثالث.",
     success_title: "أهلًا بك في دائرة من يفكرون بشكل مختلف",
@@ -2022,6 +2036,7 @@ const T = {
     price_note_short: "Prix indicatif · hors TVA",
     fact_terrain: "À partir de — Terrain",
     fact_surface: "À partir de — Surface Habitable",
+    social_proof: "Certaines familles ont déjà choisi leur villa à Zaytoun. Zaytoun se lance à son prix fondateur — les premiers acquéreurs sécurisent le prix d'entrée le plus bas du projet.",
     gate_submit: "Accéder au Dossier Complet →",
     gate_privacy: "Vos informations sont confidentielles et ne seront jamais partagées avec des tiers.",
     success_title: "Bienvenue dans le Cercle Zaytoun",
@@ -2140,108 +2155,169 @@ function setLang(lang) {
   });
 }
 
+
+// ═══════════════════════════════════════════════════════
+// REFERRAL SYSTEM — Zaytoun Ambassador Tracking
+// ═══════════════════════════════════════════════════════
+
+// 1. Read & persist referral code from URL
+const urlParams   = new URLSearchParams(window.location.search);
+const REF_CODE    = urlParams.get('ref') || localStorage.getItem('zyt_ref') || 'ZYT-ZAKARIA-00';
+const REF_SHARE   = urlParams.get('share') || ''; // for share page
+if (REF_CODE) localStorage.setItem('zyt_ref', REF_CODE);
+
+// 2. Track page visit with code (always — Zakaria is default source)
+sheetPost('visit', {
+  ref_code: REF_CODE,
+  url:      window.location.href,
+  lang:     navigator.language,
+  ts:       new Date().toISOString()
+}).catch(() => {});
+
+// Show ambassador banner only for non-default codes
+if (REF_CODE && REF_CODE !== 'ZYT-ZAKARIA-00') {
+  const banner = document.getElementById('refBanner');
+  if (banner) {
+    banner.style.display = 'block';
+    const nameEl = banner.querySelector('.ref-name');
+    if (nameEl) nameEl.textContent = REF_CODE.split('-')[1] || REF_CODE;
+  }
+}
+
+// 3. Check if email already in DB — called before L1 submit
+async function checkDuplicate(email, refCode) {
+  try {
+    const data = await sheetPost('check', { email, ref_code: refCode });
+    return data; // { exists: bool, ref_match: bool, lead_id: string|null }
+  } catch(_) {
+    return { exists: false };
+  }
+}
+
+// 4. Notify ambassador of duplicate
+function notifyAmbassadorDuplicate(email, refCode) {
+  // Notification handled server-side in Apps Script
+  // No client-side action needed beyond the flag set in localStorage
+  console.log('[Zaytoun] Duplicate flagged for:', email, 'ref:', refCode);
+}
+
+// 5. Generate share URLs
+function getShareUrl(refCode, lang) {
+  const base = 'https://arabesque.life/';
+  return `${base}?ref=${refCode}`;
+}
+
+function getShareMessages(refCode, lang) {
+  const url = getShareUrl(refCode, lang);
+  const msgs = {
+    en: `I've been following Zaytoun — a private estate of 20 villas in Marrakech, starting from MAD 9,700,000. Exceptional project, a few villas still available. Here's my exclusive link: ${url}`,
+    fr: `Je suis le projet Zaytoun à Marrakech — 20 villas privées sur 4,4 hectares, à partir de 9,7M MAD. Projet exceptionnel, quelques villas encore disponibles. Voici mon lien exclusif : ${url}`,
+    ar: `أتابع مشروع زيتون في مراكش — 20 فيلا خاصة على 4.4 هكتار، ابتداءً من 9.7 مليون درهم. مشروع استثنائي وبعض الفلل لا تزال متاحة. إليك رابطي الحصري: ${url}`
+  };
+  return msgs[lang] || msgs.en;
+}
+
+function openShare(platform, refCode) {
+  const lang = currentLang || 'fr';
+  const msg  = encodeURIComponent(getShareMessages(refCode, lang));
+  const url  = encodeURIComponent(getShareUrl(refCode, lang));
+  const links = {
+    whatsapp:  `https://wa.me/?text=${msg}`,
+    linkedin:  `https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${msg}`,
+    facebook:  `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${msg}`,
+    instagram: null, // Instagram doesn't support direct share URLs — copy link instead
+    copy:      null
+  };
+  if (platform === 'copy' || platform === 'instagram') {
+    navigator.clipboard.writeText(getShareUrl(refCode, lang));
+    const btn = document.querySelector(`[data-platform="${platform}"]`);
+    if (btn) { btn.textContent = '✓ Copied'; setTimeout(() => btn.textContent = platform === 'copy' ? '🔗 Copy Link' : '📸 Instagram', 2000); }
+    return;
+  }
+  window.open(links[platform], '_blank', 'width=600,height=500');
+}
+
 // ═══════════════════════════════════════════
 // GATE FORM
 // ═══════════════════════════════════════════
 let dossierUnlocked = false;
 
-// ═══════════════════════════════════════════
-// ODOO CRM — CONFIG
-// Set ODOO_URL to your Odoo instance base URL (no trailing slash)
-// e.g. 'https://www.arabesque.life'
-// The form posts to /web/dataset/call_kw and creates a crm.lead record.
-// ═══════════════════════════════════════════
-const ODOO_URL   = 'https://www.arabesque.life';
-const ODOO_DB    = 'arabesque';          // ← set your Odoo DB name
-const LEAD_TAG   = 'Zaytoun Website';    // tag applied to every lead
-const SALES_TEAM = 'Zaytoun';           // Sales team name in Odoo CRM
+// ═══════════════════════════════════════════════════════════
+// GOOGLE SHEETS CRM — CONFIG
+// 1. Copier zaytoun_appscript.gs dans Extensions > Apps Script
+// 2. Déployer comme Web App (accès : Tout le monde)
+// 3. Coller l'URL de déploiement ci-dessous
+// ═══════════════════════════════════════════════════════════
+const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbwmiutCEgmVDgRNI6nl9XEUlMP02MXJeRmMJ4776WJv58pw9n-kLuuw6K_Sxxa3m1tv/exec';
+// Ex: 'https://script.google.com/macros/s/AKfycb.../exec'
 
-async function createOdooLead(payload) {
-  // Use Odoo Website Form controller — works for anonymous visitors
-  // No session required, CSRF token from Odoo meta tag
-  
-  const intentMap = {
-    primary:    'Résidence Principale',
-    investment: 'Investissement / Locatif',
-    secondary:  'Résidence Secondaire',
-    exploring:  'En cours de réflexion',
-  };
+const intentMap = {
+  primary:    'Résidence Principale',
+  investment: 'Investissement / Locatif',
+  secondary:  'Résidence Secondaire',
+  exploring:  'En cours de réflexion',
+};
 
-  // Method 1: Try JSON-RPC (works when page is served from Odoo)
-  const endpoint = `${ODOO_URL}/web/dataset/call_kw`;
-  
-  // Get CSRF token from Odoo meta tag if available
-  const csrfMeta = document.querySelector('meta[name="csrf-token"]');
-  const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : null;
-
-  const headers = { 'Content-Type': 'application/json' };
-  if (csrfToken) headers['X-CSRFToken'] = csrfToken;
-
-  const body = {
-    jsonrpc: '2.0',
-    method:  'call',
-    id:      Math.floor(Math.random() * 100000),
-    params: {
-      model:  'crm.lead',
-      method: 'create',
-      args: [{
-        name:         `[Zaytoun] ${payload.fname} ${payload.lname}`,
-        contact_name: `${payload.fname} ${payload.lname}`,
-        email_from:   payload.email,
-        phone:        payload.phone,
-        description:  [
-          `Pays de résidence : ${payload.country}`,
-          `Intention d\'achat : ${intentMap[payload.intent] || payload.intent}`,
-          `Langue : ${payload.lang.toUpperCase()}`,
-          `Source : Formulaire teaser Zaytoun (site pré-lancement)`,
-          `UTM Source : ${utmParams.source}`,
-          `UTM Medium : ${utmParams.medium}`,
-          `UTM Campaign : ${utmParams.campaign}`,
-          utmParams.referrer ? `Referrer : ${utmParams.referrer}` : '',
-        ].filter(Boolean).join('\n'),
-        type:     'lead',
-        tag_ids:  [],
-      }],
-      kwargs: {},
-    },
-  };
-
-  const res = await fetch(endpoint, {
-    method:      'POST',
-    headers,
-    credentials: 'include',
-    body:        JSON.stringify(body),
-  });
-
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const data = await res.json();
-  if (data.error) {
-    const msg = data.error.data?.message || data.error.message || 'Odoo error';
-    throw new Error(msg);
+async function sheetPost(action, data) {
+  const payload = { action, ...data };
+  try {
+    const res = await fetch(SHEET_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+      mode: 'cors'
+    });
+    return await res.json();
+  } catch(err) {
+    // Fallback: mailto so lead is never lost
+    console.warn('[Zaytoun] Sheets API failed:', err.message);
+    if (action === 'lead_l2') {
+      const subject = encodeURIComponent(`[Zaytoun Lead] ${data.fname} ${data.lname}`);
+      const body = encodeURIComponent(
+        `Nouveau lead Zaytoun\n\nNom: ${data.fname} ${data.lname}\nEmail: ${data.email}\nTél: ${data.phone}\nPays: ${data.country}\nIntention: ${data.intent}\nLangue: ${data.lang}\nParrain: ${data.ref_code || 'Direct'}`
+      );
+      const a = document.createElement('a');
+      a.href = `mailto:sales@arabesque.life?subject=${subject}&body=${body}`;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    return { error: err.message };
   }
-  return data.result;
 }
 
 // ─── LEVEL 1: prénom + email → révèle prix + villas/interiors ───
-function handleGateL1(e) {
+async function handleGateL1(e) {
   e.preventDefault();
   const fname = document.getElementById('fname1').value.trim();
   const email = document.getElementById('email1').value.trim();
   if (!fname || !email) return;
 
-  // CRM ping L1
-  try {
-    fetch(ODOO_URL + '/web/dataset/call_kw', {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ jsonrpc:'2.0', method:'call', params:{
-        model:'crm.lead', method:'create', args:[{
-          name: '[Zaytoun L1] ' + fname,
-          email_from: email, stage_id: 1,
-          description: 'Level 1 gate — lang: ' + currentLang
-        }], kwargs:{}
-      }})
-    });
-  } catch(_){}
+  const btn = document.getElementById('gateFormL1').querySelector('button[type="submit"]');
+  if (btn) { btn.disabled = true; btn.style.opacity = '0.65'; }
+
+  // Check duplicate BEFORE creating lead
+  if (REF_CODE) {
+    const dupCheck = await checkDuplicate(email, REF_CODE);
+    if (dupCheck.exists) {
+      notifyAmbassadorDuplicate(email, REF_CODE);
+      // Flag in localStorage so L2 also carries the duplicate notice
+      localStorage.setItem('zyt_dup', '1');
+      localStorage.setItem('zyt_dup_lead', dupCheck.lead_id || '');
+    }
+  }
+  if (btn) { btn.disabled = false; btn.style.opacity = '1'; }
+
+  // Send L1 lead to Google Sheets
+  sheetPost('lead_l1', {
+    fname,
+    email,
+    lang:           currentLang,
+    ref_code:       REF_CODE || '',
+    is_duplicate:   localStorage.getItem('zyt_dup') === '1',
+    existing_lead_id: localStorage.getItem('zyt_dup_lead') || ''
+  });
 
   // Hide L1 form, show L1 success (prix + bandeau L2)
   document.getElementById('gateFormL1').style.display = 'none';
@@ -2308,66 +2384,28 @@ function unlockItems(ids) {
 async function handleGateSubmit(e) {
   e.preventDefault();
 
-  const btn = document.querySelector('.gate-submit');
+  const btn = document.querySelector('#gateFormL2 button[type="submit"]');
   const labels = { en: 'Unlocking…', fr: 'Déverrouillage…', ar: 'جارٍ الفتح…' };
-  btn.textContent = labels[currentLang] || 'Unlocking…';
-  btn.style.opacity = '0.65';
-  btn.disabled = true;
+  if (btn) { btn.textContent = labels[currentLang] || 'Unlocking…'; btn.style.opacity = '0.65'; btn.disabled = true; }
 
   const payload = {
-    fname:   document.getElementById('fname1').value.trim() || document.getElementById('fname')?.value?.trim() || '',
-    lname:   document.getElementById('lname').value.trim(),
-    email:   document.getElementById('email1').value.trim() || document.getElementById('email')?.value?.trim() || '',
-    phone:   document.getElementById('phone').value.trim(),
-    country: document.getElementById('country').value,
-    intent:  document.getElementById('intent').value,
-    lang:    currentLang,
+    action:   'lead_l2',
+    fname:    document.getElementById('fname1').value.trim(),
+    lname:    document.getElementById('lname').value.trim(),
+    email:    document.getElementById('email1').value.trim(),
+    phone:    document.getElementById('phone')?.value?.trim() || '',
+    country:  document.getElementById('country')?.value || '',
+    intent:   document.getElementById('intent')?.value || '',
+    lang:     currentLang,
+    ref_code: REF_CODE || '',
+    is_duplicate: localStorage.getItem('zyt_dup') === '1',
+    existing_lead_id: localStorage.getItem('zyt_dup_lead') || ''
   };
 
-  try {
-    const leadId = await createOdooLead(payload);
-    console.log('[Zaytoun] CRM lead created — ID:', leadId);
-  } catch (err) {
-    console.warn('[Zaytoun] CRM JSON-RPC failed:', err.message);
-    
-    // Fallback Method 2: POST to Odoo website/form controller
-    try {
-      const formData = new FormData();
-      formData.append('contact_name', `${payload.fname} ${payload.lname}`);
-      formData.append('email_from', payload.email);
-      formData.append('phone', payload.phone);
-      formData.append('name', `[Zaytoun] ${payload.fname} ${payload.lname}`);
-      formData.append('description', 
-        `Pays: ${payload.country}\nIntention: ${payload.intent}\nLangue: ${payload.lang}`);
-      
-      const fallbackRes = await fetch(`${ODOO_URL}/website/form/crm.lead`, {
-        method: 'POST',
-        credentials: 'include',
-        body: formData,
-      });
-      if (fallbackRes.ok) {
-        console.log('[Zaytoun] Lead created via website/form fallback');
-        return; // success
-      }
-    } catch(e2) {
-      console.warn('[Zaytoun] website/form fallback also failed:', e2.message);
-    }
+  await sheetPost('lead_l2', payload);
+  console.log('[Zaytoun] L2 lead sent to Google Sheets');
 
-    // Fallback Method 3: mailto (lead never lost)
-    const subject = encodeURIComponent(`[Zaytoun Lead] ${payload.fname} ${payload.lname}`);
-    const mailBody = encodeURIComponent(
-      `Nouveau lead Zaytoun\n\nNom: ${payload.fname} ${payload.lname}\nEmail: ${payload.email}\nTél: ${payload.phone}\nPays: ${payload.country}\nIntention: ${payload.intent}\nLangue: ${payload.lang}`
-    );
-    const a = document.createElement('a');
-    a.href = `mailto:sales@arabesque.life?subject=${subject}&body=${mailBody}`;
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    console.warn('[Zaytoun] Lead sent via mailto fallback');
-  }
-
-  // Always unlock the dossier regardless of CRM result
+  // Always unlock regardless of API result
   unlockDossier();
 }
 
