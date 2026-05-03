@@ -683,6 +683,7 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   section { padding: 56px 0; }
   .hero-stats { gap: 16px; flex-wrap: wrap; }
   .hero-divider { display: none; }
+  .wellness-bottom-grid { grid-template-columns: 1fr !important; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-facts { grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .fact-num { font-size: 20px; }
@@ -746,9 +747,9 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
       <div class="hero-divider"></div>
       <div class="hero-stat"><span class="hero-stat-num">4.4</span><span class="hero-stat-label" data-i18n="stat_land">Hectares</span></div>
       <div class="hero-divider"></div>
-      <div class="hero-stat"><span class="hero-stat-num" style="font-size:22px;">2027–28</span><span class="hero-stat-label" data-i18n="stat_delivery">Delivery</span></div>
+      <div class="hero-stat"><span class="hero-stat-num" style="font-size:22px;">2027–28</span><span class="hero-stat-label" data-i18n="stat_delivery">Move-In Ready</span></div>
     </div>
-    <div class="hero-cta"><button class="btn-primary" onclick="document.getElementById('gate').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta">Unlock the Exclusive Dossier</button></div>
+    <div class="hero-cta"><button class="btn-primary" onclick="document.getElementById('gate').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta">Request Private Access</button></div>
   </div>
   <div class="hero-scroll"><span data-i18n="hero_scroll">Discover</span><div class="scroll-line"></div></div>
 </section>
@@ -788,14 +789,20 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
     <div style="position:absolute;bottom:24px;right:32px;z-index:2;"><div style="font-family:var(--font-serif);font-style:italic;font-size:13px;color:rgba(255,255,255,0.45);" data-i18n="atlas_caption">Atlas Mountains — view from Zaytoun</div></div>
   </div>
   <div style="background:var(--ivory-deep);padding:80px 0;border-top:1px solid var(--sand);border-bottom:1px solid var(--sand);">
-    <div class="container"><div style="text-align:center;margin-bottom:56px;"><span class="section-label reveal" data-i18n="invest_label" style="display:block;color:var(--terracotta);">Why Invest in Marrakech</span><h2 class="section-title reveal reveal-delay-1" data-i18n="invest_title" style="color:var(--charcoal);text-align:center;">A Market That Consistently Delivers</h2></div>
+    <div class="container"><div style="text-align:center;margin-bottom:56px;"><span class="section-label reveal" data-i18n="invest_label" style="display:block;color:var(--terracotta);">Why Invest in Marrakech</span><h2 class="section-title reveal reveal-delay-1" data-i18n="invest_title" style="color:var(--charcoal);text-align:center;">A Market That Consistently Delivers</h2></div></div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;" class="reveal reveal-delay-2">
       <div style="background:var(--white);border:1px solid var(--sand);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat1_num">+8%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat1_label">Annual Price Growth</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat1_text">Luxury property values in Marrakech have grown consistently above regional averages.</div></div>
       <div style="background:var(--white);border:1px solid var(--sand);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat2_num">7–10%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat2_label">Gross Rental Yield</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat2_text">High-end villas command premium short-term rental rates.</div></div>
       <div style="background:var(--white);border:1px solid var(--sand);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat3_num">5M+</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat3_label">Annual Tourists</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat3_text">Over 5 million annual visitors to Marrakech.</div></div>
       <div style="background:var(--white);border:1px solid var(--sand);padding:36px 28px;text-align:center;"><div style="font-family:var(--font-serif);font-size:42px;font-weight:300;color:var(--terracotta);" data-i18n="inv_stat4_num">100%</div><div style="font-size:9px;letter-spacing:2px;color:var(--gold);" data-i18n="inv_stat4_label">Foreign Ownership</div><div style="font-size:12px;color:var(--text-light);" data-i18n="inv_stat4_text">Morocco fully permits foreign freehold ownership.</div></div>
-    </div></div>
+    </div>
+    <!-- Investment disclaimer -->
+    <div style="margin-top:20px;padding:16px 20px;background:var(--ivory-deep);border-left:2px solid var(--sand);display:flex;gap:12px;align-items:flex-start;">
+      <div style="font-size:14px;color:var(--text-light);flex-shrink:0;margin-top:1px;">⚠</div>
+      <p style="font-size:10px;color:var(--text-light);line-height:1.7;margin:0;" data-i18n="inv_disclaimer">Yield, growth and tourism figures are based on publicly available market data (ANCFCC / Bank Al-Maghrib IPAI index, ONMT) and estimated benchmarks for comparable managed properties on Route de Tahannaout. For informational purposes only — not a forecast, recommendation or guarantee of future returns. Real estate involves risks including vacancy, regulatory change, currency fluctuation and market downturn. Past performance does not guarantee future results. Seek independent legal, financial and tax advice. M PROPERTIES DEV SARL does not guarantee any rental, occupancy or capital-appreciation outcome.</p>
+    </div>
   </div>
+</div>
 </section>
 
 <!-- LOCATION -->
@@ -815,10 +822,32 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 <section style="background:var(--charcoal);position:relative;min-height:700px;display:flex;align-items:flex-end;">
   <div style="position:absolute;inset:0;"><img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_05_bawka8" alt="Wellness" style="width:100%;height:100%;object-fit:cover;"><div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(28,24,18,0.92) 0%,rgba(28,24,18,0.72) 40%,rgba(28,24,18,0.10) 100%);"></div></div>
   <div class="container" style="position:relative;z-index:2;padding-top:120px;padding-bottom:80px;">
-    <span class="section-label" data-i18n="well_label" style="color:var(--terracotta);">Healthy Living</span>
+    <span class="section-label" data-i18n="well_label" style="color:var(--terracotta);">Art of Wellbeing</span>
     <h2 class="section-title" data-i18n="well_title" style="color:white;">Finally — A Place That Brings You Back to Yourself.</h2>
     <p class="section-text" data-i18n="well_text" style="color:rgba(255,255,255,0.6);margin-bottom:56px;">An 800m² wellness center with priority access for residents.</p>
-    <div class="wellness-cards-grid"><div style="background:rgba(20,16,10,0.6);padding:28px 22px;"><div style="font-size:20px;color:var(--gold-light);">◈</div><div style="font-family:var(--font-serif);font-size:17px;color:white;" data-i18n="wf1_title">Spa & Hammam</div><div style="font-size:12px;color:rgba(255,255,255,0.5);" data-i18n="wf1_text">Traditional Moroccan hammam and therapies.</div></div><div style="background:rgba(20,16,10,0.6);padding:28px 22px;"><div style="font-size:20px;color:var(--gold-light);">◯</div><div style="font-family:var(--font-serif);font-size:17px;color:white;" data-i18n="wf2_title">Fitness & Movement</div><div style="font-size:12px;color:rgba(255,255,255,0.5);" data-i18n="wf2_text">Gym, yoga, padel, walking trails.</div></div><div style="background:rgba(20,16,10,0.6);padding:28px 22px;"><div style="font-size:20px;color:var(--gold-light);">❧</div><div style="font-family:var(--font-serif);font-size:17px;color:white;" data-i18n="wf3_title">Gardens & Nature</div><div style="font-size:12px;color:rgba(255,255,255,0.5);" data-i18n="wf3_text">Meditation gardens and olive groves.</div></div></div>
+    <div class="wellness-cards-grid" style="display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.08);">
+      <!-- SPA — full width, centerpiece -->
+      <div style="background:rgba(20,16,10,0.72);padding:36px 32px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:flex-start;">
+        <div style="font-size:32px;color:var(--gold-light);line-height:1;">◈</div>
+        <div>
+          <div style="font-family:var(--font-serif);font-size:22px;color:white;margin-bottom:12px;letter-spacing:0.3px;" data-i18n="wf1_title">Spa &amp; Hammam</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.62);line-height:1.85;max-width:780px;" data-i18n="wf1_text">At Zaytoun, wellbeing was placed at the heart of the project from its very conception — and the spa is its centrepiece. Step into a traditional Moroccan hammam carved in tadelakt and warm marble, where steam, eucalyptus and black soap follow centuries-old rituals. Treatment cabins offer signature therapies built around argan oil, rose of Kelaat M'Gouna, and orange blossom. A space to slow down, breathe, and return to yourself — open to all, with priority access reserved for residents.</div>
+        </div>
+      </div>
+      <!-- FITNESS + GARDENS — 2 columns under -->
+      <div class="wellness-bottom-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.08);">
+        <div style="background:rgba(20,16,10,0.6);padding:32px 28px;">
+          <div style="font-size:22px;color:var(--gold-light);margin-bottom:16px;">◯</div>
+          <div style="font-family:var(--font-serif);font-size:18px;color:white;margin-bottom:10px;" data-i18n="wf2_title">Fitness &amp; Movement</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.75;" data-i18n="wf2_text">Fully equipped gym, sunrise yoga, padel courts and trails through centuries-old olive groves.</div>
+        </div>
+        <div style="background:rgba(20,16,10,0.6);padding:32px 28px;">
+          <div style="font-size:22px;color:var(--gold-light);margin-bottom:16px;">❧</div>
+          <div style="font-family:var(--font-serif);font-size:18px;color:white;margin-bottom:10px;" data-i18n="wf3_title">Gardens &amp; Nature</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.75;" data-i18n="wf3_text">Meditation gardens and ancient olive groves — silence as a privilege.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -872,18 +901,308 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   </div>
 </section>
 
-<!-- DOSSIER (placeholder) -->
+<!-- DOSSIER (full content — unlocks after Level 2 form) -->
 <div class="dossier-section" id="dossier">
   <div class="dossier-header"><div class="unlock-animation"><div class="unlock-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></div><div class="unlock-line" data-i18n="dossier_unlocked">Dossier Unlocked</div></div><span class="section-label" data-i18n="dossier_label">Complete Investment Dossier</span><h2 class="section-title" data-i18n="dossier_title">Everything You Need to Decide</h2><p class="section-text" data-i18n="dossier_text">Floor plans, pricing, payment schedule, delivery timeline, and technical specifications.</p></div>
   <div class="container"><div class="dossier-tabs"><button class="tab-btn active" data-tab="villas" data-i18n="tab_villas">The Villas</button><button class="tab-btn" data-tab="interiors" data-i18n="tab_interiors">Interiors</button><button class="tab-btn" data-tab="floorplans" data-i18n="tab_plans">Floor Plans</button><button class="tab-btn" data-tab="pricing" data-i18n="tab_pricing">Pricing</button><button class="tab-btn" data-tab="finishes" data-i18n="tab_finishes">Finishes</button><button class="tab-btn" data-tab="services" data-i18n="tab_services">Services</button></div>
-    <div class="tab-content active" id="tab-villas"><p>Villa content – full details appear after unlocking.</p></div>
-    <div class="tab-content" id="tab-interiors"><p>Interior renders and finishes.</p></div>
-    <div class="tab-content" id="tab-floorplans"><p>Architectural floor plans.</p></div>
-    <div class="tab-content" id="tab-pricing"><div class="pricing-block"><div class="price-amount">MAD 9,700,000</div><div class="payment-plan"><div class="payment-step"><span class="payment-pct">30%</span><span class="payment-when">At Reservation</span></div><div class="payment-step"><span class="payment-pct">70%</span><span class="payment-when">At Handover</span></div></div><div class="handover-block"><div><h3>Delivery</h3><p>Phase 1: Q3 2027<br>Phases 2&3: Q3 2028</p></div></div></div></div>
-    <div class="tab-content" id="tab-finishes"><p>Finishes and materials specification.</p></div>
-    <div class="tab-content" id="tab-services"><p>Property management, rental services, furniture packages, legal support.</p></div>
-  </div>
-</div>
+    <div class="tab-content active" id="tab-villas">
+      <div class="villa-grid">
+        <div class="villa-card">
+          <div class="villa-img">
+            <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/f_auto,q_auto/villa_facade_1_dwtqan" alt="Villa Arbea — Facade" onerror="this.parentElement.style.background='#C4765A'">
+          </div>
+          <div class="villa-info">
+            <div class="villa-name" data-i18n="villa_arbea">Villa Arbea</div>
+            <div class="villa-specs">
+              <div class="spec-item"><span class="spec-val">5</span><span class="spec-key" data-i18n="spec_suites">Suites</span></div>
+              <div class="spec-item"><span class="spec-val">R+1</span><span class="spec-key" data-i18n="spec_levels">Levels</span></div>
+              <div class="spec-item"><span class="spec-val" style="font-size:16px;line-height:1.2;">◈</span><span class="spec-key" data-i18n="spec_pool">Private Pool</span></div>
+              <div class="spec-item"><span class="spec-val">2+2</span><span class="spec-key" data-i18n="spec_parking">Parking</span></div>
+            </div>
+            <p class="section-text" style="font-size:13px" data-i18n="arbea_desc">Villa Arbea unfolds across two levels — a generous ground floor opens onto the pool terrace and private garden, while the Master Suite rises on the upper level for privacy and unobstructed Atlas views. Five suites in total: two Junior Suites, two Master Suites, and a fifth garden-level suite — a rare configuration that makes Arbea the largest of the two villa typologies.</p>
+          </div>
+        </div>
+        <div class="villa-card">
+          <div class="villa-img">
+            <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_03_ra2fom" alt="Villa Ziria — Garden &amp; Pool View" onerror="this.parentElement.style.background='#3D5A2B'">
+          </div>
+          <div class="villa-info">
+            <div class="villa-name" data-i18n="villa_ziria">Villa Ziria</div>
+            <div class="villa-specs">
+              <div class="spec-item"><span class="spec-val">4</span><span class="spec-key" data-i18n="spec_suites">Suites</span></div>
+              <div class="spec-item"><span class="spec-val">R+1</span><span class="spec-key" data-i18n="spec_levels">Levels</span></div>
+              <div class="spec-item"><span class="spec-val" style="font-size:16px;line-height:1.2;">◈</span><span class="spec-key" data-i18n="spec_pool">Private Pool</span></div>
+              <div class="spec-item"><span class="spec-val">2+2</span><span class="spec-key" data-i18n="spec_parking">Parking</span></div>
+            </div>
+            <p class="section-text" style="font-size:13px" data-i18n="ziria_desc">Ziria — full moon in Amazigh. The light that spills across the Atlas at nightfall fills Villa Ziria each evening, through generous glazed openings and a panoramic rooftop terrace. Four suites across two levels, with the Master Suite elevated to frame nothing but sky.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-interiors">
+      <div style="margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--sand);">
+        <span style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);display:block;margin-bottom:8px;" data-i18n="int_label">Interior Renders</span>
+        <h3 style="font-family:var(--font-serif);font-size:26px;font-weight:300;color:var(--charcoal);" data-i18n="int_title">A Refined Art of Living</h3>
+        <p style="font-size:13px;color:var(--text-light);margin-top:8px;max-width:560px;line-height:1.8;" data-i18n="int_subtitle">Each villa is designed around the experience of living — intimate spaces that open to gardens and light, with artisanal finishes drawn from Moroccan craft tradition.</p>
+      </div>
+      <div class="interiors-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div class="interior-card" style="grid-column:span 2;">
+          <div style="overflow:hidden;background:var(--cream);">
+            <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/v1776250352/Capture_d_e%CC%81cran_2026-04-15_a%CC%80_11.45.28_bmk6ig"
+                 alt="Salon — Cheminée &amp; Vue Jardin"
+                 style="width:100%;height:460px;object-fit:cover;object-position:center;display:block;transition:transform 0.6s ease;cursor:zoom-in;"
+                 onclick="this.classList.toggle('zoomed');this.style.transform=this.classList.contains('zoomed')?'scale(1.15)':'scale(1)'">
+          </div>
+          <div style="padding:16px 0 8px;display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-family:var(--font-serif);font-size:18px;color:var(--charcoal);" data-i18n="int_salon">Living Room — Fireplace &amp; Garden View</span>
+            <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);" data-i18n="int_villa_a">Villa Arbea</span>
+          </div>
+          <p style="font-size:12px;color:var(--text-light);line-height:1.7;" data-i18n="int_salon_desc">Moroccan brass, handcrafted stone tiles, and artisan plaster — the salon opens through wide glazed openings onto the private terrace and pool.</p>
+        </div>
+        <div class="interior-card">
+          <div style="overflow:hidden;background:var(--cream);">
+            <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/v1776250367/Capture_d_e%CC%81cran_2026-04-15_a%CC%80_11.47.01_bkbqoz"
+                 alt="Salle de bain — Douche &amp; Vue Jardin"
+                 style="width:100%;height:320px;object-fit:cover;object-position:center;display:block;transition:transform 0.6s ease;cursor:zoom-in;"
+                 onclick="this.classList.toggle('zoomed');this.style.transform=this.classList.contains('zoomed')?'scale(1.15)':'scale(1)'">
+          </div>
+          <div style="padding:16px 0 8px;display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-family:var(--font-serif);font-size:18px;color:var(--charcoal);" data-i18n="int_shower">Master Suite Bathroom</span>
+            <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);" data-i18n="int_villa_ab">All Villas</span>
+          </div>
+          <p style="font-size:12px;color:var(--text-light);line-height:1.7;" data-i18n="int_shower_desc">Walk-in rain shower with mosaic tile accent wall and generous glazed openings onto a private garden. Brushed black fittings throughout.</p>
+        </div>
+        <div class="interior-card">
+          <div style="overflow:hidden;background:var(--cream);">
+            <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/v1776250360/Capture_d_e%CC%81cran_2026-04-15_a%CC%80_11.47.27_gl5qm3"
+                 alt="Salle de bain — Double vasque tadelakt"
+                 style="width:100%;height:320px;object-fit:cover;object-position:center;display:block;transition:transform 0.6s ease;cursor:zoom-in;"
+                 onclick="this.classList.toggle('zoomed');this.style.transform=this.classList.contains('zoomed')?'scale(1.15)':'scale(1)'">
+          </div>
+          <div style="padding:16px 0 8px;display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-family:var(--font-serif);font-size:18px;color:var(--charcoal);" data-i18n="int_vanity">Double Vanity — Tadelakt &amp; Stone</span>
+            <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);" data-i18n="int_villa_ab">All Villas</span>
+          </div>
+          <p style="font-size:12px;color:var(--text-light);line-height:1.7;" data-i18n="int_vanity_desc">Floating double basin in tadelakt — Morocco's traditional waterproof lime plaster — with integrated storage and artisanal ceramics.</p>
+        </div>
+        <div class="interior-card" style="grid-column:span 2;">
+          <div style="overflow:hidden;background:var(--cream);">
+            <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/v1776250757/Capture_d_e%CC%81cran_2026-04-15_a%CC%80_11.58.02_xdy6iv"
+                 alt="Master Suite — Chambre"
+                 style="width:100%;height:460px;object-fit:cover;object-position:center;display:block;transition:transform 0.6s ease;cursor:zoom-in;"
+                 onclick="this.classList.toggle('zoomed');this.style.transform=this.classList.contains('zoomed')?'scale(1.15)':'scale(1)'">
+          </div>
+          <div style="padding:16px 0 8px;display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-family:var(--font-serif);font-size:18px;color:var(--charcoal);" data-i18n="int_bedroom">Master Suite — Bedroom</span>
+            <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);" data-i18n="int_villa_ab">All Villas</span>
+          </div>
+          <p style="font-size:12px;color:var(--text-light);line-height:1.7;" data-i18n="int_bedroom_desc">Generous master suite with wide glazed openings, tadelakt walls and bespoke joinery. Each suite is conceived as a private retreat within the villa.</p>
+        </div>
+      </div>
+      <div style="margin-top:40px;padding:28px 32px;background:var(--ivory-deep);border:1px solid var(--sand);display:flex;align-items:center;gap:20px;">
+        <div style="font-size:24px;color:var(--gold);">◈</div>
+        <div>
+          <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:4px;" data-i18n="int_note_label">Finishes &amp; Materials</div>
+          <p style="font-size:13px;color:var(--text-mid);line-height:1.7;" data-i18n="int_note_text">All renders show the standard specification. Premium upgrade packages available — see the Finishes &amp; Materials tab for full details.</p>
+        </div>
+      </div>
+      <!-- Renders legal disclaimer -->
+      <div style="margin-top:12px;padding:12px 16px;background:var(--cream);border-left:2px solid var(--sand);display:flex;gap:10px;align-items:flex-start;">
+        <div style="font-size:12px;color:var(--text-light);flex-shrink:0;">⚠</div>
+        <p style="font-size:10px;color:var(--text-light);line-height:1.7;margin:0;" data-i18n="render_disclaimer">All images are artist's conceptual renderings for illustrative purposes only. Final colours, materials, finishes, furniture, fixtures, landscaping and views may differ from those depicted. Furniture and decorative items shown are not included in the standard specification. Images may have been digitally enhanced for presentation purposes.</p>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-floorplans">
+      <div style="margin-bottom:56px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--sand);">
+          <div>
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:6px;" data-i18n="plan_mp_label">Master Plan</div>
+            <div style="font-family:var(--font-serif);font-size:24px;color:var(--charcoal);" data-i18n="plan_mp_title">Zaytoun Marrakech — Site Plan</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:var(--font-serif);font-size:22px;color:var(--terracotta);">20 <span style="font-size:14px;">villas · 4.4 Ha</span></div>
+          </div>
+        </div>
+        <div style="background:var(--cream);padding:16px;border:1px solid var(--sand);overflow:hidden;">
+          <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/f_auto,q_auto/plan_masse_e65fhr" alt="Zaytoun Marrakech — Plan de Masse 1:1000"
+               style="width:100%;height:auto;display:block;cursor:zoom-in;transition:transform 0.4s ease;"
+               onclick="this.classList.toggle('zoomed');this.style.transform=this.classList.contains('zoomed')?'scale(1.9)':'scale(1)'">
+        </div>
+        <p style="font-size:11px;color:var(--text-light);margin-top:8px;font-style:italic;text-align:center;" data-i18n="plan_zoom_hint">Click to zoom</p>
+      </div>
+      <div style="margin-bottom:56px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--sand);">
+          <div>
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:6px;" data-i18n="plan_arbea_label">Type A — Villa Arbea</div>
+            <div style="font-family:var(--font-serif);font-size:24px;color:var(--charcoal);" data-i18n="plan_arbea_title">Villa Arbea — Ground Floor &amp; First Floor</div>
+          </div>
+          <div style="display:flex;gap:28px;text-align:center;">
+            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">5</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_suites">Suites</div></div>
+            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">R+1</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_levels">Levels</div></div>
+            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">◈</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_pool">Pool</div></div>
+          </div>
+        </div>
+        <div style="background:var(--cream);padding:16px;border:1px solid var(--sand);overflow:hidden;">
+          <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/f_auto,q_auto/villa_a_gfkdew" alt="Villa Arbea Type A — Plan RDC &amp; Étage 1:250"
+               style="width:100%;height:auto;display:block;cursor:zoom-in;transition:transform 0.4s ease;"
+               onclick="this.classList.toggle('zoomed');this.style.transform=this.classList.contains('zoomed')?'scale(1.6)':'scale(1)'">
+        </div>
+        <p style="font-size:11px;color:var(--text-light);margin-top:8px;font-style:italic;text-align:center;" data-i18n="plan_zoom_hint">Click to zoom</p>
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--sand);">
+          <div>
+            <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:6px;" data-i18n="plan_ziria_label">Type B — Villa Ziria</div>
+            <div style="font-family:var(--font-serif);font-size:24px;color:var(--charcoal);" data-i18n="plan_ziria_title">Villa Ziria — Ground Floor &amp; First Floor</div>
+          </div>
+          <div style="display:flex;gap:28px;text-align:center;">
+            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">4</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_suites">Suites</div></div>
+            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">R+1</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_levels">Levels</div></div>
+            <div><div style="font-family:var(--font-serif);font-size:20px;color:var(--terracotta);">◈</div><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);" data-i18n="spec_pool">Pool</div></div>
+          </div>
+        </div>
+        <div style="background:var(--cream);padding:16px;border:1px solid var(--sand);overflow:hidden;">
+          <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/f_auto,q_auto/villa_b_hvgvxx" alt="Villa Ziria Type B — Plan RDC &amp; Étage 1:250"
+               style="width:100%;height:auto;display:block;cursor:zoom-in;transition:transform 0.4s ease;"
+               onclick="this.classList.toggle('zoomed');this.style.transform=this.classList.contains('zoomed')?'scale(1.6)':'scale(1)'">
+        </div>
+        <p style="font-size:11px;color:var(--text-light);margin-top:8px;font-style:italic;text-align:center;" data-i18n="plan_zoom_hint">Click to zoom</p>
+      </div>
+      <!-- Floor plans legal disclaimer -->
+      <div style="margin-top:24px;padding:12px 16px;background:var(--cream);border-left:2px solid var(--sand);display:flex;gap:10px;align-items:flex-start;">
+        <div style="font-size:12px;color:var(--text-light);flex-shrink:0;">⚠</div>
+        <p style="font-size:10px;color:var(--text-light);line-height:1.7;margin:0;" data-i18n="plan_disclaimer">All floor plans are indicative and not to scale. All dimensions, surface areas, orientations and configurations are approximate and subject to final survey, structural requirements and regulatory approval. Furniture and fixtures shown are for illustrative purposes only and are not included. The developer reserves the right to make modifications to plans without prior notice, in compliance with applicable building regulations.</p>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-pricing">
+      <div class="pricing-block">
+        <p class="price-from" data-i18n="price_from">Starting From</p>
+        <div class="price-amount"><span class="price-currency">MAD </span>9,700,000</div>
+        <div style="font-family:var(--font-serif);font-size:18px;color:var(--text-light);font-weight:300;margin-top:8px;letter-spacing:0.5px;" dir="ltr">≈ USD 1,050,000 <span style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);opacity:0.7;" data-i18n="price_usd_note">indicative</span></div>
+        <p class="price-note" data-i18n="price_note">Indicative price, subject to villa configuration and lot selection • VAT applicable per Moroccan law</p>
+        <div style="max-width:680px;margin:24px auto 0;padding:18px 22px;background:var(--ivory-deep);border-left:2px solid var(--gold);text-align:left;">
+          <div style="font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;" data-i18n="legal_label">Legal Notice</div>
+          <p style="font-size:11px;color:var(--text-light);line-height:1.75;margin:0;" data-i18n="legal_disclaimer">Indicative starting price for the smallest villa configuration, expressed in MAD (Moroccan Dirham, official currency). The USD equivalent is provided for reference only, based on the Bank Al-Maghrib reference rate at the time of publication and subject to fluctuation. Final price is set in the reservation contract and the final sales deed, in accordance with applicable Moroccan real estate law. Prices exclude TVA, registration fees, conservation foncière, notary fees and any optional finishes or upgrades. M PROPERTIES DEV SARL — gérant Zakaria — operating under the Arabesque Residences brand. This document does not constitute a binding offer.</p>
+        </div>
+      </div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:#1C1812;margin:40px 0 32px;text-align:center;" data-i18n="payment_title">Payment Plan</h3>
+      <div class="payment-plan">
+        <div class="payment-step" style="grid-column:span 2;">
+          <span class="payment-pct" style="font-size:52px;">30%</span>
+          <span class="payment-when" data-i18n="pay1">At Reservation</span>
+        </div>
+        <div class="payment-step" style="grid-column:span 2;background:var(--ivory-deep);">
+          <span class="payment-pct" style="font-size:52px;">70%</span>
+          <span class="payment-when" data-i18n="pay4">At Handover</span>
+        </div>
+      </div>
+      <div class="handover-block">
+        <div class="handover-text">
+          <h3 class="section-title" data-i18n="handover_title">Delivery Timeline</h3>
+          <p class="section-text" data-i18n="handover_text">Construction commenced April 2026. Phase 1 (pilot villa) delivers Q3 2027. Phases 2 &amp; 3 deliver Q3 2028, with the full 20-residence programme completed on schedule.</p>
+        </div>
+        <div class="handover-date" style="display:flex;gap:32px;align-items:flex-start;">
+          <div style="text-align:center;">
+            <span class="handover-date-num" style="font-size:36px;">Q3</span>
+            <span class="handover-date-year" style="font-size:22px;">2027</span>
+            <span class="handover-date-label" data-i18n="handover_ph1" style="font-size:9px;letter-spacing:1.5px;display:block;margin-top:4px;">Phase 1</span>
+          </div>
+          <div style="color:var(--sand);font-family:var(--font-serif);font-size:32px;line-height:1.8;">·</div>
+          <div style="text-align:center;">
+            <span class="handover-date-num" style="font-size:36px;">Q3</span>
+            <span class="handover-date-year" style="font-size:22px;">2028</span>
+            <span class="handover-date-label" data-i18n="handover_ph23" style="font-size:9px;letter-spacing:1.5px;display:block;margin-top:4px;">Phases 2 &amp; 3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-finishes">
+      <div class="finishes-list">
+        <div class="finish-category">
+          <div class="finish-cat-title" data-i18n="fin_floor">Flooring</div>
+          <ul class="finish-items">
+            <li data-i18n="fin_f1">Matte cream microcement with mineral finish &amp; water-repellent protection</li>
+            <li data-i18n="fin_f2">Traditional Zellige tiles in key living areas</li>
+            <li data-i18n="fin_f3">Solid oak parquet in suites</li>
+            <li data-i18n="fin_f4">Terraces in handcrafted Taza stone pavers</li>
+            <li data-i18n="fin_f5">Pool deck in Taza stone</li>
+          </ul>
+        </div>
+        <div class="finish-category">
+          <div class="finish-cat-title" data-i18n="fin_carp">Carpentry</div>
+          <ul class="finish-items">
+            <li data-i18n="fin_c1">Matte black aluminium exterior frames</li>
+            <li data-i18n="fin_c2">Double thermal glazing throughout</li>
+            <li data-i18n="fin_c3">Full-height pivot entrance door in oak or walnut</li>
+            <li data-i18n="fin_c4">Custom wardrobes with integrated lighting &amp; push-to-open</li>
+            <li data-i18n="fin_c5">High-end custom kitchen — Bosch or equivalent appliances</li>
+            <li data-i18n="fin_c6">Matte lacquered fronts with quartzite countertops</li>
+          </ul>
+        </div>
+        <div class="finish-category">
+          <div class="finish-cat-title" data-i18n="fin_struct">Structure</div>
+          <ul class="finish-items">
+            <li data-i18n="fin_s1">Reinforced concrete foundation — earthquake-resistant standards</li>
+            <li data-i18n="fin_s2">Double-layer bitumen waterproofing on roof &amp; terraces</li>
+            <li data-i18n="fin_s3">Full thermal insulation</li>
+            <li data-i18n="fin_s4">False ceilings with indirect LED lighting</li>
+            <li data-i18n="fin_s5">Artisanal plaster details in selected areas</li>
+            <li data-i18n="fin_s6">Elevator shaft provision (buyer installation)</li>
+          </ul>
+        </div>
+        <div class="finish-category">
+          <div class="finish-cat-title" data-i18n="fin_tech">Technology &amp; Comfort</div>
+          <ul class="finish-items">
+            <li data-i18n="fin_t1">Ducted heating &amp; cooling system</li>
+            <li data-i18n="fin_t2">Smart home pre-installation — lighting, AC, blinds</li>
+            <li data-i18n="fin_t3">Solar water heater with buffer tank</li>
+            <li data-i18n="fin_t4">Alarm system &amp; video surveillance</li>
+            <li data-i18n="fin_t5">Fiber optic internet in every room</li>
+          </ul>
+        </div>
+        <div class="finish-category">
+          <div class="finish-cat-title" data-i18n="fin_out">Outdoors</div>
+          <ul class="finish-items">
+            <li data-i18n="fin_o1">Private pool — open to the garden and landscape</li>
+            <li data-i18n="fin_o2">Landscaping: olive, palm &amp; orange trees</li>
+            <li data-i18n="fin_o3">Landscape lighting &amp; full irrigation system</li>
+            <li data-i18n="fin_o4">Motorized gate with remote control</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Finishes legal disclaimer -->
+      <div style="margin-top:24px;padding:12px 16px;background:var(--cream);border-left:2px solid var(--sand);display:flex;gap:10px;align-items:flex-start;">
+        <div style="font-size:12px;color:var(--text-light);flex-shrink:0;">⚠</div>
+        <p style="font-size:10px;color:var(--text-light);line-height:1.7;margin:0;" data-i18n="fin_disclaimer">The specifications listed represent the standard finish package at the time of publication and are subject to change. The developer reserves the right to substitute materials, brands and suppliers with items of equivalent or superior quality. Exact colours, textures and dimensions may vary. The sole binding specification is that confirmed in the reservation contract and the final sales deed.</p>
+      </div>
+    </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+        <div style="background:var(--white);border:1px solid var(--sand);padding:40px;">
+          <div style="font-size:24px;color:var(--gold);margin-bottom:24px;">◈</div>
+          <div style="font-family:var(--font-serif);font-size:20px;color:var(--charcoal);margin-bottom:12px;" data-i18n="svc1_title">Post-Handover Maintenance</div>
+          <p style="font-size:13px;color:var(--text-light);line-height:1.8;" data-i18n="svc1_text">Full property maintenance service managed by R+E Services — ensuring your villa remains in pristine condition year-round, whether you are in residence or not.</p>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--sand);padding:40px;">
+          <div style="font-size:24px;color:var(--gold);margin-bottom:24px;">◯</div>
+          <div style="font-family:var(--font-serif);font-size:20px;color:var(--charcoal);margin-bottom:12px;" data-i18n="svc2_title">Short-Term Rental Management</div>
+          <p style="font-size:13px;color:var(--text-light);line-height:1.8;" data-i18n="svc2_text">Professional rental management maximising your villa's income potential on platforms like Airbnb, Booking.com, and through our proprietary luxury channel partners.</p>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--sand);padding:40px;">
+          <div style="font-size:24px;color:var(--gold);margin-bottom:24px;">❧</div>
+          <div style="font-family:var(--font-serif);font-size:20px;color:var(--charcoal);margin-bottom:12px;" data-i18n="svc3_title">Optional Furniture Package</div>
+          <p style="font-size:13px;color:var(--text-light);line-height:1.8;" data-i18n="svc3_text">Full house furnishing by our expert interior designer team — a curated, turnkey package that reflects the Zaytoun aesthetic from day one.</p>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--sand);padding:40px;">
+          <div style="font-size:24px;color:var(--gold);margin-bottom:24px;">⬡</div>
+          <div style="font-family:var(--font-serif);font-size:20px;color:var(--charcoal);margin-bottom:12px;" data-i18n="svc4_title">Legal &amp; Foreign Ownership Support</div>
+          <p style="font-size:13px;color:var(--text-light);line-height:1.8;" data-i18n="svc4_text">Dedicated legal guidance throughout the acquisition process under applicable Moroccan real estate law. Foreign ownership fully supported — EU, Gulf and international buyers welcome.</p>
+        </div>
+      </div>
+    </div>
 
 <!-- CTA -->
 <section class="cta-section" id="cta">
@@ -891,7 +1210,100 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 </section>
 
 <!-- FOOTER -->
-<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_11_ep2mob" alt="Arabesque"><p class="footer-tagline" data-i18n="footer_tagline">Zaytoun. For those who have stopped searching — and started living.</p></div><div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="#" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'}); return false;" data-i18n="nav_home">Home</a></li><li><a href="#" onclick="document.querySelector('.about-section').scrollIntoView({behavior:'smooth'}); return false;" data-i18n="nav_project">The Project</a></li><li><a href="#" onclick="document.getElementById('gate').scrollIntoView({behavior:'smooth'}); return false;" data-i18n="nav_dossier">Exclusive Dossier</a></li></ul></div><div><div class="footer-col-title">Contact</div><span class="footer-contact-item"><a href="tel:+212777474747">+212 777 47 47 47</a></span><span class="footer-contact-item"><a href="mailto:sales@arabesque.life">sales@arabesque.life</a></span><span class="footer-contact-item">Route de Tahannaout, Marrakech</span></div></div><div class="footer-bottom"><div class="footer-copy">© 2026 Zaytoun Marrakech — Arabesque Residences</div></div><p class="footer-disclaimer">Disclaimer: This is a marketing presentation only. All information subject to change.</p></div></footer>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://res.cloudinary.com/dlidh4fdt/image/upload/img_11_ep2mob" alt="Arabesque">
+        <p class="footer-tagline" data-i18n="footer_tagline">Zaytoun. For those who have stopped searching — and started living.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'}); return false;" data-i18n="nav_home">Home</a></li>
+          <li><a href="#" onclick="document.querySelector('.about-section').scrollIntoView({behavior:'smooth'}); return false;" data-i18n="nav_project">The Project</a></li>
+          <li><a href="#" onclick="document.getElementById('gate').scrollIntoView({behavior:'smooth'}); return false;" data-i18n="nav_dossier">Exclusive Dossier</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <span class="footer-contact-item"><a href="tel:+212777474747">+212 777 47 47 47</a></span>
+        <span class="footer-contact-item"><a href="mailto:sales@arabesque.life">sales@arabesque.life</a></span>
+        <span class="footer-contact-item">Route de Tahannaout, Marrakech</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 M PROPERTIES DEV SARL · Arabesque Residences · <span data-i18n="footer_version">v1.0 — May 2026</span></div>
+      <div style="margin-top:6px;">
+        <button onclick="document.getElementById('legal-modal').style.display='flex'" style="background:none;border:none;cursor:pointer;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);text-decoration:underline;padding:0;" data-i18n="footer_legal_link">Legal Notices & Disclaimers</button>
+      </div>
+    </div>
+    <p style="font-size:9px;color:var(--text-light);opacity:0.6;margin-top:12px;line-height:1.6;" data-i18n="footer_smallprint">M PROPERTIES DEV SARL · ICE [À COMPLÉTER] · Gérant : Zakaria · Marrakech, Maroc · Operating under the trade name Arabesque Residences. All visuals, plans, prices and figures are indicative and subject to change. Nothing on this page constitutes a binding offer or investment advice.</p>
+  </div>
+</footer>
+
+<!-- LEGAL MODAL -->
+<div id="legal-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(28,24,18,0.88);align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:var(--white);max-width:760px;width:100%;max-height:88vh;overflow-y:auto;position:relative;">
+    <div style="background:var(--charcoal);padding:28px 32px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:2;">
+      <div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--terracotta);margin-bottom:4px;" data-i18n="modal_legal_label">Legal Notices</div>
+        <div style="font-family:var(--font-serif);font-size:20px;color:white;" data-i18n="modal_legal_title">Zaytoun Marrakech — Disclaimers & Legal Information</div>
+      </div>
+      <button onclick="document.getElementById('legal-modal').style.display='none'" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,0.5);font-size:22px;line-height:1;padding:4px 8px;">×</button>
+    </div>
+    <div style="padding:36px 32px;display:flex;flex-direction:column;gap:28px;">
+
+      <!-- Legal identity -->
+      <div>
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;" data-i18n="modal_id_label">Developer Identity</div>
+        <p style="font-size:12px;color:var(--text-mid);line-height:1.8;margin:0;" data-i18n="modal_id_text">M PROPERTIES DEV SARL · ICE [À COMPLÉTER] · Gérant : Zakaria · Siège social : Marrakech, Royaume du Maroc. Commercialisé sous la marque Arabesque Residences. Ce site est une présentation commerciale du projet Zaytoun.</p>
+      </div>
+
+      <!-- Renders -->
+      <div style="border-top:1px solid var(--sand);padding-top:20px;">
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;" data-i18n="modal_render_label">Architectural Renderings & Photography</div>
+        <p style="font-size:12px;color:var(--text-mid);line-height:1.8;margin:0;" data-i18n="modal_render_text">All images, 3D renderings, photographs and visual representations published on this website are artist's conceptual impressions for illustrative purposes only. They do not constitute an accurate or complete representation of the final product. Colours, materials, finishes, furniture, fixtures, landscaping, views and surrounding environment may differ materially from those depicted. Images may have been digitally enhanced. Furniture, decorative items and accessories shown are not included in the standard specification.</p>
+      </div>
+
+      <!-- Floor plans -->
+      <div style="border-top:1px solid var(--sand);padding-top:20px;">
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;" data-i18n="modal_plan_label">Floor Plans & Site Plans</div>
+        <p style="font-size:12px;color:var(--text-mid);line-height:1.8;margin:0;" data-i18n="modal_plan_text">All floor plans and site plans are indicative and not drawn to scale. Dimensions, surface areas, orientations and configurations are approximate and subject to final geodetic survey, structural requirements and regulatory approval. Furniture and fixtures shown are for illustrative purposes only and are not included. The developer reserves the right to modify plans without prior notice in compliance with applicable building regulations.</p>
+      </div>
+
+      <!-- Finishes -->
+      <div style="border-top:1px solid var(--sand);padding-top:20px;">
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;" data-i18n="modal_fin_label">Finishes & Specifications</div>
+        <p style="font-size:12px;color:var(--text-mid);line-height:1.8;margin:0;" data-i18n="modal_fin_text">The finish specifications listed are indicative of the standard package at the time of publication and are subject to change. The developer reserves the right to substitute materials, brands and suppliers with items of equivalent or superior quality without prior notice. Exact colours, textures and dimensions may vary from samples and images. The sole binding specification is that confirmed in the reservation contract and the final signed sales deed.</p>
+      </div>
+
+      <!-- Investment -->
+      <div style="border-top:1px solid var(--sand);padding-top:20px;">
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;" data-i18n="modal_inv_label">Investment Data & Projected Returns</div>
+        <p style="font-size:12px;color:var(--text-mid);line-height:1.8;margin:0;" data-i18n="modal_inv_text">Yield, price growth and tourism figures are sourced from publicly available market data (ANCFCC / Bank Al-Maghrib IPAI index, ONMT) and estimated benchmarks for comparable managed properties on Route de Tahannaout. This information is provided for general informational purposes only and does not constitute a financial forecast, investment recommendation or guarantee of future performance. Real estate investment involves inherent risks, including but not limited to: rental vacancy, changes in applicable regulations, currency fluctuation, and general market downturns. Past performance is not indicative of future results. Prospective buyers are strongly encouraged to conduct their own independent due diligence and to seek professional legal, financial and tax advice before making any investment decision. M PROPERTIES DEV SARL is not authorised to provide investment advice and makes no guarantee of any rental income, occupancy rate or capital appreciation outcome.</p>
+      </div>
+
+      <!-- Pricing -->
+      <div style="border-top:1px solid var(--sand);padding-top:20px;">
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;" data-i18n="modal_price_label">Pricing & Currency</div>
+        <p style="font-size:12px;color:var(--text-mid);line-height:1.8;margin:0;" data-i18n="modal_price_text">All prices are expressed in Moroccan Dirhams (MAD), the official currency, and are indicative only. USD equivalents are provided for reference based on the Bank Al-Maghrib reference rate at the time of publication and are subject to exchange rate fluctuation. Final pricing is subject to villa configuration, lot selection and applicable taxes. The sole binding price is that set out in the signed reservation contract and the final sales deed. Prices exclude all taxes, registration fees, conservation foncière charges, notarial fees and any optional upgrades or finishes. M PROPERTIES DEV SARL reserves the right to amend prices at any time without prior notice.</p>
+      </div>
+
+      <!-- General -->
+      <div style="border-top:1px solid var(--sand);padding-top:20px;">
+        <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px;" data-i18n="modal_gen_label">General Disclaimer</div>
+        <p style="font-size:12px;color:var(--text-mid);line-height:1.8;margin:0;" data-i18n="modal_gen_text">This website and all associated marketing materials are for general information purposes only and do not constitute a binding offer, a contract, or legal, financial, tax or investment advice. The information published may be updated, amended or withdrawn at any time without notice. Nothing on this website creates any obligation on the part of M PROPERTIES DEV SARL until a reservation contract and sales deed have been signed by both parties before a notary. M PROPERTIES DEV SARL reserves the right to modify the project scope, phasing, delivery schedule and any other element at any time, subject to applicable Moroccan real estate law.</p>
+      </div>
+
+      <!-- Version -->
+      <div style="border-top:1px solid var(--sand);padding-top:16px;text-align:right;">
+        <p style="font-size:9px;color:var(--text-light);margin:0;" data-i18n="modal_version">Document version: v1.0 — May 2026 · © 2026 M PROPERTIES DEV SARL · All rights reserved.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <a href="https://wa.me/212777474747" target="_blank" style="position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
@@ -901,28 +1313,28 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
 // ═══════════════════════════════════════════════════════════
 const T = {
   en: {
-    hero_eyebrow: "Private Collection · 20 Villas · Marrakech", hero_subtitle: "By Arabesque Residences", hero_tagline: "Some places are not found. They are recognized. Zaytoun is that recognition.",
-    stat_villas: "Private Villas", stat_land: "Hectares", stat_delivery: "Delivery", hero_cta: "Unlock the Exclusive Dossier", hero_scroll: "Discover",
-    about_label: "The Project", about_title: "A Rare Estate Born of Light and Land", about_text: "Zaytoun is a private residential domain of twenty villas set within 4.4 hectares of olive groves on the prestigious Route de Tahannaout — where Marrakech opens to the Atlas Mountains. A development that redefines what it means to live well in Morocco.",
-    fact_villas: "Private Villas", fact_terrain: "From — Plot", fact_surface: "From — Living Area", fact_wellness: "Wellness Domain · 800m² Built", fact_suites: "Suites per Villa",
-    dest_label: "The Destination", dest_title: "Marrakech — Africa's Most Coveted Address", dest_text: "Marrakech resembles no other city on earth. The light is different. The air is different. The feeling of living here too. A city drawing the world's most discerning for centuries — for what it offers that nowhere else can: a soul.",
+    hero_eyebrow: "Private Collection · 20 Villas · Marrakech", hero_subtitle: "By Arabesque Residences", hero_tagline: "Some places are not found. They are simply recognized.",
+    stat_villas: "Private Villas", stat_land: "Hectares", stat_delivery: "Move-In Ready", hero_cta: "Request Private Access", hero_scroll: "Discover",
+    about_label: "The Project", about_title: "Twenty Villas. One Address. A Single Atlas View.", about_text: "Zaytoun is a private residential domain of twenty villas set within 4.4 hectares of ancient olive groves on Route de Tahannaout — where Marrakech ends and the mountains begin. A threshold few estates in Morocco can claim.",
+    fact_villas: "Private Villas", fact_terrain: "From · Land", fact_surface: "From · Living Area", fact_wellness: "Wellness Domain · 800m² Built", fact_suites: "Suites per Villa",
+    dest_label: "The Destination", dest_title: "Marrakech — The Address That Chooses Its Owners.", dest_text: "Morocco's tourism capital welcomed 5.3M+ visitors last year, with luxury real estate demand outpacing regional supply for the fourth consecutive year. Marrakech is not a trend. It is a permanent truth.",
     atlas_caption: "Atlas Mountains — view from Zaytoun",
     invest_label: "Why Invest in Marrakech", invest_title: "A Market That Consistently Delivers",
-    inv_stat1_num: "+8%", inv_stat1_label: "Annual Price Growth", inv_stat1_text: "Luxury property values in Marrakech have grown consistently above regional averages.",
-    inv_stat2_num: "7–10%", inv_stat2_label: "Gross Rental Yield", inv_stat2_text: "High-end villas command premium short-term rental rates, driven by year-round tourism demand.",
-    inv_stat3_num: "5M+", inv_stat3_label: "Annual Tourists", inv_stat3_text: "Morocco's #1 tourist destination, welcoming over 5 million visitors annually.",
+    inv_stat1_num: "+8%", inv_stat1_label: "Annual Price Growth", inv_stat1_text: "Prime residential values in Marrakech have outperformed North African benchmarks for four consecutive years (ANCFCC / Bank Al-Maghrib IPAI index).",
+    inv_stat2_num: "7–10%", inv_stat2_label: "Gross Rental Yield", inv_stat2_text: "Managed villas on Route de Tahannaout average 220+ rental nights per year at €650–€1,200/night.",
+    inv_stat3_num: "5.3M+", inv_stat3_label: "Annual Tourists", inv_stat3_text: "5.3M visitors in 2023, with RAM adding 40 new routes by 2026. Demand is structurally supported.",
     inv_stat4_num: "100%", inv_stat4_label: "Foreign Ownership", inv_stat4_text: "Morocco fully permits foreign freehold ownership with free repatriation of capital and rental income.",
     loc_label: "Our Location", dist_golf: "Golf", dist_hivernage: "Hivernage", dist_airport: "Airport",
     loc_golf_label: "Golf — 15 min", loc_golf_title: "World-Class Golf on Your Doorstep", loc_golf_text: "Three championship courses within minutes.",
     loc_hiv_label: "Hivernage & Medina — 20 min", loc_hiv_title: "The Best of Marrakech Within Reach", loc_hiv_text: "Hivernage's finest hotels, restaurants and boutiques — 20 minutes away.",
     loc_air_label: "Menara Airport — 20 min", loc_air_title: "Connected to Europe, the Gulf & Beyond", loc_air_text: "Direct flights to Paris (3h30), London (3h40), Dubai (8h) and 50+ international destinations.",
-    well_label: "Healthy Living", well_title: "A Place That Returns You to Yourself", well_text: "An 800m² wellness center with priority access for residents.",
-    wf1_title: "Spa & Hammam", wf1_text: "Traditional Moroccan hammam and therapies.", wf2_title: "Fitness & Movement", wf2_text: "Gym, yoga, padel, walking trails.", wf3_title: "Gardens & Nature", wf3_text: "Meditation gardens and olive groves.",
+    well_label: "Art of Wellbeing", well_title: "A Place That Restores You.", well_text: "An 800m² wellness center with priority access for residents.",
+    wf1_title: "Spa & Hammam", wf1_text: "At Zaytoun, wellbeing was placed at the heart of the project from its very conception — and the spa is its centrepiece. Step into a traditional Moroccan hammam carved in tadelakt and warm marble, where steam, eucalyptus and black soap follow centuries-old rituals. Treatment cabins offer signature therapies built around argan oil, rose of Kelaat M'Gouna, and orange blossom. A space to slow down, breathe, and return to yourself — open to all, with priority access reserved for residents.", wf2_title: "Fitness & Movement", wf2_text: "Fully equipped gym, sunrise yoga, padel courts and trails through centuries-old olive groves.", wf3_title: "Gardens & Nature", wf3_text: "Meditation gardens and ancient olive groves — silence as a privilege.",
     gate_label: "Exclusive Access", gate_title: "Unlock the Complete Dossier",
     lock_villas: "Villas & Interiors", lock_price: "Starting Price", lock1: "Villa Arbea Plans", lock2: "Villa Ziria Plans", lock4: "Payment Plan", lock5: "Handover Date",
-    social_proof: "Some families have already chosen their villa at Zaytoun. Early acquirers secure the lowest entry point.",
+    social_proof: "Several families have already selected their villa at Zaytoun. Phase 1 acquirers secure the best entry price — and the widest choice.",
     l1_title: "Step 1 of 2 — Instant Access", form_firstname: "First Name", form_email: "Email", l1_submit: "Discover Villas & Price →", gate_privacy: "Your information is confidential and will never be shared.",
-    price_from: "Starting From", price_note_short: "Indicative price · excl. VAT", lvl2_badge: "Step 2 — Plans & Payment", l2_teaser: "Unlock floor plans, payment schedule and delivery dates.",
+    price_from: "Starting From", price_note_short: "Indicative price · excl. VAT", lvl2_badge: "Step 2 — Plans & Payment", l2_teaser: "Access the architectural plans, price grid and reservation terms.",
     form_lastname: "Last Name", form_phone: "Phone / WhatsApp", form_country: "Country", form_country_ph: "Select country", form_intent: "Intent", form_intent_ph: "Select...",
     intent1: "Primary Residence", intent2: "Investment", intent3: "Secondary Residence", gate_submit: "Access the Full Dossier →",
     success_title: "Welcome to Zaytoun", success_text: "Your exclusive dossier is now unlocked. Scroll down to discover full details.", success_scroll: "Scroll to explore",
@@ -930,31 +1342,83 @@ const T = {
     tab_villas: "The Villas", tab_interiors: "Interiors", tab_plans: "Floor Plans", tab_pricing: "Pricing", tab_finishes: "Finishes", tab_services: "Services",
     cta_title: "Twenty Villas Only. For Twenty Families Who Value the Exceptional.", cta_text: "Private and confidential consultation.", cta_call: "+212 777 47 47 47", cta_email: "sales@arabesque.life",
     footer_tagline: "Zaytoun. For those who have stopped searching — and started living.", footer_nav: "Navigation", footer_contact: "Contact",
-    nav_home: "Home", nav_project: "The Project", nav_dossier: "Exclusive Dossier"
+    nav_home: "Home", nav_project: "The Project", nav_dossier: "Exclusive Dossier",
+    /* ── DOSSIER TABS ── */
+    villa_arbea: "Villa Arbea", villa_ziria: "Villa Ziria",
+    spec_suites: "Suites", spec_levels: "Levels", spec_pool: "Private Pool", spec_parking: "Parking",
+    arbea_desc: "Villa Arbea unfolds across two levels — a generous ground floor opens onto the pool terrace and private garden, while the Master Suite rises on the upper level for privacy and unobstructed Atlas views. Five suites in total: two Junior Suites, two Master Suites, and a fifth garden-level suite — a rare configuration that makes Arbea the largest of the two villa typologies.",
+    ziria_desc: "Ziria — full moon in Amazigh. The light that spills across the Atlas at nightfall fills Villa Ziria each evening, through generous glazed openings and a panoramic rooftop terrace. Four suites across two levels, with the Master Suite elevated to frame nothing but sky.",
+    int_label: "Interior Renders", int_title: "A Refined Art of Living", int_subtitle: "Each villa is designed around the experience of living — intimate spaces that open to gardens and light, with artisanal finishes drawn from Moroccan craft tradition.",
+    int_salon: "Living Room — Fireplace & Garden View", int_salon_desc: "Moroccan brass, handcrafted stone tiles, and artisan plaster — the salon opens through wide glazed openings onto the private terrace and pool.",
+    int_shower: "Master Suite Bathroom", int_shower_desc: "Walk-in rain shower with mosaic tile accent wall and generous glazed openings onto a private garden. Brushed black fittings throughout.",
+    int_vanity: "Double Vanity — Tadelakt & Stone", int_vanity_desc: "Floating double basin in tadelakt — Morocco's traditional waterproof lime plaster — with integrated storage and artisanal ceramics.",
+    int_bedroom: "Master Suite — Bedroom", int_bedroom_desc: "Generous master suite with wide glazed openings, tadelakt walls and bespoke joinery. Each suite is conceived as a private retreat within the villa.",
+    int_villa_a: "Villa Arbea", int_villa_ab: "All Villas",
+    int_note_label: "Finishes & Materials", int_note_text: "All renders show the standard specification. Premium upgrade packages available — see the Finishes & Materials tab for full details.",
+    plan_mp_label: "Master Plan", plan_mp_title: "Zaytoun Marrakech — Site Plan",
+    plan_arbea_label: "Type A — Villa Arbea", plan_arbea_title: "Villa Arbea — Ground Floor & First Floor",
+    plan_ziria_label: "Type B — Villa Ziria", plan_ziria_title: "Villa Ziria — Ground Floor & First Floor",
+    plan_zoom_hint: "Click to zoom",
+    price_note: "Indicative price, subject to villa configuration and lot selection • VAT applicable per Moroccan law",
+    price_usd_note: "indicative",
+    legal_label: "Legal Notice",
+    legal_disclaimer: "Indicative starting price for the smallest villa configuration, expressed in MAD (Moroccan Dirham, official currency). The USD equivalent is provided for reference only, based on the Bank Al-Maghrib reference rate at the time of publication and subject to fluctuation. Final price is set in the reservation contract and the final sales deed, in accordance with applicable Moroccan real estate law. Prices exclude TVA, registration fees, conservation foncière, notary fees and any optional finishes or upgrades. M PROPERTIES DEV SARL — gérant Zakaria — operating under the Arabesque Residences brand. This document does not constitute a binding offer.",
+    payment_title: "Payment Plan", pay1: "At Reservation", pay4: "At Handover",
+    handover_title: "Delivery Timeline", handover_text: "Construction commenced April 2026. Phase 1 (pilot villa) delivers Q3 2027. Phases 2 & 3 deliver Q3 2028, with the full 20-residence programme completed on schedule.",
+    handover_ph1: "Phase 1", handover_ph23: "Phases 2 & 3",
+    fin_floor: "Flooring", fin_carp: "Carpentry", fin_struct: "Structure", fin_tech: "Technology & Comfort", fin_out: "Outdoors",
+    fin_f1: "Matte cream microcement with mineral finish & water-repellent protection", fin_f2: "Traditional Zellige tiles in key living areas", fin_f3: "Solid oak parquet in suites", fin_f4: "Terraces in handcrafted Taza stone pavers", fin_f5: "Pool deck in Taza stone",
+    fin_c1: "Matte black aluminium exterior frames", fin_c2: "Double thermal glazing throughout", fin_c3: "Full-height pivot entrance door in oak or walnut", fin_c4: "Custom wardrobes with integrated lighting & push-to-open", fin_c5: "High-end custom kitchen — Bosch or equivalent appliances", fin_c6: "Matte lacquered fronts with quartzite countertops",
+    fin_s1: "Reinforced concrete foundation — earthquake-resistant standards", fin_s2: "Double-layer bitumen waterproofing on roof & terraces", fin_s3: "Full thermal insulation", fin_s4: "False ceilings with indirect LED lighting", fin_s5: "Artisanal plaster details in selected areas", fin_s6: "Elevator shaft provision (buyer installation)",
+    fin_t1: "Ducted heating & cooling system", fin_t2: "Smart home pre-installation — lighting, AC, blinds", fin_t3: "Solar water heater with buffer tank", fin_t4: "Alarm system & video surveillance", fin_t5: "Fiber optic internet in every room",
+    fin_o1: "Private pool — open to the garden and landscape", fin_o2: "Landscaping: olive, palm & orange trees", fin_o3: "Landscape lighting & full irrigation system", fin_o4: "Motorized gate with remote control",
+    svc1_title: "Post-Handover Maintenance", svc1_text: "Full property maintenance service managed by R+E Services — ensuring your villa remains in pristine condition year-round, whether you are in residence or not.",
+    svc2_title: "Short-Term Rental Management", svc2_text: "Professional rental management maximising your villa's income potential on platforms like Airbnb, Booking.com, and through our proprietary luxury channel partners.",
+    svc3_title: "Optional Furniture Package", svc3_text: "Full house furnishing by our expert interior designer team — a curated, turnkey package that reflects the Zaytoun aesthetic from day one.",
+    svc4_title: "Legal & Foreign Ownership Support", svc4_text: "Dedicated legal guidance throughout the acquisition process under applicable Moroccan real estate law. Foreign ownership fully supported — EU, Gulf and international buyers welcome.",
+    /* ── DISCLAIMERS ── */
+    inv_disclaimer: "Yield, growth and tourism figures are based on publicly available market data (ANCFCC / Bank Al-Maghrib IPAI index, ONMT) and estimated benchmarks for comparable managed properties on Route de Tahannaout. For informational purposes only — not a forecast, recommendation or guarantee of future returns. Real estate involves risks including vacancy, regulatory change, currency fluctuation and market downturn. Past performance does not guarantee future results. Seek independent legal, financial and tax advice. M PROPERTIES DEV SARL does not guarantee any rental, occupancy or capital-appreciation outcome.",
+    render_disclaimer: "All images are artist's conceptual renderings for illustrative purposes only. Final colours, materials, finishes, furniture, fixtures, landscaping and views may differ from those depicted. Furniture and decorative items shown are not included in the standard specification. Images may have been digitally enhanced for presentation purposes.",
+    plan_disclaimer: "All floor plans are indicative and not to scale. All dimensions, surface areas, orientations and configurations are approximate and subject to final survey, structural requirements and regulatory approval. Furniture and fixtures shown are for illustrative purposes only and are not included. The developer reserves the right to make modifications to plans without prior notice, in compliance with applicable building regulations.",
+    fin_disclaimer: "The specifications listed represent the standard finish package at the time of publication and are subject to change. The developer reserves the right to substitute materials, brands and suppliers with items of equivalent or superior quality. Exact colours, textures and dimensions may vary. The sole binding specification is that confirmed in the reservation contract and the final sales deed.",
+    /* ── FOOTER ── */
+    footer_version: "v1.0 — May 2026",
+    footer_legal_link: "Legal Notices & Disclaimers",
+    footer_smallprint: "M PROPERTIES DEV SARL · ICE [TO BE COMPLETED] · Gérant: Zakaria · Marrakech, Kingdom of Morocco · Operating under the trade name Arabesque Residences. All visuals, plans, prices and figures are indicative and subject to change. Nothing on this page constitutes a binding offer or investment advice.",
+    /* ── LEGAL MODAL ── */
+    modal_legal_label: "Legal Notices", modal_legal_title: "Zaytoun Marrakech — Disclaimers & Legal Information",
+    modal_id_label: "Developer Identity", modal_id_text: "M PROPERTIES DEV SARL · ICE [TO BE COMPLETED] · Gérant: Zakaria · Registered: Marrakech, Kingdom of Morocco. Marketed under the trade name Arabesque Residences. This website is a commercial presentation of the Zaytoun project.",
+    modal_render_label: "Architectural Renderings & Photography", modal_render_text: "All images, 3D renderings, photographs and visual representations are artist's conceptual impressions for illustrative purposes only. They do not constitute an accurate or complete representation of the final product. Colours, materials, finishes, furniture, fixtures, landscaping, views and surroundings may differ materially from those depicted. Images may have been digitally enhanced. Furniture and accessories shown are not included in the standard specification.",
+    modal_plan_label: "Floor Plans & Site Plans", modal_plan_text: "All floor plans and site plans are indicative and not drawn to scale. Dimensions, surface areas, orientations and configurations are approximate and subject to final geodetic survey, structural requirements and regulatory approval. Furniture shown is for illustrative purposes only and is not included. The developer reserves the right to modify plans without prior notice in compliance with applicable building regulations.",
+    modal_fin_label: "Finishes & Specifications", modal_fin_text: "The finish specifications listed are indicative of the standard package at the time of publication and are subject to change. The developer reserves the right to substitute materials, brands and suppliers with items of equivalent or superior quality without prior notice. Exact colours, textures and dimensions may vary. The sole binding specification is that confirmed in the reservation contract and the final signed sales deed.",
+    modal_inv_label: "Investment Data & Projected Returns", modal_inv_text: "Yield, price growth and tourism figures are sourced from publicly available market data (ANCFCC / Bank Al-Maghrib IPAI index, ONMT) and estimated benchmarks for comparable managed properties on Route de Tahannaout. This information is provided for general informational purposes only and does not constitute a financial forecast, investment recommendation or guarantee of future performance. Real estate investment involves inherent risks including rental vacancy, regulatory changes, currency fluctuation and market downturns. Past performance is not indicative of future results. Prospective buyers are strongly encouraged to conduct independent due diligence and seek professional legal, financial and tax advice. M PROPERTIES DEV SARL makes no guarantee of any rental income, occupancy rate or capital appreciation outcome.",
+    modal_price_label: "Pricing & Currency", modal_price_text: "All prices are expressed in Moroccan Dirhams (MAD) and are indicative only. USD equivalents are provided for reference based on the Bank Al-Maghrib reference rate at the time of publication and are subject to fluctuation. Final pricing is subject to villa configuration, lot selection and applicable taxes. The sole binding price is that set out in the signed reservation contract and final sales deed. Prices exclude all taxes, registration fees, conservation foncière charges, notarial fees and any optional upgrades. M PROPERTIES DEV SARL reserves the right to amend prices at any time without prior notice.",
+    modal_gen_label: "General Disclaimer", modal_gen_text: "This website and all associated marketing materials are for general information purposes only and do not constitute a binding offer, a contract, or legal, financial, tax or investment advice. The information published may be updated, amended or withdrawn at any time without notice. Nothing on this website creates any obligation on the part of M PROPERTIES DEV SARL until a reservation contract and sales deed have been signed by both parties before a notary. M PROPERTIES DEV SARL reserves the right to modify the project scope, phasing, delivery schedule and any other element at any time, subject to applicable Moroccan real estate law.",
+    modal_version: "Document version: v1.0 — May 2026 · © 2026 M PROPERTIES DEV SARL · All rights reserved."
   },
   fr: {
-    hero_eyebrow: "Collection Privée · 20 Villas · Marrakech", hero_subtitle: "Par Arabesque Residences", hero_tagline: "Certains endroits ne se trouvent pas. Ils vous appartiennent déjà. Zaytoun l'a toujours été.",
-    stat_villas: "Villas Privées", stat_land: "Hectares", stat_delivery: "Livraison", hero_cta: "Accéder au Dossier Exclusif", hero_scroll: "Découvrir",
-    about_label: "Le Projet", about_title: "Un Domaine Rare, Né de la Lumière et de la Terre", about_text: "Zaytoun est un domaine résidentiel privé de vingt villas posé sur 4,4 hectares d'oliveraies sur la prestigieuse Route de Tahannaout — là où Marrakech s'ouvre sur l'Atlas. Un projet qui redéfinit ce que signifie bien vivre au Maroc.",
-    fact_villas: "Villas Privées", fact_terrain: "À partir de — Terrain", fact_surface: "À partir de — Surface Habitable", fact_wellness: "Domaine Bien-Être · 800m² Bâti", fact_suites: "Suites par Villa",
-    dest_label: "La Destination", dest_title: "Marrakech — L'Adresse la Plus Convoitée d'Afrique", dest_text: "Marrakech ne ressemble à aucune autre ville sur terre. La lumière y est différente. L'air y est différent. Le sentiment d'y vivre aussi. Une ville qui attire les esprits les plus exigeants depuis des siècles — pour ce qu'elle offre qu'aucune autre ne peut égaler : une âme.",
+    hero_eyebrow: "Collection Privée · 20 Villas · Marrakech", hero_subtitle: "Par Arabesque Residences", hero_tagline: "Certains endroits ne se trouvent pas. Ils se reconnaissent, simplement.",
+    stat_villas: "Villas Privées", stat_land: "Hectares", stat_delivery: "Prêt à Habiter", hero_cta: "Demander un Accès Privé", hero_scroll: "Découvrir",
+    about_label: "Le Projet", about_title: "Vingt Villas. Une Adresse. Une Vue Unique sur l'Atlas.", about_text: "Vingt villas privées au cœur de 4,4 hectares d'oliveraies ancestrales, sur la Route de Tahannaout — là où Marrakech s'efface devant la montagne. Un seuil que peu de domaines au Maroc peuvent revendiquer.",
+    fact_villas: "Villas Privées", fact_terrain: "À partir de · Terrain", fact_surface: "À partir de · Surface Habitable", fact_wellness: "Domaine Bien-Être · 800m² Bâti", fact_suites: "Suites par Villa",
+    dest_label: "La Destination", dest_title: "Marrakech — L'adresse qui choisit ses propriétaires.", dest_text: "La capitale touristique du Maroc a accueilli 5,3M+ de visiteurs l'an dernier, avec une demande en immobilier de luxe qui dépasse l'offre régionale pour la quatrième année consécutive. Marrakech n'est pas une tendance. C'est une vérité permanente.",
     atlas_caption: "Montagnes de l'Atlas — vue depuis Zaytoun",
     invest_label: "Pourquoi Investir à Marrakech", invest_title: "Un Marché Qui Délivre",
-    inv_stat1_num: "+8%", inv_stat1_label: "Croissance Annuelle des Prix", inv_stat1_text: "Les valeurs immobilières de luxe à Marrakech progressent régulièrement, au-dessus des moyennes régionales.",
-    inv_stat2_num: "7–10%", inv_stat2_label: "Rendement Locatif Brut", inv_stat2_text: "Les villas haut de gamme affichent des rendements locatifs supérieurs à la plupart des marchés mondiaux.",
-    inv_stat3_num: "5M+", inv_stat3_label: "Touristes Annuels", inv_stat3_text: "Première destination touristique du Maroc, avec plus de 5 millions de visiteurs annuels.",
+    inv_stat1_num: "+8%", inv_stat1_label: "Croissance Annuelle des Prix", inv_stat1_text: "Les valeurs résidentielles prime à Marrakech surpassent les benchmarks nord-africains depuis quatre années consécutives (ANCFCC / Bank Al-Maghrib indice IPAI).",
+    inv_stat2_num: "7–10%", inv_stat2_label: "Rendement Locatif Brut", inv_stat2_text: "Les villas gérées sur Route de Tahannaout atteignent 220+ nuits louées par an à 650–1 200€/nuit.",
+    inv_stat3_num: "5,3M+", inv_stat3_label: "Touristes Annuels", inv_stat3_text: "5,3M visiteurs en 2023, avec RAM qui ajoute 40 nouvelles routes d'ici 2026. Une demande structurellement soutenue.",
     inv_stat4_num: "100%", inv_stat4_label: "Propriété Étrangère", inv_stat4_text: "Le Maroc autorise pleinement la propriété étrangère en pleine propriété, avec rapatriement libre des capitaux.",
     loc_label: "Notre Emplacement", dist_golf: "Golf", dist_hivernage: "Hivernage", dist_airport: "Aéroport",
     loc_golf_label: "Golf — 15 min", loc_golf_title: "Golf de Classe Mondiale à Portée", loc_golf_text: "Trois parcours de championnat à quelques minutes.",
     loc_hiv_label: "Hivernage & Médina — 20 min", loc_hiv_title: "Le Meilleur de Marrakech à Portée de Main", loc_hiv_text: "Les meilleurs hôtels, restaurants et boutiques d'Hivernage à 20 minutes.",
     loc_air_label: "Aéroport Menara — 20 min", loc_air_title: "Connecté à l'Europe, au Golfe et au-Delà", loc_air_text: "Vols directs vers Paris (3h30), Londres (3h40), Dubaï (8h) et plus de 50 destinations internationales.",
-    well_label: "Art de Vivre", well_title: "Un Sanctuaire Pensé Pour Vous Ressourcer", well_text: "Un centre de bien-être de 800m² avec accès prioritaire pour les résidents.",
-    wf1_title: "Spa & Hammam", wf1_text: "Hammam marocain traditionnel et soins signature.", wf2_title: "Fitness & Mouvement", wf2_text: "Salle de sport, yoga, padel, sentiers de promenade.", wf3_title: "Jardins & Nature", wf3_text: "Jardins de méditation et oliveraies séculaires.",
+    well_label: "Art du Bien-Être", well_title: "Un Sanctuaire Pour Se Retrouver.", well_text: "Un centre de bien-être de 800m² avec accès prioritaire pour les résidents.",
+    wf1_title: "Spa & Hammam", wf1_text: "À Zaytoun, le bien-être a été placé au cœur du projet dès sa conception — et le spa en est la pièce maîtresse. Entrez dans un hammam marocain traditionnel taillé dans le tadelakt et le marbre chaud, où la vapeur, l'eucalyptus et le savon noir prolongent des rituels centenaires. Les cabines de soins déploient des thérapies signature autour de l'huile d'argan, de la rose de Kelaat M'Gouna et de la fleur d'oranger. Un espace pour ralentir, respirer, et se retrouver — ouvert à tous, avec accès prioritaire réservé aux résidents.", wf2_title: "Fitness & Mouvement", wf2_text: "Salle de sport équipée, yoga au lever du soleil, terrains de padel et sentiers parmi les oliviers centenaires.", wf3_title: "Jardins & Nature", wf3_text: "Jardins de contemplation et oliveraies ancestrales — le silence comme privilège.",
     gate_label: "Accès Exclusif", gate_title: "Débloquez le Dossier Complet",
     lock_villas: "Villas & Intérieurs", lock_price: "Prix de Départ", lock1: "Plans Villa Arbea", lock2: "Plans Villa Ziria", lock4: "Plan de Paiement", lock5: "Date de Livraison",
-    social_proof: "Certaines familles ont déjà choisi leur villa à Zaytoun. Les premiers acquéreurs bénéficient du prix d'entrée le plus bas.",
+    social_proof: "Plusieurs familles ont déjà sélectionné leur villa à Zaytoun. Les acquéreurs en phase 1 bénéficient du meilleur prix d'entrée — et du meilleur choix.",
     l1_title: "Étape 1 sur 2 — Accès Instantané", form_firstname: "Prénom", form_email: "Email", l1_submit: "Découvrir les Villas & le Prix →", gate_privacy: "Vos informations sont strictement confidentielles et ne seront jamais partagées.",
-    price_from: "À Partir de", price_note_short: "Prix indicatif · hors TVA", lvl2_badge: "Étape 2 — Plans & Paiement", l2_teaser: "Débloquez les plans, le calendrier de paiement et les dates de livraison.",
+    price_from: "À Partir de", price_note_short: "Prix indicatif · hors TVA", lvl2_badge: "Étape 2 — Plans & Paiement", l2_teaser: "Accédez aux plans d'architecte, à la grille de prix et aux conditions de réservation.",
     form_lastname: "Nom", form_phone: "Téléphone / WhatsApp", form_country: "Pays", form_country_ph: "Sélectionnez le pays", form_intent: "Intention", form_intent_ph: "Sélectionnez...",
     intent1: "Résidence Principale", intent2: "Investissement", intent3: "Résidence Secondaire", gate_submit: "Accéder au Dossier Complet →",
     success_title: "Bienvenue dans la famille Zaytoun", success_text: "Votre dossier exclusif est débloqué. Faites défiler pour découvrir tous les détails.", success_scroll: "Faire défiler pour explorer",
@@ -962,7 +1426,59 @@ const T = {
     tab_villas: "Les Villas", tab_interiors: "Intérieurs", tab_plans: "Plans", tab_pricing: "Prix & Paiement", tab_finishes: "Finitions", tab_services: "Services",
     cta_title: "Vingt Villas Seulement. Pour Vingt Familles Qui Apprécient l'Exceptionnel.", cta_text: "Consultation privée et confidentielle.", cta_call: "+212 777 47 47 47", cta_email: "sales@arabesque.life",
     footer_tagline: "Zaytoun. Pour ceux qui ont cessé de chercher — et commencé à vivre.", footer_nav: "Navigation", footer_contact: "Contact",
-    nav_home: "Accueil", nav_project: "Le Projet", nav_dossier: "Dossier Exclusif"
+    nav_home: "Accueil", nav_project: "Le Projet", nav_dossier: "Dossier Exclusif",
+    /* ── DOSSIER TABS ── */
+    villa_arbea: "Villa Arbea", villa_ziria: "Villa Ziria",
+    spec_suites: "Suites", spec_levels: "Niveaux", spec_pool: "Piscine Privée", spec_parking: "Parking",
+    arbea_desc: "Villa Arbea se déploie sur deux niveaux — un rez-de-chaussée généreux s'ouvre sur la terrasse piscine et le jardin privé, tandis que la Suite Master s'élève à l'étage pour offrir intimité et vue dégagée sur l'Atlas. Cinq suites au total : deux Suites Junior, deux Suites Master, et une cinquième suite nichée au niveau du jardin — une configuration rare qui fait d'Arbea la plus généreuse des deux typologies.",
+    ziria_desc: "Ziria — la pleine lune en amazigh. La lumière qui se répand sur l'Atlas à la tombée de la nuit emplit Villa Ziria chaque soir, à travers ses larges baies vitrées et sa terrasse rooftop panoramique. Quatre suites sur deux niveaux, la Suite Master élevée pour ne cadrer que le ciel.",
+    int_label: "Rendus Intérieurs", int_title: "Un Art de Vivre Raffiné", int_subtitle: "Chaque villa est conçue autour de l'expérience du vivre — espaces intimes s'ouvrant sur les jardins et la lumière, avec des finitions artisanales issues de la tradition marocaine.",
+    int_salon: "Salon — Cheminée & Vue Jardin", int_salon_desc: "Laiton marocain, carreaux de pierre artisanaux et plâtre artisanal — le salon s'ouvre par de larges baies vitrées sur la terrasse privée et la piscine.",
+    int_shower: "Salle de Bain Suite Principale", int_shower_desc: "Douche à l'italienne avec mur d'accent en mosaïque et larges baies vitrées ouvrant sur un jardin privé. Robinetterie noire brossée.",
+    int_vanity: "Double Vasque — Tadelakt & Pierre", int_vanity_desc: "Vasque double suspendue en tadelakt — l'enduit de chaux traditionnel marocain — avec rangements intégrés et céramiques artisanales.",
+    int_bedroom: "Suite Principale — Chambre", int_bedroom_desc: "Suite master généreuse avec larges ouvertures vitrées, murs en tadelakt et menuiseries sur mesure. Chaque suite est conçue comme un refuge privé au sein de la villa.",
+    int_villa_a: "Villa Arbea", int_villa_ab: "Toutes Villas",
+    int_note_label: "Finitions & Matériaux", int_note_text: "Tous les rendus présentent la spécification standard. Packs de finitions premium disponibles — voir l'onglet Finitions & Matériaux pour le détail complet.",
+    plan_mp_label: "Plan de Masse", plan_mp_title: "Zaytoun Marrakech — Plan du Site",
+    plan_arbea_label: "Type A — Villa Arbea", plan_arbea_title: "Villa Arbea — Rez-de-Chaussée & Premier Étage",
+    plan_ziria_label: "Type B — Villa Ziria", plan_ziria_title: "Villa Ziria — Rez-de-Chaussée & Premier Étage",
+    plan_zoom_hint: "Cliquer pour agrandir",
+    price_note: "Prix indicatif, selon configuration de la villa et sélection du lot • TVA applicable selon la loi marocaine",
+    price_usd_note: "indicatif",
+    legal_label: "Mentions Légales",
+    legal_disclaimer: "Prix de départ indicatif pour la plus petite configuration de villa, exprimé en MAD (Dirham marocain, monnaie officielle). L'équivalent en USD est fourni à titre indicatif uniquement, sur la base du taux de référence Bank Al-Maghrib au moment de la publication, et reste sujet à fluctuation. Le prix définitif est fixé dans le contrat de réservation et dans l'acte de vente, conformément à la législation immobilière marocaine applicable. Les prix s'entendent hors TVA, frais d'enregistrement, conservation foncière, frais de notaire et toute finition ou option supplémentaire. M PROPERTIES DEV SARL — gérant Zakaria — opérant sous la marque Arabesque Residences. Ce document ne constitue pas une offre ferme.",
+    payment_title: "Plan de Paiement", pay1: "À la Réservation", pay4: "À la Livraison",
+    handover_title: "Calendrier de Livraison", handover_text: "Construction démarrée en avril 2026. Tranche 1 (villa témoin) livrée Q3 2027. Tranches 2 & 3 livrées Q3 2028 — programme complet des 20 résidences tenu dans les délais.",
+    handover_ph1: "Tranche 1", handover_ph23: "Tranches 2 & 3",
+    fin_floor: "Sols", fin_carp: "Menuiserie", fin_struct: "Structure", fin_tech: "Technologie & Confort", fin_out: "Extérieurs",
+    fin_f1: "Microcement crème mat avec finition minérale et protection hydrofuge", fin_f2: "Zellige traditionnel marocain dans les espaces de vie principaux", fin_f3: "Parquet massif chêne dans les suites", fin_f4: "Terrasses en dalles de pierre naturelle de Taza", fin_f5: "Plage piscine en pierre naturelle de Taza",
+    fin_c1: "Châssis extérieurs en aluminium noir mat", fin_c2: "Double vitrage thermique généralisé", fin_c3: "Porte d'entrée pivotante pleine hauteur en chêne ou noyer", fin_c4: "Dressings sur mesure avec éclairage intégré et ouverture push-to-open", fin_c5: "Cuisine haut de gamme sur mesure — électroménager Bosch ou équivalent", fin_c6: "Façades laquées mat avec plan de travail en quartzite",
+    fin_s1: "Béton armé — normes parasismiques", fin_s2: "Étanchéité bicouche bitume sur toiture et terrasses", fin_s3: "Isolation thermique renforcée", fin_s4: "Faux plafonds avec éclairage LED indirect", fin_s5: "Détails en staff artisanal dans les zones sélectionnées", fin_s6: "Gaine ascenseur prévue (installation à la charge de l'acquéreur)",
+    fin_t1: "Climatisation gainable — chauffage et refroidissement", fin_t2: "Pré-installation domotique — éclairage, climatisation, volets", fin_t3: "Chauffe-eau solaire avec ballon tampon", fin_t4: "Système d'alarme et vidéosurveillance", fin_t5: "Fibre optique dans chaque pièce",
+    fin_o1: "Piscine privée — ouverte sur le jardin et le paysage", fin_o2: "Paysagisme : oliviers, palmiers et orangers", fin_o3: "Éclairage paysager et système d'arrosage intégral", fin_o4: "Portail motorisé avec télécommande",
+    svc1_title: "Maintenance Post-Livraison", svc1_text: "Service de maintenance immobilière complet géré par R+E Services — votre villa reste en condition impeccable toute l'année, que vous soyez en résidence ou non.",
+    svc2_title: "Gestion Locative Courte Durée", svc2_text: "Gestion locative professionnelle maximisant le potentiel de revenus de votre villa sur Airbnb, Booking.com et nos partenaires de canaux de luxe.",
+    svc3_title: "Pack Mobilier Optionnel", svc3_text: "Ameublement complet par notre équipe de designers d'intérieur — un pack clé en main qui reflète l'esthétique Zaytoun dès le premier jour.",
+    svc4_title: "Accompagnement Juridique & Propriété Étrangère", svc4_text: "Accompagnement juridique dédié tout au long du processus d'acquisition sous la législation immobilière marocaine en vigueur. Propriété étrangère pleinement supportée — acheteurs UE, Golfe et internationaux bienvenus.",
+    /* ── DISCLAIMERS ── */
+    inv_disclaimer: "Les chiffres de rendement, croissance et fréquentation touristique reposent sur des données de marché publiques (ANCFCC / Bank Al-Maghrib indice IPAI, ONMT) et des estimations pour des biens comparables sur la Route de Tahannaout. Fournis à titre purement informatif — ni prévision, ni recommandation, ni garantie de rendement futur. L'investissement immobilier comporte des risques de vacance, d'évolution réglementaire, de fluctuation des changes et de retournement de marché. Les performances passées ne préjugent pas des performances futures. Consultez un conseil juridique, financier et fiscal indépendant. M PROPERTIES DEV SARL ne garantit aucun résultat locatif, d'occupation ou de plus-value.",
+    render_disclaimer: "Toutes les images sont des représentations artistiques à titre illustratif uniquement. Les couleurs, matériaux, finitions, mobilier, équipements, aménagements paysagers et vues définitifs pourront varier. Le mobilier et les éléments décoratifs représentés ne sont pas inclus dans la spécification standard. Les images ont pu faire l'objet de retouches numériques.",
+    plan_disclaimer: "Tous les plans sont indicatifs et non à l'échelle. Les dimensions, surfaces, orientations et configurations sont approximatives et sujettes à ajustements définitifs (relevé géomètre, contraintes structurelles et réglementaires). Le mobilier représenté est purement indicatif et non inclus. Le promoteur se réserve le droit de modifier les plans sans préavis, dans le respect de la réglementation applicable.",
+    fin_disclaimer: "Les spécifications listées représentent le pack de finitions standard à la date de publication et sont susceptibles d'évoluer. Le promoteur se réserve le droit de substituer matériaux, marques et fournisseurs par des éléments de qualité équivalente ou supérieure. Couleurs, textures et dimensions exactes peuvent varier. La seule spécification contractuellement opposable est celle confirmée dans le contrat de réservation et l'acte de vente définitif.",
+    /* ── FOOTER ── */
+    footer_version: "v1.0 — Mai 2026",
+    footer_legal_link: "Mentions Légales & Avertissements",
+    footer_smallprint: "M PROPERTIES DEV SARL · ICE [À COMPLÉTER] · Gérant : Zakaria · Marrakech, Royaume du Maroc · Opérant sous la dénomination commerciale Arabesque Residences. L'ensemble des visuels, plans, prix et chiffres sont indicatifs et susceptibles d'évoluer. Aucun élément de cette page ne constitue une offre ferme ou un conseil en investissement.",
+    /* ── LEGAL MODAL ── */
+    modal_legal_label: "Mentions Légales", modal_legal_title: "Zaytoun Marrakech — Avertissements & Informations Légales",
+    modal_id_label: "Identité du Promoteur", modal_id_text: "M PROPERTIES DEV SARL · ICE [À COMPLÉTER] · Gérant : Zakaria · Siège social : Marrakech, Royaume du Maroc. Commercialisé sous la dénomination commerciale Arabesque Residences. Ce site constitue une présentation commerciale du projet Zaytoun.",
+    modal_render_label: "Rendus Architecturaux & Photographies", modal_render_text: "L'ensemble des images, rendus 3D, photographies et représentations visuelles publiées sur ce site sont des représentations artistiques à des fins illustratives uniquement. Elles ne constituent pas une représentation précise ou complète du produit final. Les couleurs, matériaux, finitions, mobilier, équipements, aménagements paysagers, vues et environnement extérieur pourront différer sensiblement de ceux représentés. Les images ont pu faire l'objet d'améliorations numériques. Le mobilier et les accessoires représentés ne sont pas inclus dans la spécification standard.",
+    modal_plan_label: "Plans & Plan de Masse", modal_plan_text: "L'ensemble des plans de villas et du plan de masse sont indicatifs et non dessinés à l'échelle. Les dimensions, surfaces, orientations et configurations sont approximatives et sujettes à révision sur la base du relevé géodésique final, des contraintes structurelles et des approbations réglementaires. Le mobilier représenté est purement indicatif et non inclus. Le promoteur se réserve le droit de modifier les plans sans préavis, dans le respect de la réglementation en vigueur.",
+    modal_fin_label: "Finitions & Spécifications", modal_fin_text: "Les spécifications de finitions listées sont indicatives du pack standard à la date de publication et susceptibles d'évoluer. Le promoteur se réserve le droit de substituer matériaux, marques et fournisseurs par des éléments de qualité équivalente ou supérieure, sans préavis. Les couleurs, textures et dimensions exactes peuvent varier par rapport aux échantillons et visuels présentés. La seule spécification contractuellement opposable est celle confirmée dans le contrat de réservation signé et l'acte de vente définitif.",
+    modal_inv_label: "Données de Marché & Rendements Projetés", modal_inv_text: "Les chiffres de rendement, de croissance des prix et de fréquentation touristique sont issus de données de marché publiques (ANCFCC / Bank Al-Maghrib indice IPAI, ONMT) et d'estimations pour des biens comparables sur la Route de Tahannaout. Ces informations sont fournies à titre purement informatif et ne constituent ni une prévision financière, ni une recommandation d'investissement, ni une garantie de performance future. L'investissement immobilier comporte des risques inhérents : vacance locative, évolutions réglementaires, fluctuations des taux de change et retournements de marché. Les performances passées ne préjugent pas des performances futures. Tout acquéreur potentiel est vivement invité à mener ses propres vérifications et à consulter un conseil juridique, financier et fiscal indépendant. M PROPERTIES DEV SARL ne garantit aucun résultat en termes de revenus locatifs, taux d'occupation ou plus-value.",
+    modal_price_label: "Prix & Devises", modal_price_text: "Tous les prix sont exprimés en Dirham Marocain (MAD) et sont indicatifs uniquement. Les équivalences en USD sont fournies à titre de référence sur la base du taux de change Bank Al-Maghrib à la date de publication et restent sujettes à fluctuation. Le prix définitif dépend de la configuration de la villa, du lot sélectionné et des taxes applicables. Le seul prix contractuellement opposable est celui figurant dans le contrat de réservation signé et l'acte de vente définitif. Les prix s'entendent hors TVA, frais d'enregistrement, conservation foncière, frais de notaire et toute option ou finition supplémentaire. M PROPERTIES DEV SARL se réserve le droit de modifier les prix à tout moment sans préavis.",
+    modal_gen_label: "Avertissement Général", modal_gen_text: "Ce site et l'ensemble des supports de communication associés sont fournis à des fins d'information générale uniquement et ne constituent ni une offre ferme, ni un contrat, ni un conseil juridique, financier, fiscal ou en investissement. Les informations publiées peuvent être actualisées, modifiées ou retirées à tout moment sans préavis. Aucun élément de ce site ne crée d'obligation pour M PROPERTIES DEV SARL avant la signature d'un contrat de réservation et d'un acte de vente par les deux parties devant notaire. M PROPERTIES DEV SARL se réserve le droit de modifier l'envergure du projet, le phasage, le calendrier de livraison et tout autre élément à tout moment, dans le respect de la législation immobilière marocaine applicable.",
+    modal_version: "Version du document : v1.0 — Mai 2026 · © 2026 M PROPERTIES DEV SARL · Tous droits réservés."
   },
   ar: {
     /* ── CORRECTIONS APPLIQUÉES ──────────────────────────────────
@@ -974,30 +1490,30 @@ const T = {
        6. social_proof  : phrase complète
        7. well_title  : suppression "أخيرًا" (trop conversationnel)
        ──────────────────────────────────────────────────────────── */
-    hero_eyebrow: "مجموعة حصرية · 20 فيلا · مراكش", hero_subtitle: "من توقيع أرابيسك ريزيدنسز", hero_tagline: "ثمة أماكن لا يُبحث عنها. هي كانت لك دائماً. زيتون كان هنا دائماً.",
-    stat_villas: "فيلا خاصة", stat_land: "هكتار", stat_delivery: "التسليم", hero_cta: "الوصول إلى الملف الحصري", hero_scroll: "اكتشف",
-    about_label: "المشروع", about_title: "عقار نادر وُلد من الضوء والأرض",
-    about_text: "زيتون مجمع سكني خاص من عشرين فيلا، يمتد على 4.4 هكتار من بساتين الزيتون الأصيلة على طريق تحناوت — حيث تلتقي الطبيعة بالمعمار ويلتقي الهدوء بالامتياز. مكان يُعيد تعريف معنى العيش الراقي في المغرب.",
-    fact_villas: "فيلا خاصة", fact_terrain: "ابتداءً من — القطعة", fact_surface: "ابتداءً من — المساحة المعيشية", fact_wellness: "مجال العافية · 800م² مبنية", fact_suites: "جناح لكل فيلا",
-    dest_label: "الوجهة", dest_title: "مراكش — المدينة التي تسكن فيك",
-    dest_text: "مراكش لا تشبه أي مدينة أخرى على وجه الأرض. ضوؤها مختلف. هواؤها مختلف. وإحساسك بالعيش فيها مختلف. مدينة تستقطب أرواح العالم الأكثر تميزاً منذ قرون — لأنها تمنح ما لا تستطيع أي مدينة أخرى منحه: روحاً حقيقية. من أحبّها مرة واحدة، اختارتها إلى الأبد.",
+    hero_eyebrow: "مجموعة حصرية · 20 فيلا · مراكش", hero_subtitle: "من توقيع أرابيسك ريزيدنسز", hero_tagline: "ثمة أماكن لا يُبحث عنها. تُعرف، ببساطة.",
+    stat_villas: "فيلا خاصة", stat_land: "هكتار", stat_delivery: "جاهز للسكن", hero_cta: "طلب الوصول الخاص", hero_scroll: "اكتشف",
+    about_label: "المشروع", about_title: "عشرون فيلا. عنوان واحد. إطلالة أطلسية لا تُنسى.",
+    about_text: "زيتون مجمع سكني خاص من عشرين فيلا، يمتد على 4.4 هكتار من بساتين الزيتون الأصيلة على طريق تحناوت — حيث تنتهي مراكش وتبدأ الجبال. عتبة لا يستطيع إلا القليل من الفلل في المغرب أن يدّعيها.",
+    fact_villas: "فيلا خاصة", fact_terrain: "ابتداءً من · القطعة", fact_surface: "ابتداءً من · المساحة المعيشية", fact_wellness: "مجال العافية · 800م² مبنية", fact_suites: "جناح لكل فيلا",
+    dest_label: "الوجهة", dest_title: "مراكش — العنوان الذي يختار أصحابه.",
+    dest_text: "استقبلت العاصمة السياحية للمغرب أكثر من 5.3 مليون زائر العام الماضي، فيما تتجاوز الطلبات على العقارات الفاخرة المعروضَ الإقليمي للسنة الرابعة على التوالي. مراكش ليست موضةً عابرة. إنها حقيقة دائمة.",
     atlas_caption: "جبال الأطلس — إطلالة من زيتون",
     invest_label: "لماذا مراكش؟", invest_title: "سوق يُحقق دائماً",
-    inv_stat1_num: "+8%", inv_stat1_label: "النمو السنوي للأسعار", inv_stat1_text: "قيم الفلل الفاخرة في مراكش ترتفع بثبات، متجاوزةً المتوسطات الإقليمية باستمرار.",
-    inv_stat2_num: "7–10%", inv_stat2_label: "العائد الإيجاري الإجمالي", inv_stat2_text: "عوائد إيجارية تتجاوز أغلب الأسواق العالمية، مدفوعةً بطلب سياحي على مدار السنة.",
-    inv_stat3_num: "5M+", inv_stat3_label: "سائح سنوياً", inv_stat3_text: "الوجهة السياحية الأولى في المغرب، تستقبل أكثر من خمسة ملايين زائر سنوياً.",
+    inv_stat1_num: "+8%", inv_stat1_label: "النمو السنوي للأسعار", inv_stat1_text: "القيم السكنية الراقية في مراكش تتفوق على المؤشرات الإقليمية منذ أربع سنوات متتالية (ANCFCC / مؤشر IPAI لبنك المغرب).",
+    inv_stat2_num: "7–10%", inv_stat2_label: "العائد الإيجاري الإجمالي", inv_stat2_text: "تحقق الفلل المُدارة على طريق تحناوت ما يزيد عن 220 ليلة مؤجرة سنوياً بأسعار تتراوح بين 650 و1200 يورو/ليلة.",
+    inv_stat3_num: "5.3M+", inv_stat3_label: "سائح سنوياً", inv_stat3_text: "5.3 مليون زائر في 2023، مع إضافة RAM 40 وجهة جديدة بحلول 2026. طلب مدعوم هيكلياً.",
     inv_stat4_num: "100%", inv_stat4_label: "تملك أجنبي حر", inv_stat4_text: "المغرب يُتيح التملك الأجنبي الكامل في ملكية حرة، مع حرية تحويل رأس المال والعائدات.",
     loc_label: "موقعنا", dist_golf: "الغولف", dist_hivernage: "هيفيرناج", dist_airport: "المطار",
     loc_golf_label: "الغولف — 15 دقيقة", loc_golf_title: "غولف على مستوى عالمي", loc_golf_text: "ثلاثة ملاعب بطولية على بُعد دقائق معدودة.",
-    loc_hiv_label: "هيفيرناج والمدينة — 20 دقيقة", loc_hiv_title: "أفضل ما في مراكش في متناول يدك", loc_hiv_text: "أرقى فنادق هيفيرناج ومطاعمها ومحالها على بُعد 20 دقيقة.",
+    loc_hiv_label: "هيفيرناج والمدينة — 20 دقيقة", loc_hiv_title: "أفضل ما في مراكش في متناول يدك", loc_hiv_text: "أرقى فنادق هيفيرناج ومطاعمها وعروضها الثقافية على بُعد 20 دقيقة.",
     loc_air_label: "مطار المنارة — 20 دقيقة", loc_air_title: "متصل بأوروبا والخليج وما وراءهما", loc_air_text: "رحلات مباشرة إلى باريس ولندن ودبي وأكثر من 50 وجهة دولية.",
-    well_label: "أسلوب حياة", well_title: "مكان يُعيدك إلى نفسك", well_text: "مركز عافية بمساحة 800 متر مربع مع أولوية وصول حصرية للمقيمين.",
-    wf1_title: "السبا والحمام", wf1_text: "حمام مغربي تقليدي وعلاجات فاخرة.", wf2_title: "اللياقة والحركة", wf2_text: "صالة رياضية ويوغا وملاعب بادل ومسارات للمشي.", wf3_title: "الحدائق والطبيعة", wf3_text: "حدائق تأملية وبساتين زيتون معمّرة.",
+    well_label: "فن العيش", well_title: "ملاذ يُعيدك إلى نفسك.", well_text: "مركز عافية بمساحة 800 متر مربع مع أولوية وصول حصرية للمقيمين.",
+    wf1_title: "السبا والحمام", wf1_text: "في زيتون، وُضِع البحث عن العافية في صميم المشروع منذ تصوّره الأول — والسبا قلبه النابض. ادخل إلى حمام مغربي تقليدي منحوت في التادلاكت والرخام الدافئ، حيث تُجدّد البخارُ والأوكاليبتوس والصابون البلدي طقوساً عمرها قرون. تُقدّم كبائن العلاج جلسات تستلهم زيت الأرغان وورد قلعة مكونة وزهر البرتقال. مكان للتمهّل، للتنفّس، للعودة إلى الذات — مفتوح للجميع، مع أولوية وصول حصرية للمقيمين.", wf2_title: "اللياقة والحركة", wf2_text: "صالة رياضية مجهزة، يوغا عند شروق الشمس، ملاعب بادل ومسارات بين أشجار الزيتون المعمّرة.", wf3_title: "الحدائق والطبيعة", wf3_text: "حدائق تأملية وبساتين زيتون عريقة — الصمت امتياز حصري.",
     gate_label: "وصول حصري", gate_title: "افتح الملف الكامل",
-    lock_villas: "الفلل والتصميم الداخلي", lock_price: "السعر الابتدائي", lock1: "مخططات فيلا أربع", lock2: "مخططات فيلا زيريا", lock4: "خطة الدفع", lock5: "موعد التسليم",
-    social_proof: "اختارت بعض العائلات فعلاً فيلتها في زيتون. المبادرون الأوائل يحظون بأفضل سعر دخول.",
+    lock_villas: "الفلل والتصميم الداخلي", lock_price: "السعر الابتدائي", lock1: "مخططات فيلا أربيا", lock2: "مخططات فيلا زيريا", lock4: "خطة الدفع", lock5: "موعد التسليم",
+    social_proof: "اختار عدد من الأسر المميزة فيلتهم في زيتون. المبادرون في المرحلة الأولى يحظون بأفضل سعر دخول — وأوسع خيار.",
     l1_title: "الخطوة 1 من 2 — وصول فوري", form_firstname: "الاسم الأول", form_email: "البريد الإلكتروني", l1_submit: "← اكتشف الفلل والسعر", gate_privacy: "معلوماتك سرية تماماً ولن تُشارَك أبداً.",
-    price_from: "تبدأ الأسعار من", price_note_short: "سعر استرشادي · لا يشمل TVA", lvl2_badge: "الخطوة 2 — المخططات والدفع", l2_teaser: "افتح المخططات المعمارية وجدول الدفع ومواعيد التسليم.",
+    price_from: "تبدأ الأسعار من", price_note_short: "سعر استرشادي · لا يشمل TVA", lvl2_badge: "الخطوة 2 — المخططات والدفع", l2_teaser: "اطّلع على المخططات المعمارية وشبكة الأسعار وشروط الحجز.",
     form_lastname: "اسم العائلة", form_phone: "الهاتف / واتساب", form_country: "الدولة", form_country_ph: "اختر الدولة", form_intent: "نية الشراء", form_intent_ph: "اختر...",
     intent1: "إقامة رئيسية", intent2: "استثمار", intent3: "إقامة ثانوية", gate_submit: "← الوصول إلى الملف الكامل",
     success_title: "أهلاً بكم في عائلة زيتون", success_text: "ملفك الحصري جاهز الآن. مرّر للاسفل لاكتشاف كافة التفاصيل.", success_scroll: "مرّر للاستكشاف",
@@ -1005,7 +1521,59 @@ const T = {
     tab_villas: "الفلل", tab_interiors: "التصميم الداخلي", tab_plans: "المخططات", tab_pricing: "الأسعار والدفع", tab_finishes: "التشطيبات", tab_services: "الخدمات",
     cta_title: "عشرون فيلا فقط. لعشرين عائلة تُقدّر الاستثنائي.", cta_text: "استشارة خاصة وسرية.", cta_call: "+212 777 47 47 47", cta_email: "sales@arabesque.life",
     footer_tagline: "زيتون. لمن توقف عن البحث — وبدأ في العيش.", footer_nav: "التنقل", footer_contact: "التواصل",
-    nav_home: "الرئيسية", nav_project: "المشروع", nav_dossier: "الملف الحصري"
+    nav_home: "الرئيسية", nav_project: "المشروع", nav_dossier: "الملف الحصري",
+    /* ── DOSSIER TABS ── */
+    villa_arbea: "فيلا أربيا", villa_ziria: "فيلا زيريا",
+    spec_suites: "أجنحة", spec_levels: "طوابق", spec_pool: "مسبح خاص", spec_parking: "مواقف",
+    arbea_desc: "تتوزع فيلا أربيا على طابقين — طابق أرضي رحب ينفتح على تراس المسبح والحديقة الخاصة، فيما يرتفع الجناح الرئيسي في الطابق الأول ليمنح الخصوصية وإطلالة صافية على جبال الأطلس. خمسة أجنحة في المجموع: جناحا جونيور وجناحان رئيسيان وجناح خامس على مستوى الحديقة — تركيبة نادرة تجعل من أربيا الأرحب بين نوعَي الفلل.",
+    ziria_desc: "زيريا — القمر الكامل بالأمازيغية. الضوء الذي يتدفق على جبال الأطلس عند هبوط الليل يملأ فيلا زيريا كل مساء، عبر نوافذها الزجاجية الواسعة وتراسها السطحي البانورامي. أربعة أجنحة على طابقين، يرتفع الجناح الرئيسي ليؤطر السماء وحدها.",
+    int_label: "تصاوير التصميم الداخلي", int_title: "فن العيش الراقي", int_subtitle: "كل فيلا مصممة حول تجربة المعيشة — فضاءات حميمة تنفتح على الحدائق والضوء، بلمسات حرفية مستوحاة من التراث المغربي.",
+    int_salon: "الصالون — المدفأة وإطلالة الحديقة", int_salon_desc: "نحاس مغربي وبلاط حجري يدوي الصنع وجص حرفي — يطلّ الصالون عبر نوافذ زجاجية واسعة على التراس الخاص والمسبح.",
+    int_shower: "حمام الجناح الرئيسي", int_shower_desc: "دش مطر مفتوح بحائط مزخرف بالفسيفساء ونوافذ زجاجية واسعة تطل على حديقة خاصة. تجهيزات سوداء مصقولة بالكامل.",
+    int_vanity: "مغسلة مزدوجة — تادلاكت وحجر", int_vanity_desc: "حوضان معلّقان من التادلاكت — جص الكلس المقاوم للماء التقليدي بالمغرب — مع رفوف مدمجة وسيراميك حرفي.",
+    int_bedroom: "الجناح الرئيسي — الغرفة", int_bedroom_desc: "جناح رئيسي رحب بفتحات زجاجية واسعة وجدران من التادلاكت ونجارة مخصصة. كل جناح صُمّم كملاذ خاص داخل الفيلا.",
+    int_villa_a: "فيلا أربيا", int_villa_ab: "جميع الفلل",
+    int_note_label: "التشطيبات والمواد", int_note_text: "تُظهر جميع التصاوير المواصفات القياسية. حزم تطوير متقدمة متاحة — راجع تبويب التشطيبات والمواد للتفاصيل الكاملة.",
+    plan_mp_label: "المخطط العام", plan_mp_title: "زيتون مراكش — مخطط الموقع",
+    plan_arbea_label: "النوع A — فيلا أربيا", plan_arbea_title: "فيلا أربيا — الطابق الأرضي والطابق الأول",
+    plan_ziria_label: "النوع B — فيلا زيريا", plan_ziria_title: "فيلا زيريا — الطابق الأرضي والطابق الأول",
+    plan_zoom_hint: "انقر للتكبير",
+    price_note: "سعر استرشادي، حسب تكوين الفيلا واختيار القطعة • TVA وفق القانون المغربي",
+    price_usd_note: "استرشادي",
+    legal_label: "بيان قانوني",
+    legal_disclaimer: "سعر ابتدائي استرشادي لأصغر تكوين من الفلل، محرر بالدرهم المغربي (MAD، العملة الرسمية). يُعطى المعادل بالدولار الأمريكي لأغراض الإشارة فقط، بناءً على السعر المرجعي لبنك المغرب وقت النشر، ويبقى عرضة للتقلب. يُحدَّد السعر النهائي في عقد الحجز وعقد البيع وفقاً للتشريع العقاري المغربي المعمول به. الأسعار لا تشمل TVA ولا رسوم التسجيل ولا المحافظة العقارية ولا أتعاب التوثيق ولا أي تشطيبات أو ترقيات اختيارية. M PROPERTIES DEV SARL — تسيير زكرياء — تحت العلامة التجارية Arabesque Residences. لا تشكّل هذه الوثيقة عرضًا ملزمًا.",
+    payment_title: "خطة الدفع", pay1: "عند الحجز", pay4: "عند التسليم",
+    handover_title: "موعد التسليم", handover_text: "انطلق البناء في أبريل 2026. الترانش 1 (الفيلا النموذجية) — التسليم Q3 2027. الترانشات 2 و3 — التسليم Q3 2028. برنامج 20 فيلا كامل ملتزم به.",
+    handover_ph1: "الترانش 1", handover_ph23: "الترانشات 2 و3",
+    fin_floor: "الأرضيات", fin_carp: "الأعمال الخشبية", fin_struct: "الهيكل الإنشائي", fin_tech: "الأنظمة الذكية والراحة", fin_out: "الفضاءات الخارجية",
+    fin_f1: "أرضيات بيتون سيري كريمي مط — معالجة معدنية مقاومة للرطوبة", fin_f2: "زليج مغربي تقليدي في المساحات المعيشية الرئيسية", fin_f3: "أرضيات خشب البلوط الصلب في الأجنحة", fin_f4: "التراسات بأحجار تازة الطبيعية المصقولة", fin_f5: "أرضية المسبح بحجر تازة الطبيعي",
+    fin_c1: "هياكل خارجية من الألومنيوم الأسود المطفي", fin_c2: "زجاج مزدوج عازل حرارياً وصوتياً", fin_c3: "باب مدخل محوري بارتفاع كامل — خشب بلوط أو جوز", fin_c4: "خزائن مدمجة مخصصة مع إضاءة داخلية وفتح لمسي", fin_c5: "مطبخ مخصص عالي الجودة — أجهزة Bosch أو ما يعادلها", fin_c6: "واجهات مطفية مع سطح عمل من الكوارتزيت",
+    fin_s1: "خرسانة مسلحة — معايير مقاومة الزلازل", fin_s2: "عزل مائي ثنائي الطبقة على السقف والتراسات", fin_s3: "عزل حراري متكامل", fin_s4: "أسقف معلّقة مع إضاءة LED غير مباشرة", fin_s5: "لمسات جصية يدوية في مناطق مختارة", fin_s6: "بئر المصعد معدة مسبقاً — تركيب اختياري للمشتري",
+    fin_t1: "تكييف مركزي مخفي — تبريد وتدفئة", fin_t2: "نظام المنزل الذكي — تمديدات مسبقة للإضاءة والتكييف والستائر", fin_t3: "سخان مياه شمسي مع خزان احتياطي", fin_t4: "منظومة إنذار ومراقبة بالكاميرات", fin_t5: "شبكة ألياف ضوئية في جميع الغرف",
+    fin_o1: "مسبح خاص — تصميم معماري مفتوح على الحديقة", fin_o2: "تنسيق حدائق: أشجار زيتون ونخيل وبرتقال", fin_o3: "إضاءة حديقة ونظام ري كامل", fin_o4: "بوابة آلية مع تحكم عن بعد",
+    svc1_title: "صيانة ما بعد التسليم", svc1_text: "خدمة صيانة عقارية متكاملة تُديرها R+E Services — تبقى فيلتك في حالة مثالية طوال العام، سواء كنت مقيمًا أم لا.",
+    svc2_title: "إدارة الإيجار قصير الأمد", svc2_text: "إدارة إيجارية احترافية تُعظّم دخل فيلتك عبر Airbnb وBooking.com وشركاء القنوات الفاخرة.",
+    svc3_title: "حزمة تأثيث اختيارية", svc3_text: "تأثيث منزل كامل من فريق المصممين الداخليين — حزمة متكاملة تعكس جمالية زيتون منذ اليوم الأول.",
+    svc4_title: "الدعم القانوني والتملك الأجنبي", svc4_text: "توجيه قانوني متخصص طوال عملية الاقتناء وفق التشريع العقاري المغربي المعمول به. الملكية الأجنبية مدعومة بالكامل — مرحبًا بالمشترين من الاتحاد الأوروبي والخليج والعالم.",
+    /* ── DISCLAIMERS ── */
+    inv_disclaimer: "أرقام العائد والنمو والسياحة مستمدة من بيانات سوقية متاحة للعموم (ANCFCC / مؤشر IPAI لبنك المغرب، ONMT) وتقديرات لعقارات مشابهة على طريق تحناوت. للإعلام فحسب — ليست توقعاً ولا توصيةً ولا ضماناً لأي عائد مستقبلي. الاستثمار العقاري ينطوي على مخاطر شغور وتغيير تنظيمي وتقلبات عملة وتراجع سوقي. الأداء السابق لا يضمن المستقبل. استعن بمستشار قانوني ومالي وضريبي مستقل. لا تضمن M PROPERTIES DEV SARL أي نتيجة إيجارية أو إشغال أو زيادة في قيمة رأس المال.",
+    render_disclaimer: "جميع الصور تمثيلات فنية للأغراض التوضيحية فقط. الألوان والمواد والتشطيبات والأثاث والتجهيزات والمناظر النهائية قد تختلف عما هو موضح. الأثاث والعناصر الديكورية غير مشمولة في المواصفات القياسية. قد تكون الصور خضعت لتحسين رقمي.",
+    plan_disclaimer: "جميع المخططات استرشادية وليست وفق المقياس. الأبعاد والمساحات والتوجهات والتكوينات تقريبية وقابلة للتعديل بناءً على المسح الجيوديسي النهائي والمتطلبات الإنشائية والموافقات التنظيمية. الأثاث المعروض للإشارة فقط وغير مشمول في التسليم. يحتفظ المطور بحق تعديل المخططات دون إشعار مسبق وفق التشريعات المعمول بها.",
+    fin_disclaimer: "المواصفات المدرجة تمثل حزمة التشطيبات القياسية وقت النشر وقابلة للتغيير. يحتفظ المطور بحق استبدال المواد والعلامات التجارية والموردين بما يعادلها أو يفوقها جودةً. قد تختلف الألوان والملمس والأبعاد الدقيقة. المواصفة الملزمة الوحيدة هي تلك المؤكدة في عقد الحجز وعقد البيع النهائي.",
+    /* ── FOOTER ── */
+    footer_version: "v1.0 — مايو 2026",
+    footer_legal_link: "المعلومات القانونية والتنبيهات",
+    footer_smallprint: "M PROPERTIES DEV SARL · ICE [يُكمَل لاحقاً] · تسيير: زكرياء · مراكش، المملكة المغربية · تحت العلامة التجارية Arabesque Residences. جميع المرئيات والخطط والأسعار والأرقام استرشادية وقابلة للتغيير. لا يشكّل أي عنصر في هذه الصفحة عرضاً ملزماً أو نصيحة استثمارية.",
+    /* ── LEGAL MODAL ── */
+    modal_legal_label: "المعلومات القانونية", modal_legal_title: "زيتون مراكش — التنبيهات والمعلومات القانونية",
+    modal_id_label: "هوية المطور", modal_id_text: "M PROPERTIES DEV SARL · ICE [يُكمَل لاحقاً] · تسيير: زكرياء · المقر: مراكش، المملكة المغربية. تُسوَّق تحت العلامة التجارية Arabesque Residences. هذا الموقع عرض تسويقي لمشروع زيتون.",
+    modal_render_label: "التصاوير المعمارية والصور الفوتوغرافية", modal_render_text: "جميع الصور والتصاوير ثلاثية الأبعاد والتمثيلات البصرية المنشورة في هذا الموقع هي انطباعات فنية لأغراض توضيحية فحسب، ولا تُمثّل المنتج النهائي بدقة أو شمولية. الألوان والمواد والتشطيبات والأثاث والتجهيزات والمناظر الطبيعية والمحيط قد تختلف اختلافاً جوهرياً عما هو مصوَّر. الأثاث والإكسسوارات المعروضة غير مشمولة في المواصفات القياسية.",
+    modal_plan_label: "المخططات ومخطط الموقع", modal_plan_text: "جميع مخططات الفلل ومخطط الموقع استرشادية وغير مرسومة وفق المقياس. الأبعاد والمساحات والتوجهات والتكوينات تقريبية وقابلة للمراجعة بناءً على المسح الجيوديسي النهائي والمتطلبات الإنشائية والموافقات التنظيمية. الأثاث المعروض للإشارة فقط. يحتفظ المطور بحق تعديل المخططات دون إشعار مسبق.",
+    modal_fin_label: "التشطيبات والمواصفات", modal_fin_text: "مواصفات التشطيبات المدرجة استرشادية وفق حزمة التشطيبات القياسية وقت النشر وقابلة للتغيير. يحتفظ المطور بحق استبدال المواد والعلامات التجارية والموردين بما يعادلها أو يفوقها جودةً دون إشعار مسبق. قد تختلف الألوان والملمس والأبعاد الدقيقة. المواصفة الملزمة الوحيدة هي تلك المؤكدة في عقد الحجز الموقَّع وعقد البيع النهائي.",
+    modal_inv_label: "بيانات السوق والعوائد المتوقعة", modal_inv_text: "أرقام العائد ونمو الأسعار والسياحة مستمدة من بيانات سوقية متاحة للعموم (ANCFCC / مؤشر IPAI لبنك المغرب، ONMT) وتقديرات لعقارات مشابهة على طريق تحناوت. هذه المعلومات للإعلام العام فحسب ولا تُشكّل توقعاً مالياً ولا توصيةً استثمارية ولا ضماناً لأداء مستقبلي. الاستثمار العقاري ينطوي على مخاطر متأصلة: شغور الإيجار، التغييرات التنظيمية، تقلبات أسعار الصرف، وتراجع السوق. الأداء السابق لا يدل على النتائج المستقبلية. يُنصح كل مشترٍ محتمل بإجراء فحوصاته المستقلة واستشارة مستشار قانوني ومالي وضريبي. لا تضمن M PROPERTIES DEV SARL أي دخل إيجاري أو نسبة إشغال أو زيادة في قيمة رأس المال.",
+    modal_price_label: "الأسعار والعملات", modal_price_text: "جميع الأسعار محررة بالدرهم المغربي (MAD) وذات طابع استرشادي فحسب. المعادلات بالدولار الأمريكي مُقدَّمة للإشارة استناداً إلى سعر بنك المغرب المرجعي وقت النشر وتبقى عرضةً للتقلب. السعر النهائي رهين بتكوين الفيلا والقطعة المختارة والضرائب المطبقة. السعر الملزم الوحيد هو ذلك المحدد في عقد الحجز الموقَّع وعقد البيع النهائي. الأسعار لا تشمل TVA ولا رسوم التسجيل ولا المحافظة العقارية ولا أتعاب التوثيق ولا أي ترقيات أو تشطيبات اختيارية. تحتفظ M PROPERTIES DEV SARL بحق تعديل الأسعار في أي وقت دون إشعار مسبق.",
+    modal_gen_label: "التنبيه العام", modal_gen_text: "هذا الموقع وجميع مواد التسويق المرتبطة به مُقدَّمة لأغراض إعلامية عامة فحسب، ولا تُشكّل عرضاً ملزماً ولا عقداً ولا استشارةً قانونيةً أو مالية أو ضريبية أو استثمارية. يمكن تحديث المعلومات المنشورة أو تعديلها أو سحبها في أي وقت دون إشعار. لا يُنشئ أي عنصر في هذا الموقع أي التزام على M PROPERTIES DEV SARL قبل توقيع عقد الحجز وعقد البيع من الطرفين أمام الموثق. تحتفظ M PROPERTIES DEV SARL بحق تعديل نطاق المشروع والمراحل وجدول التسليم وأي عنصر آخر في أي وقت وفق التشريع العقاري المغربي المعمول به.",
+    modal_version: "إصدار الوثيقة: v1.0 — مايو 2026 · © 2026 M PROPERTIES DEV SARL · جميع الحقوق محفوظة."
   }
 };
 
