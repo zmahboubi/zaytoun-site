@@ -839,6 +839,10 @@ footer { background: var(--charcoal); padding: 60px 0 30px; }
   </div>
   <div class="container" style="padding-top:0;padding-bottom:80px;">
     <div style="background:var(--white);"><div style="background:var(--charcoal);padding:32px 48px;display:flex;justify-content:space-between;flex-wrap:wrap;"><div><span style="font-size:9px;color:var(--terracotta);" data-i18n="loc_label">Our Location</span><span style="font-family:var(--font-serif);font-size:22px;color:white;">Route de Tahannaout, Marrakech</span></div><div style="display:flex;gap:32px;"><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">5'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_golf">Golf</span></div><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">20'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_hivernage">Hivernage</span></div><div><span style="font-family:var(--font-serif);font-size:28px;color:var(--gold-light);">20'</span><span style="font-size:9px;color:rgba(255,255,255,0.35);" data-i18n="dist_airport">Airport</span></div></div></div>
+      <div class="route-strip" style="background:var(--ivory-deep);border-bottom:1px solid var(--sand);padding:22px 48px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+        <div style="max-width:620px;"><span style="display:block;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--terracotta);margin-bottom:6px;" data-i18n="route_label">Recommended Route</span><span style="font-family:var(--font-serif);font-size:18px;color:var(--text);line-height:1.5;" data-i18n="route_text">Arrive via Route d'Amizmiz and the Mysk access road, straight to the Zaytoun gate.</span></div>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;waypoints=31.558536,-8.028519&amp;destination=31.542921,-8.009908&amp;travelmode=driving" target="_blank" rel="noopener" class="btn-primary" style="text-decoration:none;white-space:nowrap;" data-i18n="route_btn">Open the Route →</a>
+      </div>
       <div class="loc-cards-grid"><div class="loc-card"><div style="font-size:9px;color:var(--terracotta);" data-i18n="loc_golf_label">Golf — 15 min</div><h3 style="font-family:var(--font-serif);font-size:20px;" data-i18n="loc_golf_title">World-Class Golf</h3><p data-i18n="loc_golf_text">Three championship courses within minutes.</p></div><div class="loc-card"><div style="font-size:9px;color:var(--terracotta);" data-i18n="loc_hiv_label">Hivernage — 20 min</div><h3 style="font-family:var(--font-serif);font-size:20px;" data-i18n="loc_hiv_title">Best of Marrakech</h3><p data-i18n="loc_hiv_text">Luxury district with finest hotels and restaurants.</p></div><div class="loc-card"><div style="font-size:9px;color:var(--terracotta);" data-i18n="loc_air_label">Airport — 20 min</div><h3 style="font-family:var(--font-serif);font-size:20px;" data-i18n="loc_air_title">Connected to the World</h3><p data-i18n="loc_air_text">Direct flights to Paris, London, Dubai.</p></div></div>
     </div>
   </div>
@@ -1487,7 +1491,10 @@ const T = {
     req_ok_title: "Request received",
     req_ok_text: "Thank you. A member of our team will contact you within 24 hours.",
     handover_ph2: "Phase 2",
-    handover_ph3: "Phase 3"
+    handover_ph3: "Phase 3",
+    route_label: "Recommended Route",
+    route_text: "Arrive via Route d'Amizmiz and the Mysk access road, straight to the Zaytoun gate.",
+    route_btn: "Open the Route →"
   },
   fr: {
     hero_eyebrow: "Collection Privée · 20 Villas · Marrakech", hero_subtitle: "Par Arabesque Residences", hero_tagline: "Certains endroits ne se trouvent pas. Ils se reconnaissent, simplement.",
@@ -1583,7 +1590,10 @@ const T = {
     req_ok_title: "Demande reçue",
     req_ok_text: "Merci. Un membre de notre équipe vous contactera sous 24 heures.",
     handover_ph2: "Tranche 2",
-    handover_ph3: "Tranche 3"
+    handover_ph3: "Tranche 3",
+    route_label: "Itinéraire recommandé",
+    route_text: "Arrivez par la route d'Amizmiz et l'accès du lotissement Mysk, jusqu'au portail de Zaytoun.",
+    route_btn: "Ouvrir l'itinéraire →"
   },
   ar: {
     /* ── CORRECTIONS APPLIQUÉES ──────────────────────────────────
@@ -1690,7 +1700,10 @@ const T = {
     req_ok_title: "تم استلام طلبك",
     req_ok_text: "شكراً لك. سيتواصل معك أحد أعضاء فريقنا خلال 24 ساعة.",
     handover_ph2: "الترانش 2",
-    handover_ph3: "الترانش 3"
+    handover_ph3: "الترانش 3",
+    route_label: "الطريق الموصى به",
+    route_text: "الوصول عبر طريق أمزميز ومدخل تجزئة مسك، حتى بوابة زيتون.",
+    route_btn: "← افتح المسار"
   }
 };
 
