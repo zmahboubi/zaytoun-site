@@ -21,7 +21,15 @@
 <meta name="twitter:title" content="Zaytoun Marrakech — Luxury Villas &amp; Wellness | Arabesque Residences">
 <meta name="twitter:description" content="20 private villas with their own wellness and sports centre, Marrakech. By invitation.">
 <meta name="twitter:image" content="https://res.cloudinary.com/dlidh4fdt/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/IMG-20260504-WA0022_h9b8lm">
-<!-- GA4 : recoller ici le bloc gtag de la version en ligne (identifiant G-… non récupérable depuis le dépôt) -->
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H4BB6VJ8KJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-H4BB6VJ8KJ');
+  function trackEvent(name, params) { try { gtag('event', name, params || {}); } catch (e) {} }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Cairo:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -1741,6 +1749,7 @@ function handleInviteCode(e) {
   err.style.display = 'none';
   REF_CODE = code;
   storeRef(code);
+  trackEvent('invite_code_entered', { ref_code: code });
   applyAccessMode();
 }
 async function handleAccessRequest(e) {
@@ -1759,6 +1768,7 @@ async function handleAccessRequest(e) {
     lang: currentLang,
     ref_code: referrer ? 'REQ: ' + referrer : 'REQ'
   });
+  trackEvent('generate_lead', { form: 'access_request' });
   document.getElementById('accessRequestForm').style.display = 'none';
   document.getElementById('accessRequestOk').style.display = 'block';
 }
@@ -1841,6 +1851,7 @@ async function handleGateL1(e) {
   const btn = e.target.querySelector('button[type="submit"]');
   if (btn) btn.disabled = true;
   await sendToSheet('lead_l1', { fname, email, lang: currentLang, ref_code: REF_CODE });
+  trackEvent('generate_lead', { form: 'dossier_step1', ref_code: REF_CODE });
   document.getElementById('gateFormL1').style.display = 'none';
   document.getElementById('gateL1Success').style.display = 'block';
   unlockItems(['lock-villas', 'lock-price']);
@@ -1876,6 +1887,7 @@ async function handleGateSubmit(e) {
     ref_code: REF_CODE
   };
   await sendToSheet('lead_l2', payload);
+  trackEvent('generate_lead', { form: 'dossier_step2', ref_code: REF_CODE });
   unlockItems(['lock-plans1', 'lock-plans2', 'lock-payment', 'lock-handover']);
   document.querySelectorAll('.tab-btn').forEach(tab => {
     tab.style.opacity = '1';
